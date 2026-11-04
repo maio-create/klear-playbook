@@ -675,6 +675,7 @@
   .tk-opt{padding:8px 12px; font-size:13px; cursor:pointer;}
   .tk-opt:hover{background:var(--yellow-tint);}
   select.q-input{appearance:auto;}
+  .q-input.err{border-color:#C0392B !important; background:#FDECEA;}
 
   .q-input{
     width:100%; padding:9px 12px; border:1px solid var(--line); border-radius:9px; font-size:13.5px;
@@ -2037,7 +2038,7 @@
         <div class="sim-row">
           <div class="sim-field">
             <span class="f-lbl">Titre du ticket *</span>
-            <input type="text" id="tk-titre" class="q-input" placeholder="KLEAR/ Le bouton Exporter ne répond plus sur la fiche chantier">
+            <input type="text" id="tk-titre" class="q-input" required aria-required="true" placeholder="KLEAR/ Le bouton Exporter ne répond plus sur la fiche chantier">
           </div>
         </div>
         <div class="sim-row">
@@ -2055,7 +2056,7 @@
         <div class="sim-row">
           <div class="sim-field">
             <span class="f-lbl">Type *</span>
-            <select id="tk-type" class="q-input">
+            <select id="tk-type" class="q-input" required aria-required="true">
               <option value="" selected>— Choisir —</option>
               <option value="🐞 Bug">🐞 Bug</option>
               <option value="😻 Indispensable">😻 Indispensable</option>
@@ -2232,7 +2233,7 @@
         <li><b>Demandes en attente</b> : « c'est noté », ni planifié ni promis.</li>
         <li><b>En cours</b> : « ça arrive », sans date.</li>
         <li><b>En test avant déploiement</b> : « c'est presque prêt », sans date non plus.</li>
-        <li><b>Terminé</b> : disponible. Jamais de date, jamais de « disponible » pour une fonction qui n'est pas terminée.</li>
+        <li><b>Terminé</b> : disponible.</li>
       </ul>
     </div>
 
@@ -3168,12 +3169,20 @@
     });
 
     function say(msg, color){ statusEl.style.color = color; statusEl.textContent = msg; }
+    ['tk-titre','tk-type'].forEach(id=>{
+      const el = document.getElementById(id);
+      el.addEventListener('input', ()=>el.classList.remove('err'));
+      el.addEventListener('change', ()=>el.classList.remove('err'));
+    });
 
     submitBtn.addEventListener('click', async ()=>{
       const titre = document.getElementById('tk-titre').value.trim();
       const typeVal = document.getElementById('tk-type').value;
-      if(!titre){ say('⚠️ Le titre est requis.', '#C0392B'); return; }
-      if(!typeVal){ say('⚠️ Le type est requis.', '#C0392B'); return; }
+      const titreEl = document.getElementById('tk-titre'), typeEl = document.getElementById('tk-type');
+      titreEl.classList.toggle('err', !titre);
+      typeEl.classList.toggle('err', !typeVal);
+      if(!titre){ say('⚠️ Le titre du ticket est obligatoire.', '#C0392B'); titreEl.focus(); return; }
+      if(!typeVal){ say('⚠️ Le type est obligatoire.', '#C0392B'); typeEl.focus(); return; }
       const device = [];
       if(document.getElementById('tk-device-web').checked) device.push('WEB');
       if(document.getElementById('tk-device-mobile').checked) device.push('MOBILE');
