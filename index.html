@@ -97,7 +97,7 @@
   .hero h1 em{font-style:normal; color:var(--yellow);}
   .hero p.lede{font-size:16.5px; color:var(--ink-soft); max-width:600px; margin-top:16px; font-weight:400;}
 
-  .gateway-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-bottom:20px;}
+  .gateway-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:16px; margin-bottom:20px;}
   @media(max-width:820px){ .gateway-grid{grid-template-columns:repeat(2,1fr);} .hero h1{font-size:30px;} }
 
   .gate-card{
@@ -124,6 +124,8 @@
   .gate-card.marketing{ --accent-color: var(--accent); --tint-color: var(--accent-tint); }
   .gate-card.support{ --accent-color: var(--teal); --tint-color: var(--teal-tint); }
   .gate-card.produit{ --accent-color: var(--success); --tint-color: var(--success-tint); }
+.gate-card.vente{ --accent-color: var(--yellow); --tint-color: var(--yellow-tint); }
+.gate-card.vente .eyebrow-tag{color:var(--yellow-ink);}
 
   .home-note{
     margin-top:26px; display:flex; align-items:center; gap:16px; flex-wrap:wrap;
@@ -154,6 +156,7 @@
   .marketing-theme .badge{background:var(--accent-tint); color:var(--accent);}
   .support-theme .badge{background:var(--teal-tint); color:var(--teal);}
   .produit-theme .badge{background:var(--success-tint); color:var(--success);}
+  .vente-theme .badge{background:var(--yellow-tint); color:var(--yellow-ink);}
 
   .back-link{
     background:none;border:none;font-family:'Lexend Deca',sans-serif;font-size:12px;font-weight:600;
@@ -488,6 +491,7 @@
   .sr-item .where .theme-chip.t-marketing{background:var(--accent);}
   .sr-item .where .theme-chip.t-support{background:var(--teal);}
   .sr-item .where .theme-chip.t-produit{background:var(--success);}
+  .sr-item .where .theme-chip.t-vente{background:var(--yellow-ink);}
   .sr-item .where .path{color:var(--ink-soft);}
   .sr-item .ttl{font-size:14px; font-weight:700; color:var(--dark);}
   .sr-item .snip{font-size:12px; color:var(--ink-soft); margin-top:2px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;}
@@ -586,6 +590,57 @@
   .card .sim-note{font-size:12.5px; color:var(--ink-soft); margin-top:18px; line-height:1.6;}
   .sim-checkbox{display:flex; align-items:flex-start; gap:9px; font-size:13px; color:var(--dark); cursor:pointer; padding:10px 0;}
 
+  /* ---- Trame de démo, roadmap, nouveautés ---- */
+  .card.trame{padding:0; overflow:hidden;}
+  .card.trame summary{list-style:none; cursor:pointer; padding:16px 20px; display:flex; align-items:center; gap:12px; font-family:Verdana,sans-serif; font-weight:700; font-size:14.5px; color:var(--dark);}
+  .card.trame summary::-webkit-details-marker{display:none;}
+  .card.trame summary .n{width:28px; height:28px; border-radius:9px; background:var(--yellow-tint); color:var(--yellow-ink); display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0;}
+  .card.trame summary .t{flex:1;}
+  .card.trame summary .dur{font-family:'Lexend Deca',sans-serif; font-weight:400; font-size:12px; color:var(--ink-soft);}
+  .card.trame summary::after{content:"+"; font-size:22px; line-height:1; color:var(--ink-soft); margin-left:6px;}
+  .card.trame[open] summary::after{content:"–";}
+  .card.trame .tbody{padding:2px 22px 20px;}
+  .card.trame .tbody p{margin:0 0 10px;}
+  .tag{display:inline-block; font-size:11px; font-weight:700; padding:2px 9px; border-radius:99px; margin-right:4px; white-space:nowrap;}
+  .tag-klear{background:var(--yellow-tint); color:var(--yellow-ink);}
+  .tag-karre{background:rgba(255,87,34,0.12); color:#FF5722;}
+  .tag-web{background:var(--teal-tint); color:var(--teal);}
+  .tag-mobile{background:var(--purple-tint); color:var(--purple);}
+  .tag-key{background:var(--dark); color:var(--yellow); margin-left:6px;}
+  table.cmp.rm td:first-child{width:62%;}
+  .news-item{display:flex; align-items:center; gap:12px; padding:11px 0; border-bottom:1px dashed var(--line); flex-wrap:wrap;}
+  .news-item:last-child{border-bottom:none;}
+  .news-title{flex:1; min-width:240px; font-size:13.5px; color:var(--dark);}
+  .news-vid{font-family:'Lexend Deca',sans-serif; font-weight:700; font-size:12px; border:none; border-radius:99px; padding:6px 14px; cursor:pointer; background:var(--dark); color:#fff;}
+  .news-vid.soon{background:var(--bg-soft); color:var(--ink-soft); cursor:default;}
+  .news-embed{flex-basis:100%; position:relative; padding-top:56.25%; border-radius:12px; overflow:hidden; background:var(--dark);}
+  .news-embed iframe{position:absolute; top:0; left:0; width:100%; height:100%; border:none;}
+
+  /* ---- Roadmap : tableau visuel ---- */
+  .rm-board{display:grid; grid-template-columns:repeat(4, minmax(250px, 1fr)); gap:14px; overflow-x:auto; padding-bottom:8px; align-items:start;}
+  .rm-col{background:rgba(255,255,255,0.55); border-radius:16px; padding:12px; border-top:4px solid var(--rm-color, var(--line)); min-width:0;}
+  .rm-col.wait{--rm-color:#9AA3B0;}
+  .rm-col.doing{--rm-color:var(--yellow);}
+  .rm-col.test{--rm-color:var(--purple);}
+  .rm-col.done{--rm-color:var(--success);}
+  .rm-head{display:flex; align-items:center; gap:8px; font-family:Verdana,sans-serif; font-weight:700; font-size:13.5px; color:var(--dark); margin-bottom:2px;}
+  .rm-head .rm-count{margin-left:auto; background:var(--white); border-radius:99px; padding:2px 10px; font-size:12px; color:var(--rm-color); box-shadow:var(--shadow);}
+  .rm-col.doing .rm-count{color:var(--yellow-ink);}
+  .rm-sub{font-size:11.5px; color:var(--ink-soft); margin-bottom:10px;}
+  .rm-list{display:flex; flex-direction:column; gap:8px; max-height:640px; overflow-y:auto; padding:2px 4px 2px 2px;}
+  .rm-card{background:var(--white); border-radius:12px; padding:11px 12px; box-shadow:var(--shadow); border-left:3px solid var(--rm-color, var(--line));}
+  .rm-title{font-size:12.8px; line-height:1.45; color:var(--dark); margin-bottom:7px;}
+  .rm-meta{display:flex; flex-wrap:wrap; gap:4px; align-items:center;}
+  .rm-meta .tag{margin-right:0;}
+  .rm-client{display:inline-block; font-size:10.5px; font-weight:700; padding:2px 8px; border-radius:6px; background:var(--bg-soft); color:var(--yellow-ink); letter-spacing:0.02em;}
+  .tag-bug{background:rgba(220,38,38,0.10); color:#B91C1C;}
+  .rm-chips{display:flex; gap:6px; margin-top:12px; flex-wrap:wrap;}
+  .rm-chips button{font-family:'Lexend Deca',sans-serif; font-weight:700; font-size:12.5px; border:1px solid var(--line); background:var(--white); color:var(--dark); border-radius:99px; padding:6px 14px; cursor:pointer;}
+  .rm-chips button.active{background:var(--yellow); border-color:var(--yellow);}
+  .rm-more a{color:var(--yellow-ink); font-weight:700;}
+  .rm-empty{font-size:12.5px; color:var(--ink-soft); padding:14px 8px; text-align:center;}
+  .rm-more{font-size:11.5px; color:var(--ink-soft); text-align:center; padding:6px 0 2px;}
+
   /* ---- Arbre d'orientation Klear / Karré ---- */
   .kw-wrap{display:flex; gap:26px; align-items:flex-start;}
   .kw-root{flex-shrink:0; background:var(--dark); color:#fff; border-radius:16px; padding:16px 18px; width:190px; font-family:Verdana,sans-serif; font-weight:700; font-size:15px; line-height:1.35; position:sticky; top:12px;}
@@ -614,6 +669,12 @@
   .link-btn.purple{background:var(--purple); box-shadow:0 4px 12px rgba(95,39,205,0.22);}
   .link-btn.purple:hover{box-shadow:0 6px 16px rgba(95,39,205,0.3);}
   .link-btn .pico{width:16px; height:16px; stroke:currentColor; fill:none; flex-shrink:0;}
+
+  .tk-client-wrap{position:relative;}
+  .tk-dd{display:none; position:absolute; top:100%; left:0; right:0; margin-top:4px; max-height:180px; overflow-y:auto; background:var(--white); border:1px solid var(--line); border-radius:8px; box-shadow:var(--shadow); z-index:50;}
+  .tk-opt{padding:8px 12px; font-size:13px; cursor:pointer;}
+  .tk-opt:hover{background:var(--yellow-tint);}
+  select.q-input{appearance:auto;}
 
   .q-input{
     width:100%; padding:9px 12px; border:1px solid var(--line); border-radius:9px; font-size:13.5px;
@@ -787,12 +848,11 @@
   </div>
   <nav class="mainnav" id="mainnav">
     <button onclick="showView('home')" data-view="home" data-i18n="nav.home">Accueil</button>
-    <button onclick="showView('commercial')" data-view="commercial" data-i18n="nav.commercial">Commercial</button>
-    <button onclick="showView('marketing')" data-view="marketing" data-i18n="nav.marketing">Marketing</button>
-    <button onclick="showView('support')" data-view="support" data-i18n="nav.support">Support</button>
+    <button onclick="showView('commercial')" data-view="commercial" data-i18n="nav.commercial">Argumentaire</button>
+    <button onclick="showView('vente')" data-view="vente" data-i18n="nav.vente">Démo &amp; vente</button>
     <button onclick="showView('produit')" data-view="produit" data-i18n="nav.produit">Produit</button>
-    <button onclick="showView('videos')" data-view="videos" data-i18n="nav.videos">Vidéos démo</button>
-    <button onclick="showView('brochure')" data-view="brochure" data-i18n="nav.brochure">Plaquette</button>
+    <button onclick="showView('support')" data-view="support" data-i18n="nav.support">Support</button>
+    <button onclick="showView('marketing')" data-view="marketing" data-i18n="nav.marketing">Marketing</button>
   </nav>
   <div class="topbar-tools">
     <div class="lang-switcher" id="lang-switcher">
@@ -836,17 +896,11 @@
       <h3 data-i18n="gate.commercial.h">Commercial</h3>
       <p data-i18n="gate.commercial.p">Pitch, analyse concurrentielle, objections & plan de démo.</p>
     </div>
-    <div class="gate-card marketing" onclick="showView('marketing')">
-      <span class="eyebrow-tag" data-i18n="gate.marketing.tag">Promouvoir</span>
-      <span class="icon"><svg class="pico pico-lg"><use href="#i-palette"/></svg></span>
-      <h3 data-i18n="gate.marketing.h">Marketing</h3>
-      <p data-i18n="gate.marketing.p">Charte graphique, outils, liens utiles et suivi des leads.</p>
-    </div>
-    <div class="gate-card support" onclick="showView('support')">
-      <span class="eyebrow-tag" data-i18n="gate.support.tag">Dépanner</span>
-      <span class="icon"><svg class="pico pico-lg"><use href="#i-lifebuoy"/></svg></span>
-      <h3 data-i18n="gate.support.h">Support</h3>
-      <p data-i18n="gate.support.p">Gestion des bugs/évolutions et connexion aux comptes clients.</p>
+    <div class="gate-card vente" onclick="showView('vente')">
+      <span class="eyebrow-tag" data-i18n="gate.vente.tag">Vendre</span>
+      <span class="icon"><svg class="pico pico-lg"><use href="#i-rocket"/></svg></span>
+      <h3 data-i18n="gate.vente.h">Commercial</h3>
+      <p data-i18n="gate.vente.p">Pitch, analyse concurrentielle, objections & plan de démo.</p>
     </div>
     <div class="gate-card produit" onclick="showView('produit')">
       <span class="eyebrow-tag" data-i18n="gate.produit.tag">Comprendre</span>
@@ -854,8 +908,19 @@
       <h3 data-i18n="gate.produit.h">Produit</h3>
       <p data-i18n="gate.produit.p">Toutes les fonctionnalités, module par module, et leur utilité.</p>
     </div>
+    <div class="gate-card support" onclick="showView('support')">
+      <span class="eyebrow-tag" data-i18n="gate.support.tag">Dépanner</span>
+      <span class="icon"><svg class="pico pico-lg"><use href="#i-lifebuoy"/></svg></span>
+      <h3 data-i18n="gate.support.h">Support</h3>
+      <p data-i18n="gate.support.p">Gestion des bugs/évolutions et connexion aux comptes clients.</p>
+    </div>
+    <div class="gate-card marketing" onclick="showView('marketing')">
+      <span class="eyebrow-tag" data-i18n="gate.marketing.tag">Promouvoir</span>
+      <span class="icon"><svg class="pico pico-lg"><use href="#i-palette"/></svg></span>
+      <h3 data-i18n="gate.marketing.h">Marketing</h3>
+      <p data-i18n="gate.marketing.p">Charte graphique, outils, liens utiles et suivi des leads.</p>
+    </div>
   </div>
-
   <div class="secondary-actions">
     <div class="quiz-banner" onclick="showView('quiz')">
       <span class="icon"><svg class="pico pico-lg"><use href="#i-trophy"/></svg></span>
@@ -867,7 +932,7 @@
       <button class="cta" data-i18n="banner.quiz.cta">Lancer le quiz →</button>
     </div>
 
-    <div class="quiz-banner" onclick="showView('videos')">
+    <div class="quiz-banner" onclick="openTab('vente','v-videos')">
       <span class="icon"><svg class="pico pico-lg"><use href="#i-play"/></svg></span>
       <div>
         <h3 data-i18n="banner.videos.h">Vidéos de démo Klear</h3>
@@ -876,7 +941,7 @@
       <button class="cta" data-i18n="banner.videos.cta">Voir les vidéos →</button>
     </div>
 
-    <div class="quiz-banner" onclick="showView('brochure')">
+    <div class="quiz-banner" onclick="openTab('vente','v-brochure')">
       <span class="icon"><svg class="pico pico-lg"><use href="#i-folder"/></svg></span>
       <div>
         <h3 data-i18n="banner.brochure.h">Plaquette commerciale</h3>
@@ -909,7 +974,7 @@
   <button class="back-link" onclick="showView('home')" data-i18n="ui.backhome">← Retour à l'accueil</button>
   <div class="theme-head commercial-theme">
     <div class="badge"><svg class="pico pico-lg"><use href="#i-target"/></svg></div>
-    <div><h2 data-i18n="theme.commercial.h">Commercial</h2><p data-i18n="theme.commercial.p">Pitch produit, concurrence, objections et plan de démo</p></div>
+    <div><h2 data-i18n="theme.commercial.h">Argumentaire</h2><p data-i18n="theme.commercial.p">Pitch, positionnement face à Forms, Karré et la concurrence, retours clients</p></div>
   </div>
 
   <div class="subtabs" id="subtabs-commercial">
@@ -917,11 +982,7 @@
     <button data-sub="c-formsvs" data-i18n="tab.c-formsvs">Forms vs Klear</button>
     <button data-sub="c-karre" data-i18n="tab.c-karre">Klear vs Karré</button>
     <button data-sub="c-concu" data-i18n="tab.c-concu">Analyse concurrentielle</button>
-    <button data-sub="c-obj" data-i18n="tab.c-obj">Objections</button>
-    <button data-sub="c-demo" data-i18n="tab.c-demo">Plan de démo</button>
     <button data-sub="c-retours" data-i18n="tab.c-retours">Retours clients</button>
-    <button data-sub="c-tarifs" data-i18n="tab.c-tarifs">Tarifs</button>
-    <button data-sub="c-hubspot" data-i18n="tab.c-hubspot">Gestion HubSpot</button>
   </div>
 
   <!-- PITCH -->
@@ -1341,6 +1402,192 @@
   </div>
 
   <!-- OBJECTIONS -->
+  
+
+  <!-- DEMO -->
+  
+
+  <!-- RETOURS CLIENTS -->
+  <div class="subview" id="c-retours">
+    <div class="card">
+      <h4>Méthode</h4>
+      <p>Synthèse tirée des comptes-rendus de démos réelles (transcripts Claap et Drive « KONSULTING &gt; Transcripts ») entre janvier et août 2026, pour calibrer le discours sur ce qui accroche vraiment — et anticiper les points qui font hésiter.</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card">
+        <h4><svg class="pico"><use href="#i-check"/></svg> Ce qui plaît</h4>
+        <ul>
+          <li><b>La simplicité perçue, en comparaison directe</b> — plusieurs prospects saluent une prise en main immédiate face à des outils jugés plus lourds. <i>« Votre outil de prime abord est très simple, il y a une ergonomie assez évidente par rapport à d'autres outils beaucoup plus complexes. » (Thomas Hatry, Cec-railway)</i></li>
+          <li><b>L'intégration native avec Kizeo Forms</b> — décisive pour les équipes QSE déjà équipées : ouverture d'un formulaire en surcouche depuis Klear, sans changer les habitudes. Chez L'Hôtellier, c'est cet atout qui fait pencher la balance face à Kraaft côté QSE.</li>
+          <li><b>Le chat de chantier façon WhatsApp sans numéro de téléphone</b> — revient comme un vrai soulagement partout où la communication pro/perso se mélangeait auparavant.</li>
+          <li><b>Les rapports et exports qui donnent l'impression d'un outil sur-mesure.</b> <i>« C'est génial, développé que pour nous, en plus ! » (Alexandre Lavialle, GCF-France, à propos du récapitulatif mensuel par agent)</i></li>
+          <li><b>Le module Suivi (non-conformités/tickets)</b> capte l'attention dès qu'il est évoqué — chez Exedra, c'est l'un des 3 axes qui motivent l'essai (avec planning et gestion documentaire).</li>
+          <li><b>Une vraie réponse à l'éclatement des outils</b> — chez FTTH Les Courants Faibles, l'équipe jonglait entre WhatsApp, un tableau Excel de planning et Kizeo Forms pour les comptes-rendus terrain, sans rien de centralisé. Le vrai déclic : deux techniciens travaillant en binôme sur une même intervention ne pouvaient pas remplir le même formulaire en même temps, obligés de se le transférer l'un à l'autre. Klear répond à ces deux points (planning partagé + centralisation), en complément de Forms plutôt qu'à sa place.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4><svg class="pico"><use href="#i-alert"/></svg> Ce qui plaît moins</h4>
+        <ul>
+          <li><b>Une interface parfois jugée surchargée</b> — « riche en fonctionnalités mais perfectible en intuitivité », plus compartimentée qu'un concurrent tout-en-un comme Kraaft (retour L'Hôtellier). En interne, Priscilla le reconnaît elle-même en formation : « il y a beaucoup de boutons... mais c'est adaptable, on peut les enlever. »</li>
+          <li><b>Des irritants techniques concrets en usage réel</b> — PDF qui ne s'ouvrent pas sur certains Android d'entrée de gamme (Samsung A23), zoom insuffisant sur les plans (L'Hôtellier). Des points corrigeables vite, mais qui cristallisent une préférence pour l'outil concurrent s'ils traînent.</li>
+          <li><b>La contrainte de reconnexion tous les 30 jours</b>, vécue comme pénible côté chefs de chantier.</li>
+          <li><b>Le module Suivi encore jeune</b> — le lien natif formulaire ↔ ticket n'est pas encore fiabilisé à 100 %, et l'intégration Khub associée n'est pas encore mature (retour interne, Formation KLEAR).</li>
+          <li><b>Des fonctionnalités superflues pour les profils les plus légers</b> — feuilles d'heures, absences, matériel, sous-traitants ou lots ne servent à rien pour certains clients dont le besoin se limite au chat + documents ; le réflexe qui marche : proposer de masquer les menus inutiles pour alléger l'interface.</li>
+        </ul>
+      </div>
+    </div>
+    <footer class="src">Sources : Claap (Cec-railway, GCF-France, Formation KLEAR, FTTH Les Courants Faibles 27/07/2026, HPBTP 11/08/2026) + Drive « KONSULTING &gt; Transcripts » (lhotellier_2026-05-18, exedra_2026-05-11)</footer>
+  </div>
+
+  <!-- TARIFS -->
+  
+
+  <!-- HUBSPOT -->
+  
+</section>
+
+<!-- ================= DÉMO & VENTE ================= -->
+<section class="view" id="view-vente">
+  <button class="back-link" onclick="showView('home')" data-i18n="ui.backhome">← Retour à l'accueil</button>
+  <div class="theme-head vente-theme">
+    <div class="badge"><svg class="pico pico-lg"><use href="#i-rocket"/></svg></div>
+    <div><h2 data-i18n="theme.vente.h">Démo &amp; vente</h2><p data-i18n="theme.vente.p">Plan de démo, objections, tarifs et devis, vidéos et plaquette</p></div>
+  </div>
+
+  <div class="subtabs" id="subtabs-vente">
+    <button class="active" data-sub="c-demo" data-i18n="tab.c-demo">Plan de démo</button>
+    <button data-sub="c-obj" data-i18n="tab.c-obj">Objections</button>
+    <button data-sub="c-tarifs" data-i18n="tab.c-tarifs">Tarifs</button>
+    <button data-sub="v-videos" data-i18n="tab.v-videos">Vidéos démo</button>
+    <button data-sub="v-brochure" data-i18n="tab.v-brochure">Plaquette</button>
+  </div>
+
+  <div class="subview active" id="c-demo">
+    <div class="card" style="background:var(--yellow-tint);">
+      <h4>Trame de démo de Marcos (proposition)</h4>
+      <p>La trame de démo de Marcos, adaptée et simplifiée : qualifier le prospect, dérouler un récit de bout en bout, nommer les limites, conclure.</p>
+      <button class="link-btn purple" id="trame-toggle" aria-expanded="false" style="margin-top:12px;"><svg class="pico"><use href="#i-rocket"/></svg> <span id="trame-toggle-label">Voir la trame de Marcos</span></button>
+    </div>
+
+    <div id="trame-wrap" hidden>
+    <div class="card">
+      <h4>Trame de démo Klear, par Marcos</h4>
+      <p><b>Partir du réel du client, pas du produit.</b> Un seul récit du début à la fin : une affaire entre, elle est traitée, elle ressort en rapport et en données, sans une seule ressaisie. Chaque fonction apparaît comme la réponse à ce que le client vient de dire. Tu ne déroules pas des modules : tu résous son problème.</p>
+    </div>
+
+    <details class="card trame" open>
+      <summary><span class="n">1</span><span class="t">Ouverture : qualifier avant de montrer</span><span class="dur">5 min</span></summary>
+      <div class="tbody">
+        <table class="cmp">
+          <tr><th>Tu demandes</th><th>Ce que tu en déduis</th></tr>
+          <tr><td>« Montrez-moi comment une affaire se passe chez vous, de la demande du client au rapport final. C'est sur quoi : Excel, papier, un autre outil ? »</td><td>Il sort son bricolage : c'est le carburant du récit, tu y reviens à chaque étape.</td></tr>
+          <tr><td>« Vous appelez ça comment : chantier, intervention, affaire, site ? »</td><td>Tu reprends son mot partout.</td></tr>
+          <tr><td>« Vos heures, c'est du forfait jour, un seuil hebdo classique, ou des règles à part (cycle, trajet, astreintes) ? »</td><td>Règles « à part » : ne survends pas le module heures, bascule sur le formulaire Kizeo connecté.</td></tr>
+          <tr><td>« Vous avez besoin de suivre des anomalies, des tickets avec des actions assignées ? De coordonner plusieurs personnes sur une affaire ? »</td><td>Oui : Klear (module Suivi + planning). Non, interventions solo répétitives : plutôt Karré.</td></tr>
+          <tr><td>« Vous décidez seul, ou il y a un groupe, une DSI, des contraintes de sécurité et d'hébergement ? Et votre documentation, elle vit où : un SharePoint ? »</td><td>Groupe ou DSI : la sécurité et la cohabitation documentaire se qualifient maintenant, pas en fin de démo (voir « Grand compte »).</td></tr>
+        </table>
+      </div>
+    </details>
+
+    <details class="card trame">
+      <summary><span class="n">2</span><span class="t">Le cadre</span><span class="dur">1 phrase</span></summary>
+      <div class="tbody">
+        <div class="quote-box"><span class="who">À dire</span>Deux faces : à gauche le bureau qui planifie et pilote, à droite le terrain sur mobile. Et Kizeo Forms au milieu, pour que la saisie terrain remonte sans ressaisie.</div>
+      </div>
+    </details>
+
+    <details class="card trame">
+      <summary><span class="n">3</span><span class="t">Le récit : une affaire de bout en bout</span><span class="dur">6 temps</span></summary>
+      <div class="tbody">
+        <ol class="steps">
+          <li><b>La demande entre</b> — Le client appelle : un problème, un besoin. Tu ouvres une tâche, ou un ticket de suivi si c'est une anomalie. C'est le vrai début de son process, pas le chantier.</li>
+          <li><b>On planifie</b> — Affaire créée (nom, adresse, client, dates, horaires, pauses), technicien affecté en drag &amp; drop, matériel et sous-traitants rattachés, arborescence documentaire pré-paramétrée, droits d'accès par rôle.</li>
+          <li><b>Le terrain exécute (moment clé)</b> — Bascule sur le mobile : le technicien voit sa journée, arrive géolocalisé et ouvre un formulaire Kizeo Forms en surcouche depuis l'affaire. Son Excel de tout à l'heure, le voilà en formulaire mobile : calculs de conformité automatiques, photos, signature.</li>
+          <li><b>On trace les anomalies (le banger QHSE)</b> — Module Suivi : ticket (titre, description, priorité, gravité, responsable, échéance) et actions assignées. Cocher une action reliée à un formulaire la barre automatiquement : connexion native avec Kizeo Forms, sans API ni ressaisie.</li>
+          <li><b>On pointe les heures</b> — Validation simple « présent et terminé » ou feuille détaillée (arrivée, pause, heures sup, découcher). Tu restes dans les limites qualifiées à l'ouverture. Validation ou modification directe par le N+1, tout est tracé.</li>
+          <li><b>Ça ressort</b> — Rapport PDF à la charte du client, synthèse d'heures exportable pour la paie, reporting opérationnel. La demande entrée au début ressort en rapport et en variables de paie, sans que personne ait rien ressaisi.</li>
+        </ol>
+      </div>
+    </details>
+
+    <details class="card trame">
+      <summary><span class="n">4</span><span class="t">Limites connues : les nommer avant d'être coincé</span><span class="dur">9 cas</span></summary>
+      <div class="tbody">
+        <table class="cmp">
+          <tr><th>Ce qui bute</th><th>Ce que tu dis, avec la parade</th></tr>
+          <tr><td>Heures complexes : cycle de 2 semaines, trajet dissocié, seuil d'heures sup par personne</td><td>Le seuil d'heures sup est hebdomadaire et identique pour tous en natif. Pour ses règles spécifiques, on passe par un formulaire Kizeo Forms : ses champs calculés absorbent la complexité. C'est l'avantage d'être déjà client Forms.</td></tr>
+          <tr><td>Forfait jour pur (cadres, 218 jours, sans notion d'heure)</td><td>La validation de présence existe, mais elle est liée aux heures de chantier. Suivi d'un forfait jour pur : à cadrer, tu reviens vers lui après vérification. <b>Ne rien promettre en séance.</b></td></tr>
+          <tr><td>Matériel loué suivi par quantité et par chantier (nacelles fluctuantes)</td><td>Klear pense « parc d'engins propres », pas location fluctuante par quantité. Tu notes, tu regardes comment l'intégrer simplement. <b>Pas de réponse bricolée en direct.</b></td></tr>
+          <tr><td>Statistiques et reporting analytique poussé</td><td>On est sur du reporting opérationnel simple : ne vends pas du rêve. Pour de l'analytique fin, on branche sa BI via les API ouvertes de Klear.</td></tr>
+          <tr><td>Droits d'accès documentaires par rôle</td><td>En développement, géré par statut (l'ouvrier est exclu du dossier factures). À présenter comme « ça arrive », pas comme disponible.</td></tr>
+          <tr><td>SAV et interventions ponctuelles sans multiplier les chantiers</td><td>Aujourd'hui, un chantier SAV par client regroupe ses interventions, sans mélanger plusieurs clients. Pour de l'intervention ponctuelle en volume, c'est le terrain de Karré.</td></tr>
+          <tr><td>Cohabitation avec un SharePoint d'entreprise (pas de connecteur natif)</td><td>Sur un compte déjà équipé, il faut trancher la source de vérité : soit Klear la devient, soit on le cantonne au terrain, soit on étudie un connecteur. <b>Ne promets pas une cohabitation fluide.</b></td></tr>
+          <tr><td>Workflow bloquant, Gantt à chemin critique</td><td>Pas de workflow qui bloque tant qu'une étape n'est pas faite, pas de chemin critique entre lots : le « Gantt » est une frise visuelle, pas un ordonnancement. Parade : un statut de chantier « en attente de pièces » avant de passer en actif.</td></tr>
+          <tr><td>Sécurité, hébergement, localisation des données (contrainte groupe)</td><td>Ça ne se traite pas en séance : « Je vous transmets notre documentation sécurité et hébergement, c'est un sujet qui se répond sur pièces. » Fournis le document écrit qui arme ton relais face à sa DSI et à son juridique.</td></tr>
+        </table>
+        <p class="icon-line" style="margin-top:12px; align-items:flex-start;"><svg class="pico" style="margin-top:3px; flex-shrink:0;"><use href="#i-bulb"/></svg><span>Ce qui est prévu ou à l'étude se trouve dans <a href="#" onclick="openTab('produit','p-roadmap'); return false;" style="font-weight:700;">Produit › Roadmap</a>.</span></p>
+      </div>
+    </details>
+
+    <details class="card trame">
+      <summary><span class="n">5</span><span class="t">Clôture : le budget avant le prix</span><span class="dur">5 min</span></summary>
+      <div class="tbody">
+        <p><b>Le tarif</b></p>
+        <ul>
+          <li>Pose la question du budget avant d'annoncer le prix, pour ajuster.</li>
+          <li>Client Kizeo Forms : tarif préférentiel (Cross-Sell), jamais le prix public. Le volume peut justifier un effort.</li>
+          <li>Tout geste tarifaire passe par Nicolas avant d'être proposé.</li>
+        </ul>
+        <p style="margin-top:12px;"><b>Le next step</b></p>
+        <ul>
+          <li>« Envoyez-moi un échantillon de vos vraies données, votre fiche type : je vous refais votre journée type avec vos propres données. »</li>
+          <li>Puis mail de récap + devis (le générateur est dans l'onglet Tarifs). Tu gardes la main sur le suivi.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="card trame">
+      <summary><span class="n">6</span><span class="t">Grand compte ou groupe (DSI, sécurité, SharePoint)</span></summary>
+      <div class="tbody">
+        <ul>
+          <li><b>Le décideur n'est pas dans la salle.</b> Ton interlocuteur est un relais (souvent un utilisateur Kizeo Forms) qui devra convaincre en interne une DSI et un juridique absents. Ton rôle : l'armer, pas conclure en séance.</li>
+          <li><b>Donne-lui par écrit ce qui débloque son dossier</b> : documentation sécurité et hébergement, réponses sur la réversibilité et l'effacement des données, arguments de cohabitation documentaire.</li>
+          <li><b>Sécurité et cohabitation SharePoint se qualifient en premier</b>, avant le fonctionnel. Sinon tu déroules une heure de démo sur un sujet qui se joue sur la conformité.</li>
+          <li><b>Prolonge l'environnement de test</b>, le temps que le relais fasse tester ses équipes.</li>
+          <li><b>Ta différence :</b> tu tisses en continu leur réel et l'outil. Chaque écran répond à une phrase qu'ils ont dite. Tu connais l'outil et ses bords, donc on te fait confiance : tu résous un problème, tu ne vends pas un produit.</li>
+        </ul>
+      </div>
+    </details>
+      <footer class="src">Source : trame de démo de Marcos, adaptée et simplifiée</footer>
+    </div>
+
+    <div class="card">
+      <h4>Plan de démo type</h4>
+      <p>Reconstitué à partir de plusieurs démos enregistrées dans Claap (Meillard Cressier, Facirenov, Cec-railway, Gcf-france…). Le fil conducteur : partir du réel du prospect (papier/Excel) puis dérouler l'écran scindé BO / mobile.</p>
+      <div class="demo-toolbar">
+        <span class="counter" id="demo-counter">0 / 11 étapes couvertes</span>
+        <button class="reset" id="demo-reset">Réinitialiser</button>
+      </div>
+      <ol class="steps check-steps" id="demo-steps">
+        <li><b>Découverte express</b> — « Qu'est-ce que vous recherchez ? Comment travaillez-vous aujourd'hui (papier, Excel, autre outil) ? » Cadrer les 2-3 volets prioritaires (souvent planning + feuilles d'heures).</li>
+        <li><b>Poser le cadre</b> — Présenter Klear en 2 parties : à gauche l'interface Back-Office (paramétrage, pilotage), à droite l'application mobile (le terrain).</li>
+        <li><b>Le chantier, cœur du produit</b> — Créer un chantier : nom, adresse, dates prévisionnelles, horaires spécifiques (avec gestion des pauses, y compris pauses multiples).</li>
+        <li><b>Client rattaché & documents</b> — Montrer la base clients (nom, adresse, contact) et l'espace documentaire avec arborescence personnalisable (contrats, bons de commande…), avec droits d'accès différenciés (ex. les ouvriers n'ont pas accès à la partie client).</li>
+        <li><b>Ressources & licences</b> — Expliquer les rôles (Ouvrier, Chef de chantier, Conducteur de travaux, Administrateur, Super Admin), les profils sans compte (identifier une personne sans lui donner de licence) et les champs personnalisés (ex : ajouter un « tarif horaire » visible dans les feuilles d'heures).</li>
+        <li><b>Planning & communication</b> — Planification en drag & drop (équipe, matériel, sous-traitant), vue Gantt des lots, chat de chantier (photos, audio, vidéo, documents).</li>
+        <li><b>Feuilles d'heures & absences</b> — Saisie côté mobile ou BO, synthèse hebdo par utilisateur, gestion des demandes d'absence (vue Kanban/liste/planning).</li>
+        <li><b>Suivi des non-conformités</b> — Créer un ticket (descriptif, gravité, échéance, responsable), montrer le workflow de statuts et la vue Kanban : un vrai argument pour les profils QHSE.</li>
+        <li><b>Lien avec Kizeo Forms</b> — Si le prospect a déjà Kizeo Forms : montrer l'ouverture d'un formulaire en surcouche depuis l'onglet « Documents » d'un chantier (connexion via token API).</li>
+        <li><b>Côté terrain (mobile)</b> — Dashboard du jour, messagerie, saisie des heures, changement de langue (FR/EN/ES/DE), notifications.</li>
+        <li><b>Tarifs & closing</b> — Présenter Smart / Business selon le périmètre utilisé (feuilles d'heures = Business). Poser la question budget avant de dérouler le prix pour ajuster l'argumentaire.</li>
+      </ol>
+      <p class="icon-line" style="margin-top:12px; font-size:12.5px; color:var(--ink-soft);"><svg class="pico"><use href="#i-bulb"/></svg> Coche chaque étape en préparant ta démo — ta checklist reste enregistrée sur ce navigateur.</p>
+      <div class="quote-box demo-bravo" id="demo-bravo"><span class="who">Checklist complète</span>Les 11 étapes sont couvertes : ta démo est prête. Bon closing !</div>
+    </div>
+    <footer class="src">Source : Claap — enregistrements « Démo KLEAR avec Priscilla », « Découverte Klear », « Point KLEAR », « Formation KLEAR »</footer>
+  </div>
+
   <div class="subview" id="c-obj">
     <div class="card reveal-card">
       <h4>Objection n°1 — la « nouveauté » du produit</h4>
@@ -1384,68 +1631,6 @@
     <footer class="src">Source : Notion « Objections » + Claap (démo HPBTP, 11/08/2026)</footer>
   </div>
 
-  <!-- DEMO -->
-  <div class="subview" id="c-demo">
-    <div class="card">
-      <h4>Plan de démo type</h4>
-      <p>Reconstitué à partir de plusieurs démos enregistrées dans Claap (Meillard Cressier, Facirenov, Cec-railway, Gcf-france…). Le fil conducteur : partir du réel du prospect (papier/Excel) puis dérouler l'écran scindé BO / mobile.</p>
-      <div class="demo-toolbar">
-        <span class="counter" id="demo-counter">0 / 11 étapes couvertes</span>
-        <button class="reset" id="demo-reset">Réinitialiser</button>
-      </div>
-      <ol class="steps check-steps" id="demo-steps">
-        <li><b>Découverte express</b> — « Qu'est-ce que vous recherchez ? Comment travaillez-vous aujourd'hui (papier, Excel, autre outil) ? » Cadrer les 2-3 volets prioritaires (souvent planning + feuilles d'heures).</li>
-        <li><b>Poser le cadre</b> — Présenter Klear en 2 parties : à gauche l'interface Back-Office (paramétrage, pilotage), à droite l'application mobile (le terrain).</li>
-        <li><b>Le chantier, cœur du produit</b> — Créer un chantier : nom, adresse, dates prévisionnelles, horaires spécifiques (avec gestion des pauses, y compris pauses multiples).</li>
-        <li><b>Client rattaché & documents</b> — Montrer la base clients (nom, adresse, contact) et l'espace documentaire avec arborescence personnalisable (contrats, bons de commande…), avec droits d'accès différenciés (ex. les ouvriers n'ont pas accès à la partie client).</li>
-        <li><b>Ressources & licences</b> — Expliquer les rôles (Ouvrier, Chef de chantier, Conducteur de travaux, Administrateur, Super Admin), les profils sans compte (identifier une personne sans lui donner de licence) et les champs personnalisés (ex : ajouter un « tarif horaire » visible dans les feuilles d'heures).</li>
-        <li><b>Planning & communication</b> — Planification en drag & drop (équipe, matériel, sous-traitant), vue Gantt des lots, chat de chantier (photos, audio, vidéo, documents).</li>
-        <li><b>Feuilles d'heures & absences</b> — Saisie côté mobile ou BO, synthèse hebdo par utilisateur, gestion des demandes d'absence (vue Kanban/liste/planning).</li>
-        <li><b>Suivi des non-conformités</b> — Créer un ticket (descriptif, gravité, échéance, responsable), montrer le workflow de statuts et la vue Kanban : un vrai argument pour les profils QHSE.</li>
-        <li><b>Lien avec Kizeo Forms</b> — Si le prospect a déjà Kizeo Forms : montrer l'ouverture d'un formulaire en surcouche depuis l'onglet « Documents » d'un chantier (connexion via token API).</li>
-        <li><b>Côté terrain (mobile)</b> — Dashboard du jour, messagerie, saisie des heures, changement de langue (FR/EN/ES/DE), notifications.</li>
-        <li><b>Tarifs & closing</b> — Présenter Smart / Business selon le périmètre utilisé (feuilles d'heures = Business). Poser la question budget avant de dérouler le prix pour ajuster l'argumentaire.</li>
-      </ol>
-      <p class="icon-line" style="margin-top:12px; font-size:12.5px; color:var(--ink-soft);"><svg class="pico"><use href="#i-bulb"/></svg> Coche chaque étape en préparant ta démo — ta checklist reste enregistrée sur ce navigateur.</p>
-      <div class="quote-box demo-bravo" id="demo-bravo"><span class="who">Checklist complète</span>Les 11 étapes sont couvertes : ta démo est prête. Bon closing !</div>
-    </div>
-    <footer class="src">Source : Claap — enregistrements « Démo KLEAR avec Priscilla », « Découverte Klear », « Point KLEAR », « Formation KLEAR »</footer>
-  </div>
-
-  <!-- RETOURS CLIENTS -->
-  <div class="subview" id="c-retours">
-    <div class="card">
-      <h4>Méthode</h4>
-      <p>Synthèse tirée des comptes-rendus de démos réelles (transcripts Claap et Drive « KONSULTING &gt; Transcripts ») entre janvier et août 2026, pour calibrer le discours sur ce qui accroche vraiment — et anticiper les points qui font hésiter.</p>
-    </div>
-
-    <div class="grid-2">
-      <div class="card">
-        <h4><svg class="pico"><use href="#i-check"/></svg> Ce qui plaît</h4>
-        <ul>
-          <li><b>La simplicité perçue, en comparaison directe</b> — plusieurs prospects saluent une prise en main immédiate face à des outils jugés plus lourds. <i>« Votre outil de prime abord est très simple, il y a une ergonomie assez évidente par rapport à d'autres outils beaucoup plus complexes. » (Thomas Hatry, Cec-railway)</i></li>
-          <li><b>L'intégration native avec Kizeo Forms</b> — décisive pour les équipes QSE déjà équipées : ouverture d'un formulaire en surcouche depuis Klear, sans changer les habitudes. Chez L'Hôtellier, c'est cet atout qui fait pencher la balance face à Kraaft côté QSE.</li>
-          <li><b>Le chat de chantier façon WhatsApp sans numéro de téléphone</b> — revient comme un vrai soulagement partout où la communication pro/perso se mélangeait auparavant.</li>
-          <li><b>Les rapports et exports qui donnent l'impression d'un outil sur-mesure.</b> <i>« C'est génial, développé que pour nous, en plus ! » (Alexandre Lavialle, GCF-France, à propos du récapitulatif mensuel par agent)</i></li>
-          <li><b>Le module Suivi (non-conformités/tickets)</b> capte l'attention dès qu'il est évoqué — chez Exedra, c'est l'un des 3 axes qui motivent l'essai (avec planning et gestion documentaire).</li>
-          <li><b>Une vraie réponse à l'éclatement des outils</b> — chez FTTH Les Courants Faibles, l'équipe jonglait entre WhatsApp, un tableau Excel de planning et Kizeo Forms pour les comptes-rendus terrain, sans rien de centralisé. Le vrai déclic : deux techniciens travaillant en binôme sur une même intervention ne pouvaient pas remplir le même formulaire en même temps, obligés de se le transférer l'un à l'autre. Klear répond à ces deux points (planning partagé + centralisation), en complément de Forms plutôt qu'à sa place.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h4><svg class="pico"><use href="#i-alert"/></svg> Ce qui plaît moins</h4>
-        <ul>
-          <li><b>Une interface parfois jugée surchargée</b> — « riche en fonctionnalités mais perfectible en intuitivité », plus compartimentée qu'un concurrent tout-en-un comme Kraaft (retour L'Hôtellier). En interne, Priscilla le reconnaît elle-même en formation : « il y a beaucoup de boutons... mais c'est adaptable, on peut les enlever. »</li>
-          <li><b>Des irritants techniques concrets en usage réel</b> — PDF qui ne s'ouvrent pas sur certains Android d'entrée de gamme (Samsung A23), zoom insuffisant sur les plans (L'Hôtellier). Des points corrigeables vite, mais qui cristallisent une préférence pour l'outil concurrent s'ils traînent.</li>
-          <li><b>La contrainte de reconnexion tous les 30 jours</b>, vécue comme pénible côté chefs de chantier.</li>
-          <li><b>Le module Suivi encore jeune</b> — le lien natif formulaire ↔ ticket n'est pas encore fiabilisé à 100 %, et l'intégration Khub associée n'est pas encore mature (retour interne, Formation KLEAR).</li>
-          <li><b>Des fonctionnalités superflues pour les profils les plus légers</b> — feuilles d'heures, absences, matériel, sous-traitants ou lots ne servent à rien pour certains clients dont le besoin se limite au chat + documents ; le réflexe qui marche : proposer de masquer les menus inutiles pour alléger l'interface.</li>
-        </ul>
-      </div>
-    </div>
-    <footer class="src">Sources : Claap (Cec-railway, GCF-France, Formation KLEAR, FTTH Les Courants Faibles 27/07/2026, HPBTP 11/08/2026) + Drive « KONSULTING &gt; Transcripts » (lhotellier_2026-05-18, exedra_2026-05-11)</footer>
-  </div>
-
-  <!-- TARIFS -->
   <div class="subview" id="c-tarifs">
     <div class="card">
       <h4>Grille tarifaire publique</h4>
@@ -1616,41 +1801,53 @@
     <footer class="src">Source Notion : « Tarifs »</footer>
   </div>
 
-  <!-- HUBSPOT -->
-  <div class="subview" id="c-hubspot">
+    <div class="subview" id="v-videos">
     <div class="card">
-      <h4>Gestion commerciale sur HubSpot</h4>
-      <p class="icon-line" style="align-items:flex-start;"><svg class="pico" style="margin-top:3px; flex-shrink:0; color:var(--success);"><use href="#i-check"/></svg><span><b>Ce process est désormais automatisé.</b> Dès qu'un lead s'inscrit sur Klear, le schéma ci-dessous se déclenche tout seul dans HubSpot — plus besoin de le faire à la main.</span></p>
-      <p>Klear n'a pas son propre CRM : tout se passe dans HubSpot, en s'appuyant sur les fiches existantes côté Kizeo Forms quand elles existent. Techniquement, le « Company Code » est un <b>Custom Object HubSpot</b> — et il en existe désormais deux, distingués par un picto visuel : <b>Company Code Kizeo Forms</b> (l'objet historique, renommé) et <b>Company Code Klear</b> (créé spécifiquement). Un Company Code est toujours rattaché à une <b>maison mère</b>, qui peut elle-même regrouper plusieurs Company Codes (cas d'un grand groupe avec plusieurs entités sous contrat-cadre).</p>
-
-      <div class="flow">
-        <div class="flow-node"><span class="flow-num">1</span>Le lead est recherché par email — l'adresse renseignée à l'inscription sur Klear</div>
-        <div class="flow-arrow">↓</div>
-        <div class="flow-decision">La fiche contact existe déjà dans HubSpot ?</div>
-        <div class="flow-branches">
-          <div class="flow-branch">
-            <span class="flow-branch-label yes">Oui</span>
-            <div class="flow-node ghost">La fiche existante est utilisée directement</div>
-          </div>
-          <div class="flow-branch">
-            <span class="flow-branch-label no">Non</span>
-            <div class="flow-node ghost">Le contact est créé dans HubSpot</div>
-          </div>
-        </div>
-        <div class="flow-arrow">↓</div>
-        <div class="flow-merge">Dans les deux cas, la suite est identique :</div>
-        <div class="flow-node"><span class="flow-num">2</span>« Klear » est ajouté dans le champ <b>Product</b> de la fiche</div>
-        <div class="flow-arrow">↓</div>
-        <div class="flow-node"><span class="flow-num">3</span>Le <b>Company Code Klear</b> est créé (menu de droite) — nom de l'entreprise saisi à l'inscription Klear + <span class="mono">[ID superadmin]</span> entre crochets</div>
-        <div class="flow-arrow">↓</div>
-        <div class="flow-node"><span class="flow-num">4</span>Le contact est identifié comme <span class="mono">Main Klear</span></div>
-      </div>
-
-      <p class="icon-line"><svg class="pico"><use href="#i-bulb"/></svg> L'ID du superadmin dans le nom du company code évite toute confusion entre deux entreprises qui porteraient un nom proche.</p>
-      <p class="icon-line"><svg class="pico"><use href="#i-bulb"/></svg> Sur la fiche d'un contact, les deux statuts coexistent : par exemple « Lost Lead » sur Kizeo Forms mais client sur Klear — ça donne une vue d'ensemble en un coup d'œil.</p>
+    <h4>Choisir la langue</h4>
+    <p style="margin-bottom:14px;">Chaque vidéo reprend l'intégralité des fonctionnalités de Klear. Pratique à envoyer directement à un client qui veut (re)voir la démo à son rythme.</p>
+    <div class="subtabs" id="video-lang-selector">
+      <button class="active" data-lang="fr">🇫🇷 Français</button>
+      <button data-lang="en">🇬🇧 Anglais</button>
+      <button data-lang="de">🇩🇪 Allemand</button>
+      <button data-lang="es">🇪🇸 Espagnol</button>
     </div>
-    <footer class="src">Source : process interne (échange avec Priscilla) + Claap « Alignement Klear » (08/07/2026) — automatisation mise en place depuis</footer>
+
+    <div class="video-embed-wrap">
+      <iframe id="video-embed-frame" src="https://www.loom.com/embed/68fa1a537d4548adacf9b5ba70392375" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+
+    <div class="video-link-row">
+      <span class="label"><svg class="pico"><use href="#i-play"/></svg>Lien à partager avec un client</span>
+      <a id="video-share-link" href="https://www.loom.com/share/68fa1a537d4548adacf9b5ba70392375" target="_blank">loom.com/share/68fa1a537d4548adacf9b5ba70392375</a>
+    </div>
   </div>
+  <footer class="src">Source : vidéos Loom internes</footer>
+  </div>
+
+
+    <div class="subview" id="v-brochure">
+    <div class="card">
+    <h4 data-i18n="ui.choose_lang">Choisir la langue</h4>
+    <p style="margin-bottom:14px;" data-i18n="brochure.intro">3 pages : présentation produit, fonctionnalités en détail, et tarifs. Prête à être envoyée telle quelle à un prospect.</p>
+    <div class="subtabs" id="brochure-lang-selector">
+      <button class="active" data-lang="fr">🇫🇷 Français</button>
+      <button data-lang="en">🇬🇧 English</button>
+      <button data-lang="es">🇪🇸 Español</button>
+      <button data-lang="de">🇩🇪 Deutsch</button>
+    </div>
+
+    <div class="brochure-preview-wrap">
+      <img id="brochure-thumb" src="" alt="Aperçu de la plaquette">
+    </div>
+
+    <div class="video-link-row">
+      <span class="label"><svg class="pico"><use href="#i-folder"/></svg><span data-i18n="brochure.download_label">Télécharger le PDF</span></span>
+      <a id="brochure-download" href="#" download="klear-plaquette-fr.pdf" class="brochure-dl-btn" data-i18n="brochure.download_btn">Télécharger →</a>
+    </div>
+  </div>
+  <footer class="src">Source : plaquette commerciale Klear (interne)</footer>
+  </div>
+
 </section>
 
 <!-- ================= MARKETING ================= -->
@@ -1658,7 +1855,7 @@
   <button class="back-link" onclick="showView('home')" data-i18n="ui.backhome">← Retour à l'accueil</button>
   <div class="theme-head marketing-theme">
     <div class="badge"><svg class="pico pico-lg"><use href="#i-palette"/></svg></div>
-    <div><h2 data-i18n="theme.marketing.h">Marketing</h2><p data-i18n="theme.marketing.p">Charte graphique, outils et process de suivi commercial</p></div>
+    <div><h2 data-i18n="theme.marketing.h">Marketing &amp; CRM</h2><p data-i18n="theme.marketing.p">Persona, charte graphique, outils, suivi des leads et gestion HubSpot</p></div>
   </div>
 
   <div class="subtabs" id="subtabs-marketing">
@@ -1666,6 +1863,7 @@
     <button data-sub="m-charte" data-i18n="tab.m-charte">Charte graphique</button>
     <button data-sub="m-outils" data-i18n="tab.m-outils">Outils & liens</button>
     <button data-sub="m-suivi" data-i18n="tab.m-suivi">Suivi commercial</button>
+    <button data-sub="c-hubspot" data-i18n="tab.c-hubspot">Gestion HubSpot</button>
   </div>
 
   <div class="subview active" id="m-persona">
@@ -1780,6 +1978,41 @@
     </div>
     <footer class="src">Source : process interne (échange avec Priscilla)</footer>
   </div>
+
+  <div class="subview" id="c-hubspot">
+    <div class="card">
+      <h4>Gestion commerciale sur HubSpot</h4>
+      <p class="icon-line" style="align-items:flex-start;"><svg class="pico" style="margin-top:3px; flex-shrink:0; color:var(--success);"><use href="#i-check"/></svg><span><b>Ce process est désormais automatisé.</b> Dès qu'un lead s'inscrit sur Klear, le schéma ci-dessous se déclenche tout seul dans HubSpot — plus besoin de le faire à la main.</span></p>
+      <p>Klear n'a pas son propre CRM : tout se passe dans HubSpot, en s'appuyant sur les fiches existantes côté Kizeo Forms quand elles existent. Techniquement, le « Company Code » est un <b>Custom Object HubSpot</b> — et il en existe désormais deux, distingués par un picto visuel : <b>Company Code Kizeo Forms</b> (l'objet historique, renommé) et <b>Company Code Klear</b> (créé spécifiquement). Un Company Code est toujours rattaché à une <b>maison mère</b>, qui peut elle-même regrouper plusieurs Company Codes (cas d'un grand groupe avec plusieurs entités sous contrat-cadre).</p>
+
+      <div class="flow">
+        <div class="flow-node"><span class="flow-num">1</span>Le lead est recherché par email — l'adresse renseignée à l'inscription sur Klear</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-decision">La fiche contact existe déjà dans HubSpot ?</div>
+        <div class="flow-branches">
+          <div class="flow-branch">
+            <span class="flow-branch-label yes">Oui</span>
+            <div class="flow-node ghost">La fiche existante est utilisée directement</div>
+          </div>
+          <div class="flow-branch">
+            <span class="flow-branch-label no">Non</span>
+            <div class="flow-node ghost">Le contact est créé dans HubSpot</div>
+          </div>
+        </div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-merge">Dans les deux cas, la suite est identique :</div>
+        <div class="flow-node"><span class="flow-num">2</span>« Klear » est ajouté dans le champ <b>Product</b> de la fiche</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-node"><span class="flow-num">3</span>Le <b>Company Code Klear</b> est créé (menu de droite) — nom de l'entreprise saisi à l'inscription Klear + <span class="mono">[ID superadmin]</span> entre crochets</div>
+        <div class="flow-arrow">↓</div>
+        <div class="flow-node"><span class="flow-num">4</span>Le contact est identifié comme <span class="mono">Main Klear</span></div>
+      </div>
+
+      <p class="icon-line"><svg class="pico"><use href="#i-bulb"/></svg> L'ID du superadmin dans le nom du company code évite toute confusion entre deux entreprises qui porteraient un nom proche.</p>
+      <p class="icon-line"><svg class="pico"><use href="#i-bulb"/></svg> Sur la fiche d'un contact, les deux statuts coexistent : par exemple « Lost Lead » sur Kizeo Forms mais client sur Klear — ça donne une vue d'ensemble en un coup d'œil.</p>
+    </div>
+    <footer class="src">Source : process interne (échange avec Priscilla) + Claap « Alignement Klear » (08/07/2026) — automatisation mise en place depuis</footer>
+  </div>
 </section>
 
 <!-- ================= SUPPORT ================= -->
@@ -1787,59 +2020,78 @@
   <button class="back-link" onclick="showView('home')" data-i18n="ui.backhome">← Retour à l'accueil</button>
   <div class="theme-head support-theme">
     <div class="badge"><svg class="pico pico-lg"><use href="#i-lifebuoy"/></svg></div>
-    <div><h2 data-i18n="theme.support.h">Support</h2><p data-i18n="theme.support.p">Gestion des bugs/évolutions et accès aux comptes clients</p></div>
+    <div><h2 data-i18n="theme.support.h">Support &amp; remontées</h2><p data-i18n="theme.support.p">Remonter un bug ou une idée, accès aux comptes clients, base de connaissance</p></div>
   </div>
 
   <div class="subtabs" id="subtabs-support">
-    <button class="active" data-sub="s-bugs" data-i18n="tab.s-bugs">Bugs & évolutions</button>
+    <button class="active" data-sub="s-bugs" data-i18n="tab.s-bugs">Remonter un bug ou une idée</button>
     <button data-sub="s-superadmin" data-i18n="tab.s-superadmin">Connexion compte client</button>
     <button data-sub="s-kb" data-i18n="tab.s-kb">Base de connaissance</button>
   </div>
 
   <div class="subview active" id="s-bugs">
-    <div class="card">
-      <h4>La base « Remontées Klear » (Notion)</h4>
-      <p>Toutes les remontées (bugs, demandes d'évolution, refontes UI/UX) sont centralisées dans une base Notion unique, avec captures et détails sur chaque fiche.</p>
-      <div class="stat-row">
-        <div class="stat" style="border-top-color:var(--success);"><div class="num" style="color:#6EE7B7;">617</div><div class="lbl">TOTAL LIVRÉ, TOUS TYPES CONFONDUS</div></div>
-        <div class="stat"><div class="num">522</div><div class="lbl">BUGS CORRIGÉS & LIVRÉS</div></div>
-        <div class="stat"><div class="num">49</div><div class="lbl">FONCTIONNALITÉS "INDISPENSABLES" LIVRÉES</div></div>
-        <div class="stat"><div class="num">46</div><div class="lbl">AMÉLIORATIONS UI/UX LIVRÉES</div></div>
-        <div class="stat"><div class="num">34</div><div class="lbl">"INDISPENSABLES" EN ATTENTE</div></div>
+    <div class="card" id="ticket-card">
+      <h4>Créer le ticket directement</h4>
+      <p>Remplis le formulaire : la fiche est créée dans la base Notion « Remontées », et <b>Romain Loeuillet</b> est prévenu automatiquement sur Slack.</p>
+      <div class="sim-controls">
+        <div class="sim-row">
+          <div class="sim-field">
+            <span class="f-lbl">Titre du ticket *</span>
+            <input type="text" id="tk-titre" class="q-input" placeholder="KLEAR/ Le bouton Exporter ne répond plus sur la fiche chantier">
+          </div>
+        </div>
+        <div class="sim-row">
+          <div class="sim-field">
+            <span class="f-lbl">Description (détails, optionnel)</span>
+            <textarea id="tk-desc" rows="3" class="q-input" placeholder="Contexte, étapes pour reproduire..." style="resize:vertical;"></textarea>
+          </div>
+        </div>
+        <div class="sim-row">
+          <div class="sim-field">
+            <span class="f-lbl">Lien vidéo Loom (optionnel)</span>
+            <input type="url" id="tk-loom" class="q-input" placeholder="https://www.loom.com/share/...">
+          </div>
+        </div>
+        <div class="sim-row">
+          <div class="sim-field">
+            <span class="f-lbl">Type *</span>
+            <select id="tk-type" class="q-input">
+              <option value="" selected>— Choisir —</option>
+              <option value="🐞 Bug">🐞 Bug</option>
+              <option value="😻 Indispensable">😻 Indispensable</option>
+              <option value="🎨 Amélioration UI / UX + Feature">🎨 Amélioration UI / UX + Feature</option>
+            </select>
+          </div>
+          <div class="sim-field">
+            <span class="f-lbl">Priorité</span>
+            <select id="tk-priorite" class="q-input">
+              <option value="">—</option>
+              <option value="Urgent 🔴">Urgent 🔴</option>
+              <option value="Stand by ✋">Stand by ✋</option>
+            </select>
+          </div>
+          <div class="sim-field">
+            <span class="f-lbl">Device</span>
+            <label class="sim-checkbox"><input type="checkbox" id="tk-device-web"> <span>WEB</span></label>
+            <label class="sim-checkbox"><input type="checkbox" id="tk-device-mobile"> <span>MOBILE</span></label>
+          </div>
+        </div>
+        <div class="sim-row">
+          <div class="sim-field tk-client-wrap">
+            <span class="f-lbl">De la part de (client, optionnel)</span>
+            <input type="text" id="tk-client" class="q-input" autocomplete="off" placeholder="Ex. DISTRIBAT">
+            <div id="tk-client-dropdown" class="tk-dd"></div>
+          </div>
+        </div>
       </div>
+      <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin-top:18px;">
+        <button class="link-btn purple" id="tk-submit"><svg class="pico"><use href="#i-bug"/></svg> Créer le ticket Notion</button>
+        <span id="tk-status" style="font-size:12.5px; color:var(--ink-soft);"></span>
+      </div>
+      <p class="icon-line" style="margin-top:14px; align-items:flex-start;"><svg class="pico" style="margin-top:3px; flex-shrink:0;"><use href="#i-bulb"/></svg><span>Commence le titre par <span class="mono">KLEAR/</span> puis une phrase de synthèse. Un client est concerné ? Renseigne « De la part de ». Une vidéo Loom vaut mieux qu'un long texte.</span></p>
     </div>
-    <div class="card">
-      <h4>Comment est classée chaque fiche</h4>
-      <p><b>Type :</b></p>
-      <p>
-        <span class="pill pastel pastel-red"><svg class="pico"><use href="#i-bug"/></svg>Bug</span>
-        <span class="pill pastel pastel-purple"><svg class="pico"><use href="#i-star"/></svg>Indispensable</span>
-        <span class="pill pastel pastel-green"><svg class="pico"><use href="#i-palette"/></svg>Amélioration</span>
-      </p>
-      <p style="margin-top:12px;"><b>Statut (cycle de vie) :</b></p>
-      <p>
-        <span class="pill pastel pastel-yellow">En attente</span>
-        <span class="pill pastel pastel-blue">À tester</span>
-        <span class="pill pastel pastel-green"><svg class="pico"><use href="#i-check"/></svg>Livré</span>
-        <span class="pill pastel pastel-red"><svg class="pico"><use href="#i-x"/></svg>Refusé</span>
-      </p>
-      <p style="margin-top:12px;"><b>Priorité :</b> <span class="pill pastel pastel-red"><svg class="pico"><use href="#i-alert"/></svg>Urgent</span> — si le sujet n'est pas urgent, aucun tag n'est ajouté — et un tag <b>Device</b> (Mobile / Web) pour situer l'anomalie.</p>
-      <p style="margin-top:12px;">Chaque fiche indique aussi <b>l'auteur</b> de la remontée en interne et <b>« De la part de »</b> le client concerné, pour tracer l'origine de la demande.</p>
-    </div>
-    <div class="card">
-      <h4>Bon réflexe</h4>
-      <p>Avant de remonter un doublon, vérifier dans la base si le sujet existe déjà. Ouvrir la fiche pour voir les captures d'écran et le détail avant de relancer le client — la plupart des remontées ont déjà une réponse ou un statut à jour.</p>
-    </div>
-    <div class="card">
-      <h4>Créer un ticket depuis un appel client</h4>
-      <p>Quand un contact appelle pour signaler un problème, le ticket se crée directement depuis HubSpot plutôt que d'attendre de passer par Notion :</p>
-      <ol class="steps">
-        <li><b>Retrouver le contact</b> — Rechercher sa fiche dans HubSpot (par email ou nom de société).</li>
-        <li><b>Créer le ticket</b> — Depuis la fiche, créer directement un ticket qui lui est rattaché, avec le descriptif du problème signalé.</li>
-      </ol>
-      <p class="icon-line"><svg class="pico"><use href="#i-bulb"/></svg> Le ticket reste ainsi relié à l'historique du contact et de son entreprise, en plus du suivi habituel dans Notion.</p>
-    </div>
-    <footer class="src">Source Notion : base de données « Remontées Klear » (page « Remontées »)</footer>
+
+    <footer class="src">Source Notion : base de données « Remontées »</footer>
   </div>
 
   <div class="subview" id="s-superadmin">
@@ -1892,6 +2144,8 @@
   <div class="subtabs" id="subtabs-produit">
     <button class="active" data-sub="p-vue" data-i18n="tab.p-vue">Vue d'ensemble</button>
     <button data-sub="p-modules" data-i18n="tab.p-modules">Fonctionnalités par module</button>
+    <button data-sub="p-news" data-i18n="tab.p-news">Nouveautés</button>
+    <button data-sub="p-roadmap" data-i18n="tab.p-roadmap">Roadmap</button>
   </div>
 
   <div class="subview active" id="p-vue">
@@ -1956,67 +2210,53 @@
     <div id="accordion-modules"></div>
     <footer class="src">Sources : documentation support interne Klear + base de connaissance intercom.help/klear-by-kizeo/fr</footer>
   </div>
+
+  <div class="subview" id="p-news">
+    <div class="card">
+      <h4>Les nouveautés, en vidéo</h4>
+      <p>Les fonctions livrées récemment. Quand une vidéo Loom existe, le bouton ouvre la démonstration : pratique à envoyer à un client qui avait demandé la fonction.</p>
+    </div>
+    <div id="news-list"></div>
+    <footer class="src">Source : Notion, base « Remontées Klear &amp; Karre » (statut « Fait et livré ») et vidéos Loom internes</footer>
+  </div>
+
+  <div class="subview" id="p-roadmap">
+    <div class="card">
+      <h4>Roadmap des demandes d'évolution</h4>
+      <p>Les évolutions et les bugs remontés par les clients et l'équipe, regroupés en quatre étapes. C'est une photo au 04/11/2026 : elle se met à jour à la main.</p>
+    </div>
+
+    <div class="card" style="background:var(--yellow-tint);">
+      <h4>Comment en parler à un prospect</h4>
+      <ul>
+        <li><b>Demandes en attente</b> : « c'est noté », ni planifié ni promis.</li>
+        <li><b>En cours</b> : « ça arrive », sans date.</li>
+        <li><b>En test avant déploiement</b> : « c'est presque prêt », sans date non plus.</li>
+        <li><b>Terminé</b> : disponible. Jamais de date, jamais de « disponible » pour une fonction qui n'est pas terminée.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h4>Chercher une demande</h4>
+      <input type="text" id="rm-filter" class="q-input" placeholder="Filtrer par client ou par mot-clé (ex. ALVA, planning, feuilles d'heures)" autocomplete="off">
+      <div class="rm-chips" id="rm-kind"><button class="active" data-k="all">Tout</button><button data-k="evo">Évolutions</button><button data-k="bug">Bugs</button></div>
+    </div>
+
+    <div class="rm-board" id="rm-board"></div>
+
+    <div class="card" style="margin-top:18px;">
+      <h4>Une demande qui n'est pas dans la liste ?</h4>
+      <p>Crée un ticket depuis le formulaire du playbook : l'équipe produit est prévenue automatiquement.</p>
+      <a class="link-btn purple" href="#" onclick="openTab('support','s-bugs'); return false;"><svg class="pico"><use href="#i-bug"/></svg> Créer un ticket</a>
+    </div>
+    <footer class="src">Source : Notion, base « Remontées » (évolutions et bugs ouverts ; évolutions livrées) — « Terminé » : demandes créées au cours des 30 derniers jours (Notion ne garde pas de date de livraison) ; « Philippe », « À faire » et « En cours » regroupés en « En cours » ; « À tester » en « En test avant déploiement » ; « Prévenir clients » et « Fait et livré » en « Terminé » — état au 04/11/2026</footer>
+  </div>
+
 </section>
 
-<!-- ================= VIDÉOS DÉMO ================= -->
-<section class="view" id="view-videos">
-  <button class="back-link" onclick="showView('home')" data-i18n="ui.backhome">← Retour à l'accueil</button>
-  <div class="theme-head">
-    <div class="badge" style="background:var(--purple-tint); color:var(--purple);"><svg class="pico pico-lg"><use href="#i-play"/></svg></div>
-    <div><h2 data-i18n="theme.videos.h">Vidéos démo</h2><p data-i18n="theme.videos.p">La démo complète de Klear, en vidéo, dans 4 langues</p></div>
-  </div>
 
-  <div class="card">
-    <h4>Choisir la langue</h4>
-    <p style="margin-bottom:14px;">Chaque vidéo reprend l'intégralité des fonctionnalités de Klear. Pratique à envoyer directement à un client qui veut (re)voir la démo à son rythme.</p>
-    <div class="subtabs" id="video-lang-selector">
-      <button class="active" data-lang="fr">🇫🇷 Français</button>
-      <button data-lang="en">🇬🇧 Anglais</button>
-      <button data-lang="de">🇩🇪 Allemand</button>
-      <button data-lang="es">🇪🇸 Espagnol</button>
-    </div>
 
-    <div class="video-embed-wrap">
-      <iframe id="video-embed-frame" src="https://www.loom.com/embed/68fa1a537d4548adacf9b5ba70392375" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-    </div>
 
-    <div class="video-link-row">
-      <span class="label"><svg class="pico"><use href="#i-play"/></svg>Lien à partager avec un client</span>
-      <a id="video-share-link" href="https://www.loom.com/share/68fa1a537d4548adacf9b5ba70392375" target="_blank">loom.com/share/68fa1a537d4548adacf9b5ba70392375</a>
-    </div>
-  </div>
-  <footer class="src">Source : vidéos Loom internes</footer>
-</section>
-
-<!-- ================= PLAQUETTE COMMERCIALE ================= -->
-<section class="view" id="view-brochure">
-  <button class="back-link" onclick="showView('home')" data-i18n="ui.backhome">← Retour à l'accueil</button>
-  <div class="theme-head">
-    <div class="badge" style="background:var(--purple-tint); color:var(--purple);"><svg class="pico pico-lg"><use href="#i-folder"/></svg></div>
-    <div><h2 data-i18n="theme.brochure.h">Plaquette commerciale</h2><p data-i18n="theme.brochure.p">Le PDF de présentation Klear, en 4 langues</p></div>
-  </div>
-
-  <div class="card">
-    <h4 data-i18n="ui.choose_lang">Choisir la langue</h4>
-    <p style="margin-bottom:14px;" data-i18n="brochure.intro">3 pages : présentation produit, fonctionnalités en détail, et tarifs. Prête à être envoyée telle quelle à un prospect.</p>
-    <div class="subtabs" id="brochure-lang-selector">
-      <button class="active" data-lang="fr">🇫🇷 Français</button>
-      <button data-lang="en">🇬🇧 English</button>
-      <button data-lang="es">🇪🇸 Español</button>
-      <button data-lang="de">🇩🇪 Deutsch</button>
-    </div>
-
-    <div class="brochure-preview-wrap">
-      <img id="brochure-thumb" src="" alt="Aperçu de la plaquette">
-    </div>
-
-    <div class="video-link-row">
-      <span class="label"><svg class="pico"><use href="#i-folder"/></svg><span data-i18n="brochure.download_label">Télécharger le PDF</span></span>
-      <a id="brochure-download" href="#" download="klear-plaquette-fr.pdf" class="brochure-dl-btn" data-i18n="brochure.download_btn">Télécharger →</a>
-    </div>
-  </div>
-  <footer class="src">Source : plaquette commerciale Klear (interne)</footer>
-</section>
 
 <!-- ================= QUIZ ================= -->
 <section class="view" id="view-quiz">
@@ -2061,8 +2301,18 @@
     "ui.exploration": {fr:"Ton exploration du playbook", en:"Your progress through the playbook", es:"Tu recorrido por el playbook", de:"Dein Fortschritt im Playbook"},
     "ui.product_link": {fr:"Lien produit :", en:"Product link:", es:"Vínculo con el producto:", de:"Produktbezug:"},
     "ui.klear_response": {fr:"Réponse Klear", en:"Klear's answer", es:"Respuesta de Klear", de:"Klear-Antwort"},
+    "nav.vente": {fr:"Démo & vente", en:"Demo & sales", es:"Demo y ventas", de:"Demo & Vertrieb"},
+    "theme.vente.h": {fr:"Démo & vente", en:"Demo & sales", es:"Demo y ventas", de:"Demo & Vertrieb"},
+    "theme.vente.p": {fr:"Plan de démo, objections, tarifs et devis, vidéos et plaquette", en:"Demo script, objections, pricing and quotes, videos and brochure", es:"Guion de demo, objeciones, tarifas y presupuestos, vídeos y folleto", de:"Demo-Ablauf, Einwände, Preise und Angebote, Videos und Broschüre"},
+    "gate.vente.tag": {fr:"Vendre", en:"Sell", es:"Vender", de:"Verkaufen"},
+    "gate.vente.h": {fr:"Démo & vente", en:"Demo & sales", es:"Demo y ventas", de:"Demo & Vertrieb"},
+    "gate.vente.p": {fr:"Plan de démo, objections, tarifs et devis, vidéos et plaquette.", en:"Demo script, objections, pricing and quotes, videos and brochure.", es:"Guion de demo, objeciones, tarifas y presupuestos, vídeos y folleto.", de:"Demo-Ablauf, Einwände, Preise und Angebote, Videos und Broschüre."},
+    "tab.p-news": {fr:"Nouveautés", en:"What's new", es:"Novedades", de:"Neuheiten"},
+    "tab.p-roadmap": {fr:"Roadmap", en:"Roadmap", es:"Hoja de ruta", de:"Roadmap"},
+    "tab.v-videos": {fr:"Vidéos démo", en:"Demo videos", es:"Vídeos demo", de:"Demo-Videos"},
+    "tab.v-brochure": {fr:"Plaquette", en:"Brochure", es:"Folleto", de:"Broschüre"},
     "nav.home": {fr:"Accueil", en:"Home", es:"Inicio", de:"Start"},
-    "nav.commercial": {fr:"Commercial", en:"Sales", es:"Comercial", de:"Vertrieb"},
+    "nav.commercial": {fr:"Argumentaire", en:"Pitch", es:"Argumentario", de:"Argumentation"},
     "nav.marketing": {fr:"Marketing", en:"Marketing", es:"Marketing", de:"Marketing"},
     "nav.support": {fr:"Support", en:"Support", es:"Soporte", de:"Support"},
     "nav.produit": {fr:"Produit", en:"Product", es:"Producto", de:"Produkt"},
@@ -2082,20 +2332,20 @@
     "tab.m-charte": {fr:"Charte graphique", en:"Brand guidelines", es:"Guía de marca", de:"Markenrichtlinien"},
     "tab.m-outils": {fr:"Outils & liens", en:"Tools & links", es:"Herramientas y enlaces", de:"Tools & Links"},
     "tab.m-suivi": {fr:"Suivi commercial", en:"Lead follow-up", es:"Seguimiento comercial", de:"Vertriebs-Nachverfolgung"},
-    "tab.s-bugs": {fr:"Bugs & évolutions", en:"Bugs & feature requests", es:"Errores y mejoras", de:"Bugs & Weiterentwicklungen"},
+    "tab.s-bugs": {fr:"Remonter un bug ou une idée", en:"Report a bug or an idea", es:"Informar de un error o una idea", de:"Bug oder Idee melden"},
     "tab.s-superadmin": {fr:"Connexion compte client", en:"Log in as a customer", es:"Acceder a una cuenta cliente", de:"Als Kunde anmelden"},
     "tab.s-kb": {fr:"Base de connaissance", en:"Knowledge base", es:"Base de conocimiento", de:"Wissensdatenbank"},
     "tab.p-vue": {fr:"Vue d'ensemble", en:"Overview", es:"Visión general", de:"Überblick"},
     "tab.p-modules": {fr:"Fonctionnalités par module", en:"Features by module", es:"Funciones por módulo", de:"Funktionen nach Modul"},
 
-    "theme.commercial.h": {fr:"Commercial", en:"Sales", es:"Comercial", de:"Vertrieb"},
-    "theme.commercial.p": {fr:"Pitch produit, concurrence, objections et plan de démo", en:"Product pitch, competitors, objections and demo script", es:"Pitch de producto, competencia, objeciones y guion de demo", de:"Produkt-Pitch, Wettbewerb, Einwände und Demo-Ablauf"},
-    "theme.marketing.h": {fr:"Marketing", en:"Marketing", es:"Marketing", de:"Marketing"},
-    "theme.marketing.p": {fr:"Charte graphique, outils et process de suivi commercial", en:"Brand guidelines, tools and lead follow-up process", es:"Guía de marca, herramientas y proceso de seguimiento comercial", de:"Markenrichtlinien, Tools und Vertriebs-Prozess"},
-    "theme.support.h": {fr:"Support", en:"Support", es:"Soporte", de:"Support"},
-    "theme.support.p": {fr:"Gestion des bugs/évolutions et accès aux comptes clients", en:"Bug/feature tracking and access to customer accounts", es:"Gestión de errores/mejoras y acceso a cuentas de cliente", de:"Bug-/Feature-Verwaltung und Zugriff auf Kundenkonten"},
+    "theme.commercial.h": {fr:"Argumentaire", en:"Pitch", es:"Argumentario", de:"Argumentation"},
+    "theme.commercial.p": {fr:"Pitch, positionnement face à Forms, Karré et la concurrence, retours clients", en:"Pitch, positioning against Forms, Karré and competitors, customer feedback", es:"Pitch, posicionamiento frente a Forms, Karré y la competencia, comentarios de clientes", de:"Pitch, Positionierung gegenüber Forms, Karré und Wettbewerbern, Kundenfeedback"},
+    "theme.marketing.h": {fr:"Marketing & CRM", en:"Marketing & CRM", es:"Marketing y CRM", de:"Marketing & CRM"},
+    "theme.marketing.p": {fr:"Persona, charte graphique, outils, suivi des leads et gestion HubSpot", en:"Personas, brand guidelines, tools, lead follow-up and HubSpot management", es:"Personas, guía de marca, herramientas, seguimiento de leads y gestión en HubSpot", de:"Personas, Markenrichtlinien, Tools, Lead-Nachverfolgung und HubSpot-Verwaltung"},
+    "theme.support.h": {fr:"Support & remontées", en:"Support & feedback", es:"Soporte y reportes", de:"Support & Meldungen"},
+    "theme.support.p": {fr:"Remonter un bug ou une idée, accès aux comptes clients, base de connaissance", en:"Report a bug or an idea, access customer accounts, knowledge base", es:"Informar de un error o una idea, acceso a cuentas de cliente, base de conocimiento", de:"Bug oder Idee melden, Zugriff auf Kundenkonten, Wissensdatenbank"},
     "theme.produit.h": {fr:"Produit", en:"Product", es:"Producto", de:"Produkt"},
-    "theme.produit.p": {fr:"Toutes les fonctionnalités, module par module", en:"Every feature, module by module", es:"Todas las funciones, módulo por módulo", de:"Alle Funktionen, Modul für Modul"},
+    "theme.produit.p": {fr:"Fonctionnalités par module, nouveautés en vidéo et roadmap des évolutions", en:"Features by module, new releases on video and the roadmap", es:"Funciones por módulo, novedades en vídeo y hoja de ruta", de:"Funktionen nach Modul, Neuheiten als Video und Roadmap"},
     "theme.videos.h": {fr:"Vidéos démo", en:"Demo videos", es:"Vídeos demo", de:"Demo-Videos"},
     "theme.videos.p": {fr:"La démo complète de Klear, en vidéo, dans 4 langues", en:"The full Klear demo on video, in 4 languages", es:"La demo completa de Klear en vídeo, en 4 idiomas", de:"Die komplette Klear-Demo als Video, in 4 Sprachen"},
     "theme.brochure.h": {fr:"Plaquette commerciale", en:"Sales brochure", es:"Folleto comercial", de:"Verkaufsbroschüre"},
@@ -2115,18 +2365,18 @@
       es:"El cockpit de obra para la construcción, pensado para conciliar la oficina y la obra. Este playbook reúne todo lo que hay que saber sobre Klear: cómo hablar de él, venderlo, dar soporte y hacerlo evolucionar, día a día. Elige tu entrada por temática y encuentra lo esencial en unos clics, con fuentes y al día.",
       de:"Das Baustellen-Cockpit, das Büro und Baustelle zusammenbringt. Dieses Playbook fasst alles zusammen, was man über Klear wissen muss: wie man darüber spricht, es verkauft, unterstützt und Tag für Tag weiterentwickelt. Wähle deinen Einstieg nach Thema und finde das Wesentliche in wenigen Klicks — mit Quellen und aktuell."
     },
-    "gate.commercial.tag": {fr:"Vendre", en:"Sell", es:"Vender", de:"Verkaufen"},
-    "gate.commercial.h": {fr:"Commercial", en:"Sales", es:"Comercial", de:"Vertrieb"},
-    "gate.commercial.p": {fr:"Pitch, analyse concurrentielle, objections & plan de démo.", en:"Pitch, competitive analysis, objections & demo script.", es:"Pitch, análisis competitivo, objeciones y guion de demo.", de:"Pitch, Wettbewerbsanalyse, Einwände & Demo-Ablauf."},
+    "gate.commercial.tag": {fr:"Convaincre", en:"Convince", es:"Convencer", de:"Überzeugen"},
+    "gate.commercial.h": {fr:"Argumentaire", en:"Pitch", es:"Argumentario", de:"Argumentation"},
+    "gate.commercial.p": {fr:"Pitch, positionnement face à Forms et Karré, concurrence et retours clients.", en:"Pitch, positioning against Forms and Karré, competitors and customer feedback.", es:"Pitch, posicionamiento frente a Forms y Karré, competencia y comentarios de clientes.", de:"Pitch, Positionierung gegenüber Forms und Karré, Wettbewerb und Kundenfeedback."},
     "gate.marketing.tag": {fr:"Promouvoir", en:"Promote", es:"Promocionar", de:"Bewerben"},
     "gate.marketing.h": {fr:"Marketing", en:"Marketing", es:"Marketing", de:"Marketing"},
-    "gate.marketing.p": {fr:"Charte graphique, outils, liens utiles et suivi des leads.", en:"Brand guidelines, tools, useful links and lead follow-up.", es:"Guía de marca, herramientas, enlaces útiles y seguimiento de leads.", de:"Markenrichtlinien, Tools, nützliche Links und Lead-Nachverfolgung."},
+    "gate.marketing.p": {fr:"Persona, charte, outils, suivi des leads et gestion HubSpot.", en:"Personas, brand guidelines, tools, lead follow-up and HubSpot management.", es:"Personas, guía de marca, herramientas, seguimiento de leads y gestión en HubSpot.", de:"Personas, Markenrichtlinien, Tools, Lead-Nachverfolgung und HubSpot-Verwaltung."},
     "gate.support.tag": {fr:"Dépanner", en:"Support", es:"Asistir", de:"Unterstützen"},
     "gate.support.h": {fr:"Support", en:"Support", es:"Soporte", de:"Support"},
-    "gate.support.p": {fr:"Gestion des bugs/évolutions et connexion aux comptes clients.", en:"Bug/feature tracking and logging into customer accounts.", es:"Gestión de errores/mejoras y acceso a cuentas de cliente.", de:"Bug-/Feature-Verwaltung und Anmeldung bei Kundenkonten."},
+    "gate.support.p": {fr:"Remonter un bug ou une idée, connexion aux comptes clients, base de connaissance.", en:"Report a bug or an idea, log into customer accounts, knowledge base.", es:"Informar de un error o una idea, acceso a cuentas de cliente, base de conocimiento.", de:"Bug oder Idee melden, Anmeldung in Kundenkonten, Wissensdatenbank."},
     "gate.produit.tag": {fr:"Comprendre", en:"Understand", es:"Comprender", de:"Verstehen"},
     "gate.produit.h": {fr:"Produit", en:"Product", es:"Producto", de:"Produkt"},
-    "gate.produit.p": {fr:"Toutes les fonctionnalités, module par module, et leur utilité.", en:"Every feature, module by module, and what it's for.", es:"Todas las funciones, módulo por módulo, y para qué sirven.", de:"Alle Funktionen, Modul für Modul, und wofür sie da sind."},
+    "gate.produit.p": {fr:"Fonctionnalités par module, nouveautés en vidéo et roadmap des évolutions.", en:"Features by module, new releases on video and the roadmap.", es:"Funciones por módulo, novedades en vídeo y hoja de ruta.", de:"Funktionen nach Modul, Neuheiten als Video und Roadmap."},
 
     "banner.quiz.h": {fr:"Teste-toi : le quiz Klear", en:"Test yourself: the Klear quiz", es:"Ponte a prueba: el quiz de Klear", de:"Teste dich: das Klear-Quiz"},
     "banner.quiz.p": {fr:"10 questions tirées du playbook pour vérifier que tout est bien rentré. Sans pression, sans note au bulletin.", en:"10 questions from the playbook to check it all sank in. No pressure, no grades.", es:"10 preguntas del playbook para comprobar que todo ha quedado claro. Sin presión, sin notas.", de:"10 Fragen aus dem Playbook, um zu prüfen, ob alles hängen geblieben ist. Ohne Druck, ohne Noten."},
@@ -2269,9 +2519,15 @@
     else markVisited(view);
   }
 
+  function openTab(view, sub){
+    showView(view);
+    const btn = document.querySelector('#view-'+view+' .subtabs button[data-sub="'+sub+'"]');
+    if(btn) btn.click();
+  }
+
   // ---------- subtab navigation (generic) ----------
   document.querySelectorAll('.subtabs').forEach(group=>{
-    group.querySelectorAll('button').forEach(btn=>{
+    group.querySelectorAll('button[data-sub]').forEach(btn=>{
       btn.addEventListener('click', ()=>{
         group.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
         btn.classList.add('active');
@@ -2661,12 +2917,13 @@
 
   // ---------- progression ----------
   const THEME_SECTIONS = {
-    commercial:['c-pitch','c-formsvs','c-karre','c-concu','c-obj','c-demo','c-retours','c-tarifs','c-hubspot'],
-    marketing:['m-persona','m-charte','m-outils','m-suivi'],
+    commercial:['c-pitch','c-formsvs','c-karre','c-concu','c-retours'],
+    vente:['c-demo','c-obj','c-tarifs','v-videos','v-brochure'],
+    marketing:['m-persona','m-charte','m-outils','m-suivi','c-hubspot'],
     support:['s-bugs','s-superadmin','s-kb'],
-    produit:['p-vue','p-modules']
+    produit:['p-vue','p-modules','p-news','p-roadmap']
   };
-  const ALL_STEPS = [].concat(...Object.values(THEME_SECTIONS), ['quiz', 'videos', 'brochure']);
+  const ALL_STEPS = [].concat(...Object.values(THEME_SECTIONS), ['quiz']);
   let visited = store.get('visited') || {};
   let celebrated = store.get('celebrated') || false;
 
@@ -2686,7 +2943,7 @@
     if(pct===100){ hint.textContent = 'Playbook exploré à 100 % — officiellement incollable sur Klear.'; }
     // gate chips
     document.querySelectorAll('.gate-card').forEach(card=>{
-      const theme = ['commercial','marketing','support','produit'].find(t=>card.classList.contains(t));
+      const theme = ['commercial','vente','marketing','support','produit'].find(t=>card.classList.contains(t));
       if(!theme) return;
       const ids = THEME_SECTIONS[theme];
       const d = ids.filter(s=>visited[s]).length;
@@ -2815,6 +3072,235 @@
     }
     users.addEventListener('input', paint);
     paint();
+  })();
+
+  // ---------- produit : nouveautés (vidéos Loom) ----------
+  // Pour ajouter une vidéo : renseigner l'identifiant Loom (la fin de l'adresse loom.com/share/...) dans "loom".
+  const NEWS_ITEMS = [
+    {m:'2026-10', t:"Champs personnalisés sur les feuilles d'heures", p:'K', d:'WM', loom:''},
+    {m:'2026-10', t:"Droits et profils plus flexibles", p:'K', d:'W', loom:''},
+    {m:'2026-10', t:"Chantiers en favoris, recherche rapide et raccourci « Mes chantiers » sur le mobile", p:'K', d:'M', loom:''},
+    {m:'2026-10', t:"Répondre à un message en glissant le doigt, comme sur WhatsApp", p:'KR', d:'M', loom:''},
+    {m:'2026-10', t:"Fichiers DWG acceptés dans les dossiers", p:'K', d:'W', loom:''},
+    {m:'2026-10', t:"Filtrer les chantiers par état et par dates", p:'K', d:'W', loom:''},
+    {m:'2026-10', t:"Recherche d'un chantier par son titre au moment de planifier", p:'K', d:'W', loom:''},
+    {m:'2026-10', t:"Planning « Tous » par défaut et planification en masse", p:'K', d:'W', loom:''},
+    {m:'2026-09', t:"Onglets « Mes tâches » et « Tâches équipe » sur le mobile", p:'K', d:'M', loom:''},
+    {m:'2026-09', t:"Réactions sur les messages du chat", p:'KR', d:'WM', loom:''},
+    {m:'2026-09', t:"Droits de vue sur les dossiers", p:'K', d:'WM', loom:''},
+    {m:'2026-09', t:"Menu « Mes chantiers » dans l'appli du sous-traitant", p:'K', d:'M', loom:''},
+    {m:'2026-09', t:"Sélection de plusieurs photos à envoyer dans les documents ou la messagerie", p:'KR', d:'M', loom:''},
+    {m:'2026-09', t:"Suppression des feuilles d'heures validées, réservée à l'admin", p:'K', d:'W', loom:''},
+    {m:'2026-09', t:"Karré : notification en cas d'intervention non terminée", p:'R', d:'M', loom:''},
+    {m:'2026-09', t:"Karré : marquer simplement une intervention comme « terminée »", p:'R', d:'WM', loom:''}
+  ];
+  (function(){
+    const root = document.getElementById('news-list');
+    if(!root) return;
+    const MONTHS = {'2026-10':'Octobre 2026', '2026-09':'Septembre 2026'};
+    const PROD = {K:'<span class="tag tag-klear">Klear</span>', R:'<span class="tag tag-karre">Karré</span>', KR:'<span class="tag tag-klear">Klear</span><span class="tag tag-karre">Karré</span>'};
+    const DEV = {W:'<span class="tag tag-web">Web</span>', M:'<span class="tag tag-mobile">Mobile</span>'};
+    Object.keys(MONTHS).forEach(mk=>{
+      const items = NEWS_ITEMS.filter(i=>i.m===mk);
+      if(!items.length) return;
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = '<h4>' + MONTHS[mk] + '</h4>';
+      items.forEach(it=>{
+        const row = document.createElement('div');
+        row.className = 'news-item';
+        const pills = PROD[it.p] + it.d.split('').map(x=>DEV[x]).join('');
+        row.innerHTML = '<div class="news-title">' + it.t + '</div><div>' + pills + '</div>';
+        const btn = document.createElement('button');
+        if(it.loom){
+          btn.className = 'news-vid';
+          btn.textContent = 'Voir la vidéo';
+          let embed = null;
+          btn.addEventListener('click', ()=>{
+            if(embed){ embed.remove(); embed = null; btn.textContent = 'Voir la vidéo'; return; }
+            embed = document.createElement('div');
+            embed.className = 'news-embed';
+            embed.innerHTML = '<iframe src="https://www.loom.com/embed/' + it.loom + '" frameborder="0" allowfullscreen></iframe>';
+            row.appendChild(embed);
+            btn.textContent = 'Fermer la vidéo';
+          });
+        } else {
+          btn.className = 'news-vid soon';
+          btn.textContent = 'Vidéo à venir';
+          btn.disabled = true;
+        }
+        row.insertBefore(btn, row.children[1] ? null : null);
+        card.appendChild(row);
+      });
+      root.appendChild(card);
+    });
+  })();
+
+  // ---------- support : création de ticket Notion (via webhook Make, comme sur la page relais) ----------
+  (function(){
+    const WEBHOOK_URL = 'https://hook.eu2.make.com/8owtddxvxxiid1tocbb8m975bxehz52x';
+    const submitBtn = document.getElementById('tk-submit');
+    const statusEl = document.getElementById('tk-status');
+    if(!submitBtn) return;
+
+    const CLIENTS = ['Marie','Delphine','MICHEL SONNE','MATTEOS','ABCAUT','DELCOURT','CAROET','ISOCOMBLE','ALBATECH','EUROME2','LESFAB','MY Shampouineuse','FIREMOB','SURELYA','RME LOOS','LHOTELLIER','Jérémy','DISTRIBAT','BOUYGUES','WEBINAIRE','STRATERA','EXEDRA','Grant','Milan','Daniel','SIMAC','ALVA','GENIEC','SASSOC','ALSTOM','WEWISE','ELECTRONS LIBRES','Patricia','ESPACE ETUDES','WELLNESS','EMT','ELITEL','Ben','ATELIER J DE MISSILOZ','Cassou','Benoit','EIFFAGE','OUEST ACCRO'];
+    const clientInput = document.getElementById('tk-client');
+    const dd = document.getElementById('tk-client-dropdown');
+
+    function renderDropdown(){
+      const q = clientInput.value.trim().toLowerCase();
+      const matches = q ? CLIENTS.filter(x => x.toLowerCase().includes(q)) : CLIENTS;
+      if(!matches.length){ dd.style.display = 'none'; return; }
+      dd.innerHTML = matches.map(x => '<div class="tk-opt">' + x + '</div>').join('');
+      dd.style.display = 'block';
+    }
+    clientInput.addEventListener('focus', renderDropdown);
+    clientInput.addEventListener('input', renderDropdown);
+    dd.addEventListener('mousedown', e=>{
+      const opt = e.target.closest('.tk-opt');
+      if(!opt) return;
+      e.preventDefault();
+      clientInput.value = opt.textContent;
+      dd.style.display = 'none';
+    });
+    document.addEventListener('click', e=>{
+      if(e.target !== clientInput && !dd.contains(e.target)) dd.style.display = 'none';
+    });
+
+    function say(msg, color){ statusEl.style.color = color; statusEl.textContent = msg; }
+
+    submitBtn.addEventListener('click', async ()=>{
+      const titre = document.getElementById('tk-titre').value.trim();
+      const typeVal = document.getElementById('tk-type').value;
+      if(!titre){ say('⚠️ Le titre est requis.', '#C0392B'); return; }
+      if(!typeVal){ say('⚠️ Le type est requis.', '#C0392B'); return; }
+      const device = [];
+      if(document.getElementById('tk-device-web').checked) device.push('WEB');
+      if(document.getElementById('tk-device-mobile').checked) device.push('MOBILE');
+
+      const oldLabel = submitBtn.innerHTML;
+      submitBtn.disabled = true; submitBtn.textContent = 'Envoi…';
+      say('', 'var(--ink-soft)');
+
+      const payload = {
+        titre,
+        description: document.getElementById('tk-desc').value.trim(),
+        loom: document.getElementById('tk-loom').value.trim(),
+        type: typeVal,
+        priorite: document.getElementById('tk-priorite').value,
+        device,
+        client: clientInput.value.trim(),
+        source: 'relais-klear',
+        origine: 'playbook-klear',
+        date: new Date().toISOString()
+      };
+
+      try{
+        const res = await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify(payload)
+        });
+        if(!res.ok) throw new Error('HTTP ' + res.status);
+        say('✓ Ticket envoyé à Notion', 'var(--success)');
+        ['tk-titre','tk-desc','tk-loom','tk-client'].forEach(id=>document.getElementById(id).value = '');
+        document.getElementById('tk-type').value = '';
+        document.getElementById('tk-priorite').value = '';
+        document.getElementById('tk-device-web').checked = false;
+        document.getElementById('tk-device-mobile').checked = false;
+      } catch(err){
+        say('⚠️ Erreur d\'envoi : le ticket n\'est pas parti. Réessaie, ou crée-le directement dans Notion.', '#C0392B');
+        console.error(err);
+      }
+      submitBtn.disabled = false; submitBtn.innerHTML = oldLabel;
+    });
+  })();
+
+  // ---------- démo : bouton d'accès à la trame ----------
+  (function(){
+    const btn = document.getElementById('trame-toggle');
+    const wrap = document.getElementById('trame-wrap');
+    const label = document.getElementById('trame-toggle-label');
+    if(!btn || !wrap) return;
+    function sync(){
+      const open = !wrap.hidden;
+      label.textContent = open ? 'Masquer la trame de Marcos' : 'Voir la trame de Marcos';
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    }
+    btn.addEventListener('click', ()=>{
+      wrap.hidden = !wrap.hidden;
+      sync();
+      if(!wrap.hidden) setTimeout(()=>wrap.scrollIntoView({behavior:'smooth', block:'start'}), 60);
+    });
+    window.__syncTrameBtn = sync;
+  })();
+
+  // ---------- produit : roadmap (tableau visuel) ----------
+  const RM_DATA = [{"s": "wait", "t": "Permettre à un super admin de créer une absence pour les collaborateurs, sans validation", "d": "W", "c": ["ATELIER J DE MISSILOZ"]}, {"s": "wait", "t": "Ajouter un filtre équipe sur les feuilles d'heures", "d": "W", "c": ["Ben"]}, {"s": "wait", "t": "Signature des feuilles d'heures : la vue passe automatiquement en paysage", "d": "M", "c": ["Ben"]}, {"s": "wait", "t": "Modifier une équipe : renommer « Ajouter des membres » en « Ajouter » (il y a aussi des équipements)", "d": "W", "c": ["Ben"]}, {"s": "wait", "t": "Chat : identifier une personne comme sur Slack", "d": "WM", "c": ["Daniel"]}, {"s": "wait", "t": "Cibler une communication générale sur des utilisateurs choisis ou par équipe", "d": "WM", "c": ["ELITEL"]}, {"s": "wait", "t": "Paramétrer les formulaires Kizeo Forms par chantier", "d": "W", "c": ["ELITEL"]}, {"s": "wait", "t": "Planning : filtrer pour n'afficher que les personnes sans événement planifié", "d": "W", "c": ["ELITEL"]}, {"s": "wait", "t": "Associer un équipement à un collaborateur pour planifier les deux en une fois", "d": "W", "c": ["ELITEL"]}, {"s": "wait", "t": "Ajouter les numéros de semaine partout où apparaissent des dates", "d": "W", "c": ["ALVA"]}, {"s": "wait", "t": "Revoir l'onglet Statistiques pour un vrai pilotage général", "d": "W", "c": ["WEWISE"]}, {"s": "wait", "t": "Localiser correctement les chantiers situés hors d'une adresse postale standard", "d": "W", "c": ["WEWISE"]}, {"s": "wait", "t": "Champs personnalisés « liste » : désactiver une valeur sans supprimer l'historique", "d": "W", "c": ["WEWISE"]}, {"s": "wait", "t": "Champs personnalisés « liste » : choisir l'ordre d'affichage à la création", "d": "W", "c": ["WEWISE"]}, {"s": "wait", "t": "Créer des modèles de lots", "d": "W", "c": ["WEWISE"]}, {"s": "wait", "t": "Pouvoir renommer un modèle de document", "d": "W", "c": ["WEWISE"]}, {"s": "wait", "t": "Raccourci chantier sur le planning", "d": "W", "c": ["ALVA"]}, {"s": "wait", "t": "Afficher le lot de façon plus visible sur les planifications", "d": "W", "c": ["ELECTRONS LIBRES"]}, {"s": "wait", "t": "Admins : modifier les dates de congés des utilisateurs, avec notification", "d": "W", "c": ["GENIEC"]}, {"s": "wait", "t": "Mobile : barre de recherche dans « Mon planning » et « Historique »", "d": "M", "c": ["GENIEC"]}, {"s": "wait", "t": "Superposer une tâche libre à une intervention", "d": "W", "c": ["GENIEC"]}, {"s": "wait", "t": "Vue jour : choisir une date dans le calendrier plutôt que défiler avec les flèches", "d": "W", "c": ["GENIEC"]}, {"s": "wait", "t": "Cibler une équipe ou une agence pour les communications générales", "d": "W", "c": ["ELECTRONS LIBRES"]}, {"s": "wait", "t": "Planifier en mode « brouillon » avant de confirmer", "d": "W", "c": ["ELECTRONS LIBRES", "GENIEC"]}, {"s": "wait", "t": "Import Excel : bouton pour télécharger la trame", "d": "W", "c": ["WEWISE"]}, {"s": "wait", "t": "Feuilles d'heures : option temps de trajet", "d": "WM", "c": ["SASSOC"]}, {"s": "wait", "t": "Acceptation ou refus d'un planning par les sous-traitants", "d": "WM", "c": ["ALVA", "ELECTRONS LIBRES"]}, {"s": "wait", "t": "Vue planning complète « planning équipe »", "d": "M", "c": ["ALVA", "ABCAUT"]}, {"s": "wait", "t": "Seuils d'heures supplémentaires personnalisables par utilisateur", "d": "W", "c": ["ALVA"]}, {"s": "wait", "t": "Éditer les créneaux de planification pour les étendre à une date plus lointaine", "d": "W", "c": ["ALVA"]}, {"s": "wait", "t": "Authentification à double facteur", "d": "WM", "c": ["SIMAC"]}, {"s": "wait", "t": "Connexion SSO", "d": "WM", "c": ["SIMAC"]}, {"s": "wait", "t": "Décaler plusieurs tâches planifiées en même temps", "d": "W", "c": ["ELECTRONS LIBRES"]}, {"s": "wait", "t": "Ajout d'une personne au planning : proposer de l'ajouter au chantier (membre, chef de chantier ou conducteur de travaux)", "d": "W", "c": ["DELCOURT"]}, {"s": "wait", "t": "Saisie d'heures multiples : permettre au N+1 de retrouver les fiches associées dans le back-office", "d": "W", "c": ["DELCOURT"]}, {"s": "wait", "t": "Filtre par date sur les feuilles d'heures", "d": "W", "c": []}, {"s": "wait", "t": "Suivi : rechercher facilement un formulaire avec une barre de recherche", "d": "W", "c": []}, {"s": "wait", "t": "Mémoriser les filtres chantiers (ex. chef de chantier)", "d": "W", "c": ["DELCOURT"]}, {"s": "wait", "t": "Dupliquer une période planifiée", "d": "W", "c": ["DELCOURT"]}, {"s": "wait", "t": "Saisie d'heures multiples : permettre au chef de chantier d'ajouter une ressource", "d": "M", "c": ["DELCOURT"]}, {"s": "wait", "t": "Renommer le menu « Chantier » (trop spécifique à l'international)", "d": "WM", "c": ["Grant"]}, {"s": "wait", "t": "Flux de déclenchement des actions dans le suivi", "d": "WM", "c": ["Marie", "Milan", "Daniel"]}, {"s": "wait", "t": "Alerter le responsable à l'approbation d'une absence si la personne avait des éléments planifiés", "d": "W", "c": ["Marie", "Milan", "Daniel"]}, {"s": "wait", "t": "Planning matériel : filtrer par champs personnalisés (listes)", "d": "W", "c": ["Marie", "Milan", "Daniel"]}, {"s": "wait", "t": "Afficher mon suivi (tickets) sur la page d'accueil du mobile", "d": "W", "c": ["Marie", "Milan", "Daniel"]}, {"s": "wait", "t": "Planning : vue latérale non floutante à l'ajout d'un événement", "d": "W", "c": ["Marie", "Milan", "Daniel"]}, {"s": "wait", "t": "Rappels ou notifications pour les tâches en retard", "d": "WM", "c": ["Marie", "Milan", "Daniel"]}, {"s": "wait", "t": "Feuilles d'heures : deux validations (pré-validation par un responsable, validation définitive par un admin)", "d": "W", "c": ["DELCOURT"]}, {"s": "wait", "t": "Empêcher la validation des heures des autres admins", "d": "W", "c": ["DELCOURT"]}, {"s": "wait", "t": "Option « pas de pause par défaut » sur les chantiers", "d": "WM", "c": ["STRATERA"]}, {"s": "wait", "t": "Afficher le client sur les encarts du planning", "d": "W", "c": ["STRATERA"]}, {"s": "wait", "t": "Vue chantier : planifier en masse sur plusieurs personnes", "d": "W", "c": ["DELCOURT"]}, {"s": "wait", "t": "Dupliquer un chantier", "d": "W", "c": ["STRATERA"]}, {"s": "wait", "t": "Créer un chantier directement depuis la création d'une tâche de planning", "d": "W", "c": ["DELCOURT"]}, {"s": "wait", "t": "Intégrer une personne au chantier après avoir planifié le chantier", "d": "W", "c": ["DELCOURT"]}, {"s": "wait", "t": "Informer le client final de chaque changement de planning par email", "d": "W", "c": ["WEBINAIRE"]}, {"s": "wait", "t": "Permettre plusieurs managers sur un utilisateur", "d": "W", "c": ["DELCOURT"]}, {"s": "wait", "t": "Modifier le message du webhook", "d": "W", "c": []}, {"s": "wait", "t": "Mobile : retirer « Kizeo en attente » des documents si le formulaire n'est pas terminé", "d": "M", "c": []}, {"s": "wait", "t": "Passer automatiquement le chantier en « terminé » quand la date de fin est dépassée", "d": "W", "c": ["Marie"]}, {"s": "wait", "t": "Bouton du planning pour afficher les personnes sans tâche", "d": "W", "c": ["Marie"]}, {"s": "wait", "t": "Communication : archiver des conversations", "d": "W", "c": []}, {"s": "wait", "t": "Créer un suivi via Kizeo Forms : les champs du tableau ne sont pas proposés quand le suivi est par ligne de tableau", "d": "W", "c": [], "b": 1}, {"s": "wait", "t": "Import Excel des clients finaux : l'adresse n'est pas reconnue par la géolocalisation", "d": "W", "c": ["WEWISE"], "b": 1}, {"s": "wait", "t": "Import Excel : le glisser-déposer du fichier ne fonctionne pas", "d": "W", "c": ["WEWISE"], "b": 1}, {"s": "wait", "t": "Les tokens se suppriment au bout d'un court moment", "d": "W", "c": [], "b": 1}, {"s": "doing", "t": "Back-office : amélioration de l'affichage des feuilles d'heures", "d": "W", "c": []}, {"s": "doing", "t": "Mobile : personnaliser l'encart des chantiers du jour", "d": "M", "c": ["ALVA"]}, {"s": "doing", "t": "Planning : sélectionner plusieurs techniciens d'un coup en modifiant une tâche planifiée", "d": "W", "c": ["ALVA"]}, {"s": "doing", "t": "Mobile : accéder à la fiche client et aux informations générales du chantier (champs perso)", "d": "M", "c": ["GENIEC", "BOUYGUES", "ELECTRONS LIBRES", "ALVA"]}, {"s": "doing", "t": "Annoter un PDF (texte, dessins, formes, liens Kizeo Forms)", "d": "WM", "c": ["ELITEL", "EIFFAGE", "OUEST ACCRO"]}, {"s": "doing", "t": "Saisir un formulaire Kizeo Forms depuis le chat", "d": "M", "c": ["Benoit", "EMT", "Cassou"]}, {"s": "doing", "t": "Créer un chantier rapidement depuis le mobile", "d": "M", "c": ["EMT"]}, {"s": "doing", "t": "Transcription des messages audio", "d": "WM", "c": ["ELITEL", "EIFFAGE", "OUEST ACCRO"]}, {"s": "doing", "t": "Meilleure visibilité des dates sur le planning mobile", "d": "M", "c": ["ALVA"]}, {"s": "doing", "t": "Mémoriser le nombre d'éléments par page sur tous les tableaux", "d": "W", "c": ["EMT"]}, {"s": "doing", "t": "Corréler la planification des lots et le planning", "d": "W", "c": ["WEWISE"]}, {"s": "doing", "t": "Télécharger les médias du chat vers le téléphone ou le PC", "d": "WM", "c": ["WEWISE", "EMT"]}, {"s": "doing", "t": "Vue jour du planning : définir un créneau par glisser-déposer", "d": "W", "c": ["GENIEC"]}, {"s": "doing", "t": "Affecter toute une équipe à un chantier plutôt que les utilisateurs un par un", "d": "W", "c": ["WEWISE", "DELCOURT"]}, {"s": "doing", "t": "Affecter du matériel à des utilisateurs", "d": "W", "c": ["BOUYGUES"]}, {"s": "doing", "t": "Absences > planning : deux vues semaine s'affichent", "d": "W", "c": ["Ben"], "b": 1}, {"s": "doing", "t": "L'application se télécharge toujours en français, quel que soit le pays", "d": "M", "c": ["Daniel"], "b": 1}, {"s": "doing", "t": "Améliorer l'IA", "d": "", "c": []}, {"s": "doing", "t": "Absence : problème d'affichage des dates", "d": "W", "c": ["Cassou"], "b": 1}, {"s": "doing", "t": "Un superadmin ne peut pas approuver sa propre absence après création", "d": "W", "c": ["Cassou"], "b": 1}, {"s": "doing", "t": "Rapport « Analyse » du tableau de bord : le format graphique s'exporte en tableau PDF", "d": "W", "c": ["Ben"], "b": 1}, {"s": "doing", "t": "Erreur à l'ajout de licence dans le menu « Abonnement »", "d": "W", "c": ["ABCAUT"], "b": 1}, {"s": "done", "t": "Champs personnalisés des feuilles d'heures : correction", "d": "WM", "c": [], "b": 1, "dt": "2026-10-30"}, {"s": "done", "t": "Répondre à une photo : la photo est reprise dans la réponse", "d": "WM", "c": [], "dt": "2026-10-29"}, {"s": "done", "t": "Fichiers DWG acceptés dans les dossiers", "d": "W", "c": ["ATELIER J DE MISSILOZ"], "dt": "2026-10-27"}, {"s": "done", "t": "Le calcul des heures supplémentaires ne se faisait pas", "d": "W", "c": ["EMT"], "b": 1, "dt": "2026-10-27"}, {"s": "done", "t": "Feuille d'heures : la coche « panier » active s'affichait « non » dans le reporting du back-office", "d": "WM", "c": ["EMT"], "b": 1, "dt": "2026-10-27"}, {"s": "done", "t": "Droits et rôles : petits couacs corrigés", "d": "W", "c": [], "b": 1, "dt": "2026-10-26"}, {"s": "done", "t": "Temps de pause d'un chantier non affiché dans les informations du chantier", "d": "W", "c": ["Daniel"], "b": 1, "dt": "2026-10-21"}, {"s": "done", "t": "Champs personnalisés sur les feuilles d'heures", "d": "WM", "c": ["SASSOC", "ELITEL", "DELCOURT"], "dt": "2026-10-19"}, {"s": "done", "t": "Répondre à un message ou un média en glissant le doigt, comme sur WhatsApp", "d": "M", "c": ["EMT"], "dt": "2026-10-16"}, {"s": "done", "t": "Chantiers en favoris dans « Voir mes chantiers »", "d": "M", "c": ["EMT"], "dt": "2026-10-16"}, {"s": "done", "t": "Problème d'affichage du lot dans les paramètres", "d": "W", "c": ["WEWISE"], "b": 1, "dt": "2026-10-16"}, {"s": "done", "t": "Barre de recherche rapide et raccourci « Mes chantiers » sur le mobile", "d": "M", "c": ["ESPACE ETUDES", "EMT"], "dt": "2026-10-15"}, {"s": "done", "t": "Traductions allemandes prises en compte", "d": "WM", "c": ["Daniel"], "dt": "2026-10-15"}, {"s": "done", "t": "Import Excel : problème sur les champs personnalisés", "d": "W", "c": ["WEWISE"], "b": 1, "dt": "2026-10-15"}, {"s": "done", "t": "Droits et profils plus flexibles", "d": "W", "c": ["WEWISE", "ESPACE ETUDES"], "dt": "2026-10-12"}, {"s": "done", "t": "Menu chantier : filtrer par état et par dates", "d": "W", "c": ["WEWISE"], "dt": "2026-10-12"}, {"s": "done", "t": "Planification : recherche d'un chantier par son titre", "d": "W", "c": ["ABCAUT"], "dt": "2026-10-12"}, {"s": "done", "t": "Planning « Tous » par défaut (réglage)", "d": "W", "c": ["ALVA"], "dt": "2026-09-30"}, {"s": "done", "t": "Planning « Tous » : planification en masse", "d": "W", "c": ["ALVA"], "dt": "2026-09-30"}, {"s": "done", "t": "Réactions sur les messages du chat", "d": "WM", "c": ["WEWISE", "ABCAUT"], "dt": "2026-09-30"}, {"s": "done", "t": "Mobile : onglets « Mes tâches » et « Tâches équipe »", "d": "M", "c": ["ESPACE ETUDES"], "dt": "2026-09-23"}];
+  const RM_COUNTS = {"wait": 66, "doing": 22, "test": 0, "done": 128};
+  (function(){
+    const board = document.getElementById('rm-board');
+    if(!board) return;
+    const COLS = [
+      {k:'wait',  t:'Demandes en attente',        sub:'Notées, pas encore planifiées'},
+      {k:'doing', t:'En cours',                   sub:'Prises en charge par l\'équipe produit'},
+      {k:'test',  t:'En test avant déploiement',  sub:'En validation avant la mise en ligne'},
+      {k:'done',  t:'Terminé',                    sub:'Livrées sur les 30 derniers jours'}
+    ];
+    const DEV = {W:'<span class="tag tag-web">Web</span>', M:'<span class="tag tag-mobile">Mobile</span>'};
+    const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    const norm = s => (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+
+    const cols = {};
+    COLS.forEach(col=>{
+      const el = document.createElement('div');
+      el.className = 'rm-col ' + col.k;
+      el.innerHTML = '<div class="rm-head">' + col.t + '<span class="rm-count"></span></div><div class="rm-sub">' + col.sub + '</div><div class="rm-list"></div>';
+      board.appendChild(el);
+      cols[col.k] = {el, list: el.querySelector('.rm-list'), count: el.querySelector('.rm-count')};
+    });
+
+    RM_DATA.forEach(it=>{
+      const card = document.createElement('div');
+      card.className = 'rm-card';
+      card.dataset.search = norm(it.t + ' ' + it.c.join(' '));
+      card.dataset.kind = it.b ? 'bug' : 'evo';
+      card.dataset.dt = it.dt || '';
+      const clients = it.c.map(x=>'<span class="rm-client">' + esc(x) + '</span>').join('');
+      card.innerHTML = '<div class="rm-title">' + esc(it.t) + '</div><div class="rm-meta">' + (it.b ? '<span class="tag tag-bug">Bug</span>' : '') + it.d.split('').map(x=>DEV[x]).join('') + clients + '</div>';
+      cols[it.s].list.appendChild(card);
+    });
+
+    const CUT = new Date(Date.now() - 30*24*3600*1000).toISOString().slice(0,10);
+    function refresh(){
+      const q = norm(document.getElementById('rm-filter').value.trim());
+      const kind = document.querySelector('#rm-kind button.active').dataset.k;
+      COLS.forEach(col=>{
+        const c = cols[col.k];
+        const cards = [...c.list.querySelectorAll('.rm-card')];
+        let shown = 0;
+        cards.forEach(cd=>{ const ok = (!q || cd.dataset.search.includes(q)) && (kind==='all' || cd.dataset.kind===kind) && (col.k!=='done' || !cd.dataset.dt || cd.dataset.dt >= CUT); cd.style.display = ok ? '' : 'none'; if(ok) shown++; });
+        c.list.querySelectorAll('.rm-empty, .rm-more').forEach(x=>x.remove());
+        if(!shown){
+          const e = document.createElement('div'); e.className = 'rm-empty';
+          e.textContent = (q ? 'Aucun résultat' : (col.k==='test' ? 'Rien en test pour le moment' : (col.k==='done' ? 'Aucune livraison sur les 30 derniers jours' : 'Aucune demande')));
+          c.list.appendChild(e);
+        }
+        if(col.k==='done'){
+          const m = document.createElement('div'); m.className = 'rm-more';
+          m.textContent = 'Évolutions et bugs terminés sur les 30 derniers jours (' + RM_COUNTS.done + ' évolutions livrées au total).';
+          c.list.appendChild(m);
+        }
+        c.count.textContent = shown;
+      });
+    }
+    document.getElementById('rm-filter').addEventListener('input', refresh);
+    document.getElementById('rm-kind').addEventListener('click', e=>{
+      const b = e.target.closest('button'); if(!b) return;
+      document.querySelectorAll('#rm-kind button').forEach(x=>x.classList.toggle('active', x===b));
+      refresh();
+    });
+    refresh();
   })();
 
   // ---------- tarifs : générateur de devis rapide ----------
@@ -3059,19 +3545,22 @@
     const overlay = document.getElementById('search-overlay');
     const input = document.getElementById('search-input');
     const results = document.getElementById('search-results');
-    const THEME_LABEL = {commercial:'Commercial', marketing:'Marketing', support:'Support', produit:'Produit', videos:'Vidéos démo', brochure:'Plaquette commerciale'};
+    const THEME_LABEL = {commercial:'Argumentaire', vente:'Démo & vente', marketing:'Marketing & CRM', support:'Support & remontées', produit:'Produit'};
     const THEME_SYNONYMS = {
-      commercial:'commercial vente vendre ventes commerciaux sales pitch',
+      commercial:'commercial argumentaire pitch positionnement concurrence retours clients sales',
+      vente:'vente vendre demo devis tarifs objections trame video videos loom plaquette brochure pdf telecharger langue langues francais anglais allemand espagnol',
       marketing:'marketing communication promotion marque branding',
       support:'support sav assistance aide help depannage bug bugs',
-      produit:'produit product fonctionnalite fonctionnalites features module modules',
-      videos:'video videos demo loom langue langues francais anglais allemand espagnol',
-      brochure:'plaquette brochure pdf commerciale telecharger langue langues francais anglais allemand espagnol'
+      produit:'produit product fonctionnalite fonctionnalites features module modules'
     };
     // mots-clés par onglet : la recherche remonte l'onglet et booste ses cartes même si le mot exact n'est pas dans le texte
     const TAB_KEYWORDS = {
       'c-pitch':'pitch valeur persona personas cible cibles argumentaire vendre profils pain point points douleur probleme problemes besoin besoins whatsapp excel traçabilite conformite iso',
       'c-formsvs':'forms klear kizeo forms complementaire complementarite doublon cannibalisation cross-sell crosssell surcouche',
+      'v-videos':'video videos demo loom langue langues francais anglais allemand espagnol envoyer client',
+      'v-brochure':'plaquette brochure pdf telecharger langue langues francais anglais allemand espagnol envoyer client',
+      'p-news':'nouveautes nouveaute video videos loom livre livres release derniere derniers',
+      'p-roadmap':'roadmap evolution evolutions demande demandes en cours attente test deploiement termine livre client notion backlog kanban',
       'c-karre':'karre karré klear fsm intervention interventions maintenance depannage tournees tournee chantier comparatif difference',
       'c-concu':'concurrence concurrent concurrents concurrentiel comparatif comparaison versus vs riposte battle fieldwire alobees praxedo kraaft synchroteam hero interfast',
       'c-obj':'objection objections repondre reponse crainte budget',
@@ -3149,6 +3638,8 @@
         if(btn) btn.click();
       }
       if(entry.type==='tab') return;
+      const hiddenWrap = entry.el.closest('[hidden]');
+      if(hiddenWrap){ hiddenWrap.hidden = false; if(window.__syncTrameBtn) window.__syncTrameBtn(); }
       if(entry.el.classList.contains('accordion-item')) entry.el.classList.add('open');
       setTimeout(()=>{
         entry.el.scrollIntoView({behavior:'smooth', block:'center'});
