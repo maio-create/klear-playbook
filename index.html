@@ -611,7 +611,7 @@
   .news-item{display:flex; align-items:center; gap:12px; padding:11px 0; border-bottom:1px dashed var(--line); flex-wrap:wrap;}
   .news-item:last-child{border-bottom:none;}
   .news-title{flex:1; min-width:240px; font-size:13.5px; color:var(--dark);}
-  .news-vid{font-family:'Lexend Deca',sans-serif; font-weight:700; font-size:12px; border:none; border-radius:99px; padding:6px 14px; cursor:pointer; background:var(--dark); color:#fff;}
+  .news-vid{font-family:'Lexend Deca',sans-serif; font-weight:700; font-size:12px; border:none; border-radius:99px; padding:6px 14px; cursor:pointer; background:var(--purple); color:#fff;}
   .news-vid.soon{background:var(--bg-soft); color:var(--ink-soft); cursor:default;}
   .news-embed{flex-basis:100%; position:relative; padding-top:56.25%; border-radius:12px; overflow:hidden; background:var(--dark);}
   .news-embed iframe{position:absolute; top:0; left:0; width:100%; height:100%; border:none;}
@@ -637,36 +637,77 @@
   .rm-chips{display:flex; gap:6px; margin-top:12px; flex-wrap:wrap;}
   .rm-chips button{font-family:'Lexend Deca',sans-serif; font-weight:700; font-size:12.5px; border:1px solid var(--line); background:var(--white); color:var(--dark); border-radius:99px; padding:6px 14px; cursor:pointer;}
   .rm-chips button.active{background:var(--yellow); border-color:var(--yellow);}
+  .uc-sec{margin:14px 0 4px; font-family:Verdana,sans-serif; font-size:12px; text-transform:uppercase; letter-spacing:0.05em; color:var(--yellow-ink);}
+  .uc-trig{display:flex; flex-direction:column; gap:2px; padding:10px 0; border-bottom:1px dashed var(--line);}
+  .uc-trig:last-child{border-bottom:none;}
+  .uc-trig b{font-size:13.5px; color:var(--dark);}
+  .uc-trig span{font-size:12.8px; color:var(--ink-soft); line-height:1.5;}
+  .uc-trig i{font-size:12.3px; color:var(--ink-soft);}
+  .uc-case-head{display:flex; align-items:center; gap:12px; margin-bottom:12px; flex-wrap:wrap;}
+  .uc-case-head .n{width:28px; height:28px; border-radius:9px; background:var(--yellow-tint); color:var(--yellow-ink); display:flex; align-items:center; justify-content:center; font-family:Verdana,sans-serif; font-weight:700; font-size:13px; flex-shrink:0;}
+  .uc-case-head h4{margin:0; flex:1; min-width:240px;}
+  .uc-tags{display:flex; gap:4px; flex-shrink:0;}
+  .uc-tags .tag{margin-right:0;}
+  .uc-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:16px;}
+  .uc-box h5{margin:0 0 4px; font-family:Verdana,sans-serif; font-size:11.5px; text-transform:uppercase; letter-spacing:0.05em; color:var(--ink-soft);}
+  .uc-box p{margin:0 0 12px; font-size:13px; line-height:1.55; color:var(--dark);}
+  .uc-box p:last-child{margin-bottom:0;}
+  .uc-box.klear{background:var(--yellow-tint); border-radius:12px; padding:13px 16px;}
+  .uc-box.klear h5{color:var(--yellow-ink);}
+  .uc-quote{margin-top:14px; font-size:12.5px; font-style:italic; color:var(--ink-soft); border-left:3px solid var(--yellow); padding-left:10px;}
+  .tag-smart{background:var(--teal-tint); color:var(--teal);}
+  .tag-biz{background:var(--purple-tint); color:var(--purple);}
   .rm-more a{color:var(--yellow-ink); font-weight:700;}
   .rm-empty{font-size:12.5px; color:var(--ink-soft); padding:14px 8px; text-align:center;}
   .rm-more{font-size:11.5px; color:var(--ink-soft); text-align:center; padding:6px 0 2px;}
 
-  /* ---- Arbre d'orientation Klear / Karré ---- */
-  .kw-wrap{display:flex; gap:26px; align-items:flex-start;}
-  .kw-root{flex-shrink:0; background:var(--dark); color:#fff; border-radius:16px; padding:16px 18px; width:190px; font-family:Verdana,sans-serif; font-weight:700; font-size:15px; line-height:1.35; position:sticky; top:12px;}
-  .kw-root small{display:block; font-family:'Lexend Deca',sans-serif; font-weight:400; font-size:11.5px; color:#cbd2dc; margin-top:6px;}
-  .kw-branches{flex:1; min-width:0; border-left:2px solid var(--line); padding-left:22px;}
-  .kw-branch{position:relative; padding:0 0 20px;}
-  .kw-branch::before{content:""; position:absolute; left:-22px; top:15px; width:18px; border-top:2px solid var(--line);}
-  .kw-branch h5{margin:0 0 8px; font-family:Verdana,sans-serif; font-size:13.5px; color:var(--dark);}
-  .kw-branch h5 span{display:inline-block; border-radius:8px; padding:3px 10px; margin-right:6px; font-size:12px;}
-  .kw-branch.is-klear h5 span{background:var(--yellow-tint); color:var(--yellow-ink);}
-  .kw-branch.is-karre h5 span{background:rgba(255,87,34,0.12); color:#FF5722;}
-  .kw-chips{display:flex; flex-wrap:wrap; gap:6px;}
-  .kw-chip{background:var(--white); border:1px solid var(--line); border-radius:99px; padding:4px 11px; font-size:12.5px; color:var(--dark);}
-  .kw-branch.is-klear .kw-chip{border-color:#F3D98B; background:#FFFBEF;}
-  .kw-branch.is-karre .kw-chip{border-color:#FFC9B8; background:#FFF6F2;}
-  @media(max-width:760px){ .kw-wrap{flex-direction:column;} .kw-root{width:auto; position:static;} .kw-branches{padding-left:14px;} .kw-branch::before{left:-14px; width:12px;} }
+
+  /* ---- Assistant Klear / Karré ---- */
+  .asst-row{display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:6px;}
+  .asst-reset{font-family:'Lexend Deca',sans-serif; font-size:12.5px; background:none; border:none; color:var(--ink-soft); text-decoration:underline; cursor:pointer;}
+  #asst-result{margin-top:14px;}
+  .asst-empty{padding:18px; border:1px dashed var(--line); border-radius:12px; color:var(--ink-soft); font-size:13px; text-align:center;}
+  .asst-words{font-size:12px; color:var(--ink-soft); margin-bottom:10px;}
+  .asst-chip{display:inline-block; background:var(--bg-soft); color:var(--dark); border-radius:6px; padding:2px 8px; margin:0 4px 4px 0; font-size:11.5px;}
+  .asst-mute{color:var(--ink-soft); font-weight:400;}
+  .asst-verdict{display:flex; align-items:center; gap:14px; flex-wrap:wrap; border-radius:14px; padding:14px 18px; margin-bottom:14px;}
+  .asst-verdict .asst-prod{font-family:Verdana,sans-serif; font-weight:700; font-size:22px; letter-spacing:0.02em;}
+  .asst-verdict .asst-prod span{font-size:13px; font-weight:400; opacity:0.8; margin:0 4px;}
+  .asst-verdict .asst-note{font-size:13px; font-weight:700;}
+  .asst-verdict.klear{background:var(--yellow); color:var(--dark);}
+  .asst-verdict.karre{background:#FF5722; color:#fff;}
+  .asst-verdict.both{background:var(--purple); color:#fff;}
+  .asst-verdict.none{background:var(--bg-soft); color:var(--dark);}
+  .asst-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; margin-bottom:14px;}
+  .asst-why h5, .asst-watch h5{margin:0 0 6px; font-family:Verdana,sans-serif; font-size:12px; text-transform:uppercase; letter-spacing:0.05em; color:var(--yellow-ink);}
+  .asst-why ul, .asst-plan ul, .asst-watch ul{margin:0 0 10px; padding-left:18px; font-size:13px; line-height:1.5;}
+  .asst-why li, .asst-plan li, .asst-watch li{margin-bottom:4px;}
+  .asst-word{display:inline-block; font-size:11px; color:var(--ink-soft); font-style:italic;}
+  .asst-plan{background:var(--white); border:1px solid var(--line); border-radius:14px; padding:14px 16px;}
+  .asst-plan-head{display:flex; align-items:center; gap:10px; margin-bottom:8px;}
+  .asst-plan-lbl{font-size:11.5px; text-transform:uppercase; letter-spacing:0.05em; color:var(--ink-soft); font-weight:700;}
+  .asst-badge{font-family:Verdana,sans-serif; font-weight:700; font-size:13px; border-radius:99px; padding:4px 14px;}
+  .asst-badge.smart{background:var(--teal-tint); color:var(--teal);}
+  .asst-badge.biz{background:var(--purple); color:#fff;}
+  .asst-sub{font-size:13px; margin:0 0 6px; line-height:1.5;}
+  .asst-watch{background:var(--yellow-tint); border-radius:12px; padding:12px 16px; margin-bottom:14px;}
+  .asst-watch p{margin:0; font-size:13px;}
+  .asst-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:4px;}
+  .asst-plans{margin-top:8px; font-size:12.5px;}
+  .asst-plans summary{cursor:pointer; font-weight:700; color:var(--purple);}
+  .asst-plans-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px; margin-top:8px;}
+  .asst-plans-grid ul{margin:4px 0 0; padding-left:16px;}
+  .asst-plans-grid li.hit{font-weight:700; color:var(--dark); background:var(--yellow-tint); border-radius:4px; list-style-position:inside; margin-left:-16px; padding:1px 4px;}
 
   .link-btn{
     display:inline-flex; align-items:center; gap:8px;
     font-family:'Lexend Deca',sans-serif; font-weight:700; font-size:13.5px;
-    background:var(--dark); color:#fff; border:none; border-radius:99px;
+    background:var(--yellow); color:var(--dark); border:none; border-radius:99px;
     padding:11px 20px; cursor:pointer; text-decoration:none;
-    box-shadow:0 4px 12px rgba(31,41,55,0.18); transition:transform .12s ease, box-shadow .12s ease;
+    box-shadow:0 4px 12px rgba(255,179,0,0.28); transition:transform .12s ease, box-shadow .12s ease;
   }
-  .link-btn:hover{transform:translateY(-1px); box-shadow:0 6px 16px rgba(31,41,55,0.24);}
-  .link-btn.purple{background:var(--purple); box-shadow:0 4px 12px rgba(95,39,205,0.22);}
+  .link-btn:hover{transform:translateY(-1px); box-shadow:0 6px 16px rgba(255,179,0,0.38);}
+  .link-btn.purple{background:var(--purple); color:#fff; box-shadow:0 4px 12px rgba(95,39,205,0.22);}
   .link-btn.purple:hover{box-shadow:0 6px 16px rgba(95,39,205,0.3);}
   .link-btn .pico{width:16px; height:16px; stroke:currentColor; fill:none; flex-shrink:0;}
 
@@ -723,7 +764,7 @@
     body *{visibility:hidden;}
     #quote-preview, #quote-preview *{visibility:visible;}
     #quote-preview{position:absolute; top:0; left:0; width:100%; box-shadow:none; border:none;}
-    #q-print, .mainnav, .topbar-tools, .subtabs, #quote-generator-card .sim-controls, #q-generate{display:none !important;}
+    #q-print, .mainnav, .topbar-tools, .subtabs, #quote-generator-card .sim-controls{display:none !important;}
   }
   .sim-checkbox input{width:17px; height:17px; accent-color:var(--yellow-ink); cursor:pointer; margin-top:1px; flex-shrink:0;}
 
@@ -984,6 +1025,7 @@
     <button data-sub="c-karre" data-i18n="tab.c-karre">Klear vs Karré</button>
     <button data-sub="c-concu" data-i18n="tab.c-concu">Analyse concurrentielle</button>
     <button data-sub="c-retours" data-i18n="tab.c-retours">Retours clients</button>
+    <button data-sub="c-cas" data-i18n="tab.c-cas">Cas d'usage</button>
   </div>
 
   <!-- PITCH -->
@@ -1150,6 +1192,15 @@
       </div>
     </div>
 
+    <div class="card" id="asst-card">
+      <h4>Quel outil et quel plan ?</h4>
+      <p>Écris le besoin du prospect avec ses mots : l'assistant propose Klear ou Karré, explique pourquoi, et conseille Smart ou Business.</p>
+      <textarea id="asst-text" class="q-input" rows="3" placeholder="Ex. PME de chauffage-climatisation, 8 techniciens qui enchaînent des interventions de maintenance chez des clients, besoin d'optimiser les tournées" style="resize:vertical;"></textarea>
+      <div class="asst-row"><button class="link-btn purple" id="asst-go" type="button">Trouver le bon outil</button><button class="asst-reset" id="asst-reset" type="button">Effacer</button></div>
+      <div id="asst-result"></div>
+    </div>
+
+
     <div class="card">
       <h4>En un coup d'œil</h4>
       <table class="cmp">
@@ -1191,19 +1242,7 @@
       </ul>
       <p class="icon-line" style="margin-top:14px; align-items:flex-start;"><svg class="pico" style="margin-top:3px; flex-shrink:0;"><use href="#i-bulb"/></svg><span>Le repère à retenir : <b>Klear coordonne un chantier</b>, <b>Karré organise des interventions</b>. Si le prospect parle de tournées et de dépannage, c'est Karré ; s'il parle d'équipes posées sur un chantier, c'est Klear.</span></p>
     </div>
-
-    <div class="card">
-      <h4>Au téléphone : Klear ou Karré ?</h4>
-      <p>Écoute les mots du prospect. Repère les mots du prospect : ils t'indiquent la branche, donc le produit.</p>
-      <div class="kw-wrap">
-        <div class="kw-root">Le prospect parle de…<small>Repère-le à ses mots, pas à son métier.</small></div>
-        <div class="kw-branches">
-          <div class="kw-branch is-klear"><h5><span>KLEAR</span>Il parle de chantier</h5><div class="kw-chips"><span class="kw-chip">Chantier</span><span class="kw-chip">Conducteur de travaux</span><span class="kw-chip">Chef de chantier</span><span class="kw-chip">Plusieurs corps de métier</span><span class="kw-chip">Lots</span><span class="kw-chip">Sous-traitants</span><span class="kw-chip">Pointage</span><span class="kw-chip">Feuilles d'heures</span><span class="kw-chip">Paie / export compta</span><span class="kw-chip">Heures de nuit, panier repas</span><span class="kw-chip">WhatsApp de chantier</span><span class="kw-chip">Photos et documents de chantier</span><span class="kw-chip">Plans, PPSPS</span><span class="kw-chip">Gantt / rétro-planning</span><span class="kw-chip">Matériel et engins sur le chantier</span><span class="kw-chip">Plusieurs semaines ou mois</span><span class="kw-chip">Non-conformités, anomalies</span><span class="kw-chip">Second œuvre, BTP</span></div></div>
-          <div class="kw-branch is-karre"><h5><span>KARRÉ</span>Il parle d'interventions et de tournées</h5><div class="kw-chips"><span class="kw-chip">Tournée</span><span class="kw-chip">Intervention</span><span class="kw-chip">Dépannage</span><span class="kw-chip">Maintenance</span><span class="kw-chip">Visite trimestrielle / récurrente</span><span class="kw-chip">Enchaîner les clients dans la journée</span><span class="kw-chip">Carnet de liaison</span><span class="kw-chip">Historique par site ou par client</span><span class="kw-chip">Demande d'intervention d'un client</span><span class="kw-chip">Techniciens de SAV</span><span class="kw-chip">Sites à visiter</span><span class="kw-chip">Optimiser les trajets</span><span class="kw-chip">Statuts : à planifier, en cours, terminée</span><span class="kw-chip">Ticket / ITSM à relier</span><span class="kw-chip">FSM, « sans usine à gaz »</span></div></div>
-        </div>
-      </div>
-    </div>
-    <footer class="src">Sources : page publique Karré by Kizeo (karre-by-kizeo.com, consultée le 26/10/2026) + contenu Klear du playbook (plaquette, onglets Produit et Tarifs) ; vocabulaire de l'arbre relevé dans les démos Claap (Ille-et-Vilaine, Kleva, Cs2e / Suez, Getraline, Alva Energies, Elitel). Base Karré encore mince : une seule démo enregistrée. À recouper si un prospect insiste sur un point précis</footer>
+<footer class="src">Sources : plans Klear (onglet Tarifs), page publique Karré by Kizeo (karre-by-kizeo.com, consultée le 26/10/2026) + contenu Klear du playbook (plaquette, onglets Produit et Tarifs) ; mots-clés de l'assistant relevés dans les démos Claap (Ille-et-Vilaine, Kleva, Cs2e / Suez, Getraline, Alva Energies, Elitel). Base Karré encore mince : une seule démo enregistrée. À recouper si un prospect insiste sur un point précis</footer>
   </div>
 
   <!-- CONCURRENCE -->
@@ -1440,6 +1479,115 @@
     </div>
     <footer class="src">Sources : Claap (Cec-railway, GCF-France, Formation KLEAR, FTTH Les Courants Faibles 27/07/2026, HPBTP 11/08/2026) + Drive « KONSULTING &gt; Transcripts » (lhotellier_2026-05-18, exedra_2026-05-11)</footer>
   </div>
+
+  <div class="subview" id="c-cas">
+    <div class="card">
+      <h4>Pourquoi ils viennent chez nous, et ce qu'ils cherchent</h4>
+      <p>Les grands scénarios entendus en démo, en visio et par mail auprès de clients et de prospects. Pour chacun : la situation de départ, ce que le client veut obtenir, et ce que Klear répond. Quand un prospect décrit sa situation, retrouve le scénario le plus proche.</p>
+      <div class="uc-trigs">
+        <h5 class="uc-sec">Ce qui les fait venir</h5>
+        <div class="uc-trig"><b>Excel, papier et WhatsApp ne suffisent plus</b><span>L'entreprise a grandi : l'organisation de départ ne tient plus.</span><i>« On était trois, maintenant on est neuf. »</i></div>
+        <div class="uc-trig"><b>Ils utilisent déjà Kizeo Forms et veulent aller plus loin</b><span>Ils connaissent la marque et attendent la suite : planning, chantier, pointage.</span><i>« Avec Kizeo, on pourrait vraiment aller très loin. »</i></div>
+        <div class="uc-trig"><b>Ils ont cherché ailleurs sans trouver</b><span>Les outils du marché sont trop lourds, trop longs à mettre en place ou ne font qu'une partie du besoin.</span><i>« On en a cherché pas mal. Ça prend plusieurs mois. »</i></div>
+        <div class="uc-trig"><b>Ils veulent un outil que le terrain utilisera vraiment</b><span>Simple, sur mobile, sans formation lourde, plus accessible qu'un SharePoint ou un Drive.</span><i>« Plus simple d'accès qu'un SharePoint ou un Google Drive. »</i></div>
+        <div class="uc-trig"><b>Un déclencheur précis : la paie, un contrôle, un litige, la qualité</b><span>Heures à fiabiliser, anomalies à justifier, preuve à fournir à un client ou à un juriste.</span><i>« Il faut pouvoir justifier quand on a planifié. »</i></div>
+      </div>
+    </div>
+
+    <div class="card uc-case">
+      <div class="uc-case-head"><span class="n">1</span><h4>Sortir d'Excel et du papier pour organiser les équipes</h4><span class="uc-tags"><span class="tag tag-smart">Smart</span></span></div>
+      <div class="uc-grid">
+        <div class="uc-box"><h5>Pourquoi ils viennent</h5><p>Le planning vit dans un fichier Excel ou sur papier. Chacun a sa version et les changements de dernière minute se perdent.</p><h5>Ce qu'ils cherchent</h5><p>Un planning visuel que tout le monde voit. Prévenir les équipes sans les appeler. Savoir qui est où et qui est disponible.</p></div>
+        <div class="uc-box klear"><h5>Ce que Klear répond</h5><p>Planning en clic-glisser, par chantier ou global. Notification automatique sur le téléphone à chaque changement. Absences visibles et équipes colorées.</p></div>
+      </div>
+      <div class="uc-quote">« Aujourd'hui, on gère sur un planning Excel. »</div>
+    </div>
+
+    <div class="card uc-case">
+      <div class="uc-case-head"><span class="n">2</span><h4>Remplacer WhatsApp, les mails et les appels par un seul outil</h4><span class="uc-tags"><span class="tag tag-smart">Smart</span></span></div>
+      <div class="uc-grid">
+        <div class="uc-box"><h5>Pourquoi ils viennent</h5><p>L'information circule dans les mails, les SMS et les groupes WhatsApp. Elle se perd, les clients rappellent, les outils ne se parlent pas.</p><h5>Ce qu'ils cherchent</h5><p>Un endroit unique pour discuter, planifier et retrouver les documents. Que tout le monde ait le même niveau d'information.</p></div>
+        <div class="uc-box klear"><h5>Ce que Klear répond</h5><p>Chat par chantier et groupes de discussion, planning, base documentaire et notifications dans la même application, sur mobile et ordinateur.</p><h5>À savoir</h5><p>Les appels audio et vidéo sont en Business.</p></div>
+      </div>
+      <div class="uc-quote">« On se noie dans les mails. »</div>
+    </div>
+
+    <div class="card uc-case">
+      <div class="uc-case-head"><span class="n">3</span><h4>Fiabiliser les heures et préparer la paie</h4><span class="uc-tags"><span class="tag tag-biz">Business</span></span></div>
+      <div class="uc-grid">
+        <div class="uc-box"><h5>Pourquoi ils viennent</h5><p>Les heures sont déclarées sur papier, sur Excel ou par formulaires, retraitées à la main, puis ressaisies dans le logiciel de paie. Erreurs, pauses oubliées, écarts entre heures facturées et heures de présence.</p><h5>Ce qu'ils cherchent</h5><p>Une saisie simple sur mobile. Une validation par le manager. Un export prêt pour la paie, avec jour, nuit, week-end, férié et paniers.</p></div>
+        <div class="uc-box klear"><h5>Ce que Klear répond</h5><p>Feuilles d'heures sur mobile avec pause pré-remplie, validation jour par jour avec signature possible, reporting ventilé et export Excel mensuel.</p><h5>À savoir</h5><p>Seuil d'heures sup hebdomadaire et identique pour tous. Forfait jour et astreintes en prime : à cadrer, sans rien promettre en séance. Pas de connecteur natif vers la paie.</p></div>
+      </div>
+      <div class="uc-quote">« Ils oublient de décompter le temps de pause. »</div>
+    </div>
+
+    <div class="card uc-case">
+      <div class="uc-case-head"><span class="n">4</span><h4>Remplacer le papier terrain et les rapports du soir</h4><span class="uc-tags"><span class="tag tag-smart">Smart</span><span class="tag tag-biz">Business</span></span></div>
+      <div class="uc-grid">
+        <div class="uc-box"><h5>Pourquoi ils viennent</h5><p>Les chefs d'équipe remplissent leurs fiches en fin de journée au dépôt, souvent à la va-vite. Sans photos ni remontée d'incidents, le conducteur de travaux travaille à l'aveugle.</p><h5>Ce qu'ils cherchent</h5><p>Faire remonter l'information depuis le chantier, en temps réel. Descendre des documents à jour aux équipes. Garder des preuves : photos, signatures.</p></div>
+        <div class="uc-box klear"><h5>Ce que Klear répond</h5><p>Application mobile avec le dossier du chantier, photos, documents, formulaires Kizeo Forms et signature. Plus simple à utiliser qu'un SharePoint ou un Drive.</p><h5>À savoir</h5><p>Les modèles de dossiers réutilisables et les feuilles d'heures sont en Business.</p></div>
+      </div>
+      <div class="uc-quote">« On est encore tous sur papier. »</div>
+    </div>
+
+    <div class="card uc-case">
+      <div class="uc-case-head"><span class="n">5</span><h4>Suivre les non-conformités et prouver qu'elles sont traitées</h4><span class="uc-tags"><span class="tag tag-biz">Business</span></span></div>
+      <div class="uc-grid">
+        <div class="uc-box"><h5>Pourquoi ils viennent</h5><p>On repère des anomalies, des réserves, des écarts de sécurité, mais on ne suit pas les actions menées ni qui les a résolues.</p><h5>Ce qu'ils cherchent</h5><p>Répertorier, assigner, relancer. Justifier auprès du client, preuves à l'appui.</p></div>
+        <div class="uc-box klear"><h5>Ce que Klear répond</h5><p>Module Suivi : ticket avec priorité, gravité, responsable et échéance, actions assignées, photos et documents, vue Kanban ou liste. Une action peut être un formulaire Kizeo Forms, cochée automatiquement une fois rempli.</p><h5>À savoir</h5><p>Le suivi existe aussi hors chantier (campagnes, maintenance). Les relances automatiques sur tickets en retard sont demandées.</p></div>
+      </div>
+      <div class="uc-quote">« On n'arrive pas à suivre les actions qui sont menées. »</div>
+    </div>
+
+    <div class="card uc-case">
+      <div class="uc-case-head"><span class="n">6</span><h4>Coordonner plusieurs métiers, des sous-traitants et des intérimaires</h4><span class="uc-tags"><span class="tag tag-biz">Business</span></span></div>
+      <div class="uc-grid">
+        <div class="uc-box"><h5>Pourquoi ils viennent</h5><p>Plusieurs corps de métier et des entreprises extérieures interviennent sur le même chantier. L'information et les droits sont difficiles à partager sans tout ouvrir.</p><h5>Ce qu'ils cherchent</h5><p>Associer internes et externes au même chantier, chacun ne voyant que son périmètre. Planifier les lots. Identifier des intérimaires sans leur donner de licence.</p></div>
+        <div class="uc-box klear"><h5>Ce que Klear répond</h5><p>Lots et corps de métier avec frise Gantt, sous-traitants avec licence light gratuite (planning, chat, documents du chantier), utilisateurs sans compte gratuits, droits par rôle et par dossier.</p><h5>À savoir</h5><p>Le Gantt est une frise visuelle, pas un ordonnancement à chemin critique. Demander un créneau à un sous-traitant qui accepte ou refuse : demandé, pas encore disponible.</p></div>
+      </div>
+      <div class="uc-quote">« En externe, ce sont les entreprises intervenantes sur nos chantiers. »</div>
+    </div>
+
+    <div class="card uc-case">
+      <div class="uc-case-head"><span class="n">7</span><h4>Gérer au même endroit de longs chantiers et de petites interventions</h4><span class="uc-tags"></span></div>
+      <div class="uc-grid">
+        <div class="uc-box"><h5>Pourquoi ils viennent</h5><p>Une même entreprise enchaîne des chantiers de plusieurs mois et des interventions de quelques heures, et veut développer la maintenance.</p><h5>Ce qu'ils cherchent</h5><p>Un seul outil pour les deux. Planifier équipes et véhicules. Suivre des campagnes ou des tournées de maintenance.</p></div>
+        <div class="uc-box klear"><h5>Ce que Klear répond</h5><p>Très à l'aise sur le chantier dans la durée : équipes, matériel, documents, suivi. Pour les petites interventions en volume, un volet intervention est à l'étude.</p><h5>À savoir</h5><p>Pour des tournées de maintenance ou du dépannage en volume, voir l'onglet « Klear vs Karré ».</p></div>
+      </div>
+      <div class="uc-quote">« Des chantiers de six mois et des chantiers de deux heures. »</div>
+    </div>
+
+    <div class="card uc-case">
+      <div class="uc-case-head"><span class="n">8</span><h4>Relier Klear à Kizeo Forms et au reste du système d'information</h4><span class="uc-tags"><span class="tag tag-smart">Smart</span><span class="tag tag-biz">Business</span></span></div>
+      <div class="uc-grid">
+        <div class="uc-box"><h5>Pourquoi ils viennent</h5><p>Ils ont déjà Kizeo Forms, un CRM, un ERP, un logiciel de paie ou un outil RH. Les logiciels ne se parlent pas et tout est mis à jour à la main.</p><h5>Ce qu'ils cherchent</h5><p>Ne plus ressaisir. Ouvrir leurs formulaires depuis le chantier. Créer un chantier à partir d'un devis gagné. Remonter l'état : terminé, facturé.</p></div>
+        <div class="uc-box klear"><h5>Ce que Klear répond</h5><p>Formulaires Kizeo Forms depuis le chantier et dans le suivi, API ouvertes, import et export Excel, automatisations avec Make.</p><h5>À savoir</h5><p>Pas de connecteur natif vers un ERP, la paie ou un outil RH : export, API ou Make, à cadrer au cas par cas. Une option masque la demande d'absence si les congés restent dans un autre outil.</p></div>
+      </div>
+      <div class="uc-quote">« Nos logiciels ne communiquent pas. »</div>
+    </div>
+
+    <div class="card uc-case">
+      <div class="uc-case-head"><span class="n">9</span><h4>Piloter plusieurs équipes, sites ou sociétés aux règles différentes</h4><span class="uc-tags"><span class="tag tag-biz">Business</span></span></div>
+      <div class="uc-grid">
+        <div class="uc-box"><h5>Pourquoi ils viennent</h5><p>Un groupe ou une entreprise multi-sites a des managers, des régimes horaires et des périmètres différents. Il faut une hiérarchie de validation sans tout donner à un administrateur.</p><h5>Ce qu'ils cherchent</h5><p>Des rôles et des droits adaptés. Une validation par le bon manager. Une vue par entité. Des règles d'heures propres à chaque filiale.</p></div>
+        <div class="uc-box klear"><h5>Ce que Klear répond</h5><p>Rôles personnalisables, agences multiples (Business) ou un compte par entité, validation par le responsable, droits de vue par dossier.</p><h5>À savoir</h5><p>Un seul manager par agent aujourd'hui, et un seuil d'heures sup identique pour tous. Pour un grand compte, qualifier la sécurité et l'hébergement avant le fonctionnel.</p></div>
+      </div>
+      <div class="uc-quote">« On a des régimes horaires différents selon nos filiales. »</div>
+    </div>
+
+    <div class="card uc-case">
+      <div class="uc-case-head"><span class="n">10</span><h4>Garder des preuves et de la traçabilité face au client ou au juridique</h4><span class="uc-tags"><span class="tag tag-biz">Business</span></span></div>
+      <div class="uc-grid">
+        <div class="uc-box"><h5>Pourquoi ils viennent</h5><p>Il faut pouvoir justifier ce qui a été planifié, fait et validé, face à un client, à un contrôle ou à un avocat.</p><h5>Ce qu'ils cherchent</h5><p>Un historique des plannings et des validations. Des signatures. Des preuves en photo. Un accès du client à ses rapports.</p></div>
+        <div class="uc-box klear"><h5>Ce que Klear répond</h5><p>Heures avec signature et validation tracée au journal d'audit, tickets de suivi avec preuves, documents et photos rattachés au chantier.</p><h5>À savoir</h5><p>Pas d'historique daté de l'envoi des plannings ni d'espace client aujourd'hui : les deux sont à l'étude.</p></div>
+      </div>
+      <div class="uc-quote">« Sinon, l'avocat adverse va se jeter dessus. »</div>
+    </div>
+
+    <footer class="src">Source : démos, points et formations avec des clients et des prospects enregistrés dans Claap (mars à octobre 2026), mails et messages de support. Cas anonymisés, citations raccourcies. Plans d'après l'onglet Tarifs.</footer>
+  </div>
+
+
 
   <!-- TARIFS -->
   
@@ -1770,8 +1918,6 @@
           </div>
         </div>
       </div>
-
-      <button class="link-btn purple" id="q-generate" style="margin-top:6px;">Générer le devis →</button>
 
       <div id="quote-preview-wrap" hidden>
         <div id="quote-preview"></div>
@@ -2304,6 +2450,7 @@
 
     "tab.c-pitch": {fr:"Pitch & valeur", en:"Pitch & value", es:"Pitch y valor", de:"Pitch & Nutzen"},
     "tab.c-formsvs": {fr:"Forms vs Klear", en:"Forms vs Klear", es:"Forms vs Klear", de:"Forms vs Klear"},
+    "tab.c-cas": {fr:"Cas d'usage", en:"Use cases", es:"Casos de uso", de:"Anwendungsfälle"},
     "tab.c-karre": {fr:"Klear vs Karré", en:"Klear vs Karré", es:"Klear vs Karré", de:"Klear vs Karré"},
     "tab.c-concu": {fr:"Analyse concurrentielle", en:"Competitive analysis", es:"Análisis competitivo", de:"Wettbewerbsanalyse"},
     "tab.c-obj": {fr:"Objections", en:"Objections", es:"Objeciones", de:"Einwände"},
@@ -2900,7 +3047,7 @@
 
   // ---------- progression ----------
   const THEME_SECTIONS = {
-    commercial:['c-pitch','c-formsvs','c-karre','c-concu','c-retours'],
+    commercial:['c-pitch','c-formsvs','c-karre','c-concu','c-retours','c-cas'],
     vente:['c-demo','c-obj','c-tarifs','v-videos','v-brochure'],
     marketing:['m-persona','m-charte','m-outils','m-suivi','c-hubspot'],
     support:['s-bugs','s-superadmin','s-kb'],
@@ -3294,10 +3441,214 @@
     refresh();
   })();
 
+  // ---------- assistant : quel outil (Klear / Karré) et quel plan (Smart / Business) ----------
+  (function(){
+    const root = document.getElementById('asst-result');
+    if(!root) return;
+    const txt = document.getElementById('asst-text');
+
+    // Contenu des plans (Klear : onglet Tarifs ; Karré : page publique)
+    const PLANS = {
+      k: {name:'Klear',
+        smart:['Chantiers (création, suivi, documents)','Planning des équipes','Messagerie de chantier','Gestion documentaire','Absences','Clients finaux','Utilisateurs & rôles','Tableau de bord & rapports','Notifications','Application mobile','Jours fériés'],
+        biz:['Feuilles d\'heures & pointage','Suivis (non-conformités & tickets)','Appels vocaux & vidéo','Lots & corps de métier','Planning matériel & sous-traitants','Modèles de documents','Licences sous-traitants illimitées et gratuites','Agences multiples']},
+      r: {name:'Karré',
+        smart:['Gestion des interventions illimitée','Types d\'intervention','Interventions géolocalisées','Suggestions de créneaux','Kanban des interventions','Planning','Chat','Documents & photos','App mobile','Indisponibilités','Clients finaux'],
+        biz:['Carte des interventions','Optimisation automatique du planning','Page de demande d\'intervention pour les clients','Agences multiples','Suivis (non-conformités / tickets)','Appels vocaux / vidéo']}
+    };
+
+    // Signaux : re = mots du prospect (texte sans accents) ; w = poids vers Klear (k) / Karré (r) ;
+    // plan = plan requis par produit ; feat = fonction correspondante dans la liste du plan ;
+    // why = pourquoi ce produit ; gap = ce que l'autre produit ne couvre pas
+    const SIG = [
+      {id:'chantier', label:'Chantier', re:/chantiers?|\bbtp\b|batiment|travaux|gros oeuvre|second oeuvre|renovation|construction|maitrise d.?oeuvre/, w:{k:3,r:0},
+        why:{k:'Il parle de chantier : Klear est fait pour coordonner des équipes sur un chantier, dans la durée.'}, gap:{r:'Karré organise des interventions, pas des chantiers.'}},
+      {id:'lots', label:'Plusieurs corps de métier / lots', re:/gantt|retro-?planning|phasage|\blots?\b|corps de metiers?|plusieurs metiers|coordonner|coordination|plusieurs intervenants/, w:{k:2,r:0},
+        plan:{k:'biz'}, feat:{k:'Lots & corps de métier'},
+        why:{k:'Plusieurs lots ou corps de métier à coordonner : lots, corps de métier et frise Gantt de Klear (Business).'}, gap:{r:'Pas de lots ni de Gantt dans Karré.'}},
+      {id:'sstraitants', label:'Sous-traitants', re:/sous-?traitan\w*|prestataires?|interimaires?|co-?traitan\w*/, w:{k:2,r:0},
+        plan:{k:'biz'}, feat:{k:'Planning matériel & sous-traitants'},
+        why:{k:'Des sous-traitants à intégrer : planning matériel et sous-traitants, avec des licences sous-traitants gratuites et illimitées (Business).'}, gap:{r:'Karré ne gère pas les sous-traitants.'}},
+      {id:'heures', label:'Feuilles d\'heures / paie', re:/pointage|feuilles? d.?heures?|heures? (supp\w*|de nuit|travaillees)|paie\b|payes?\b|variables? de paie|panier|forfait jour|temps de travail|badg\w+/, w:{k:3,r:0},
+        plan:{k:'biz'}, feat:{k:'Feuilles d\'heures & pointage'},
+        why:{k:'Suivi des heures : feuilles d\'heures et pointage, validation par le N+1, export pour la paie (Business).'}, gap:{r:'Karré ne propose pas de feuilles d\'heures.'}},
+      {id:'materiel', label:'Matériel et engins', re:/materiel|engins?|nacelles?|echafaudages?|equipements?|outillage|grues?/, w:{k:1,r:0},
+        plan:{k:'biz'}, feat:{k:'Planning matériel & sous-traitants'},
+        why:{k:'Du matériel à planifier avec les équipes : planning matériel (Business).'}, gap:{r:'Pas encore d\'objet équipements dans Karré.'}},
+      {id:'modeles', label:'Modèles de documents', re:/modeles? de (documents?|dossiers?)|templates?|arborescence modele/, w:{k:1,r:0},
+        plan:{k:'biz'}, feat:{k:'Modèles de documents'},
+        why:{k:'Des modèles de documents et d\'arborescence réutilisables : modèles de documents (Business).'}, gap:{r:'Pas de modèles de documents dans Karré.'}},
+
+      {id:'tournees', label:'Tournées de techniciens', re:/tournees?/, w:{k:0,r:3},
+        why:{r:'Il parle de tournées : c\'est le cœur de Karré, des techniciens qui enchaînent les interventions chez des clients.'}, gap:{k:'Klear n\'est pas conçu pour les tournées.'}},
+      {id:'optim', label:'Optimiser les trajets', re:/optimis\w*|trajets?|itineraires?|kilometr\w*|temps de route/, w:{k:0,r:2},
+        plan:{r:'biz'}, feat:{r:'Optimisation automatique du planning'},
+        why:{r:'Réduire les trajets : optimisation automatique des tournées, jusqu\'à 40 % de trajet en moins (Business).'}, gap:{k:'Pas d\'optimisation de tournées dans Klear.'}},
+      {id:'interv', label:'Dépannage / maintenance', re:/interventions?|depannages?|maintenance|\bsav\b|apres-?vente|visites? (periodiques?|trimestrielles?|annuelles?|mensuelles?)|contrats? d.?entretien|\bcvc\b|plomberie|climatisation|ascenseurs?/, w:{k:0,r:3},
+        why:{r:'Interventions de dépannage ou de maintenance : Karré les suit par statut (à planifier, en cours, terminées), avec le planning des techniciens.'}, gap:{k:'Klear suit des chantiers, pas des interventions ponctuelles en volume.'}},
+      {id:'recur', label:'Visites récurrentes', re:/recurren\w*|periodiques?|tous les (mois|trimestres|ans|jeudis|lundis)|trimestriel\w*|mensuel\w*/, w:{k:0,r:2},
+        why:{r:'Des visites récurrentes (mensuelles, trimestrielles) : la planification de tournées répétées est le terrain de Karré.'}},
+      {id:'enchaine', label:'Enchaîner les clients', re:/enchain\w*|plusieurs interventions (par|dans la) (jour|journee)|chez (des|ses|leurs|les) clients/, w:{k:0,r:2},
+        why:{r:'Des techniciens qui enchaînent les clients dans la journée : le profil type de Karré.'}},
+      {id:'technicien', label:'Techniciens', re:/techniciens?|depanneurs?/, w:{k:0,r:1},
+        why:{r:'Des techniciens mobiles : planning et app mobile pensés pour les déplacements.'}},
+      {id:'demandeclient', label:'Demande d\'intervention par les clients', re:/demandes? d.?interventions?|portail client|clients? (peuvent|doivent|demandent|appellent)|formulaire de demande|page de demande|declarer (une )?(panne|intervention)/, w:{k:0,r:2},
+        plan:{r:'biz'}, feat:{r:'Page de demande d\'intervention pour les clients'},
+        why:{r:'Ses clients doivent pouvoir demander une intervention : page de demande d\'intervention (Business).'}, gap:{k:'Pas de page de demande d\'intervention client dans Klear.'}},
+      {id:'carte', label:'Carte des interventions', re:/\bcarte\b|geolocalis\w*|cartograph\w*|\bmap\b/, w:{k:0,r:1},
+        plan:{r:'biz'}, feat:{r:'Carte des interventions'},
+        why:{r:'Voir les interventions sur une carte : carte des interventions (Business).'}},
+      {id:'historique', label:'Historique par site ou client', re:/historique (par|du|de) (site|client)|carnet de liaison|carnet d.?entretien|fiche (site|client)|parc (de )?(machines|equipements)/, w:{k:0,r:1},
+        why:{r:'Un historique par site ou par client : fiche client et suivi des interventions.'}},
+
+      {id:'suivis', label:'Non-conformités / tickets', re:/non-?conformit\w*|anomalies?|qhse|reserves?\b|tickets?|actions? correctives?|incidents?/, w:{k:0,r:0},
+        plan:{k:'biz', r:'biz'}, feat:{k:'Suivis (non-conformités & tickets)', r:'Suivis (non-conformités / tickets)'},
+        why:{k:'Suivi des anomalies et non-conformités : module Suivis (Business).', r:'Suivi des anomalies et non-conformités : module Suivis (Business).'}},
+      {id:'visio', label:'Appels audio/vidéo', re:/appels? (audio|video|visio|vocaux?)|visio\w*/, w:{k:0,r:0},
+        plan:{k:'biz', r:'biz'}, feat:{k:'Appels vocaux & vidéo', r:'Appels vocaux / vidéo'},
+        why:{k:'Appels audio et vidéo intégrés (Business).', r:'Appels audio et vidéo intégrés (Business).'}},
+      {id:'agences', label:'Plusieurs agences', re:/multi-?agences?|plusieurs agences|agences?\b|filiales?|plusieurs entites/, w:{k:0,r:0},
+        plan:{k:'biz', r:'biz'}, feat:{k:'Agences multiples', r:'Agences multiples'},
+        why:{k:'Plusieurs agences : agences multiples (Business).', r:'Plusieurs agences : agences multiples (Business).'}},
+
+      // inclus dans Smart (sert à expliquer qu'un besoin tient dans Smart)
+      {id:'s_planning', label:'Planning, absences', re:/planning|planifier|affecter|calendrier|agenda|disponibilites?|absences?|conges/, w:{k:0,r:0}, smart:'Planning drag & drop et absences', feat:{k:'Planning des équipes', r:'Planning'}},
+      {id:'s_chat', label:'Messagerie', re:/whatsapp|\bsms\b|messagerie|\bchat\b/, w:{k:0,r:0}, smart:'Messagerie intégrée (fini WhatsApp et SMS)', feat:{k:'Messagerie de chantier', r:'Chat'}},
+      {id:'s_docs', label:'Documents et photos', re:/documents?|photos?|\bplans?\b|dossiers?|\bpdf\b/, w:{k:0,r:0}, smart:'Documents et photos', feat:{k:'Gestion documentaire', r:'Documents & photos'}},
+      {id:'s_mobile', label:'Appli mobile', re:/mobile|appli(cation)?|terrain|hors-?ligne/, w:{k:0,r:0}, smart:'Application mobile', feat:{k:'Application mobile', r:'App mobile'}}
+    ];
+    const BYID = {}; SIG.forEach(s=>BYID[s.id]=s);
+
+    // Points de vigilance (à annoncer honnêtement)
+    const WATCH = [
+      {re:/cycle|astreintes?|annualis\w*|majorations?|seuil/, t:'Règles d\'heures spécifiques : le seuil d\'heures sup est hebdomadaire et identique pour tous en natif. Pour les règles propres au client, on passe par un formulaire Kizeo Forms.', only:'k'},
+      {re:/forfait jour|218 jours|cadres? au forfait/, t:'Forfait jour pur : à cadrer, ne rien promettre en séance.', only:'k'},
+      {re:/\blou\w+|location|quantites?/, t:'Matériel loué suivi par quantité : Klear gère un parc d\'engins propres, pas une location fluctuante. Noter, ne pas improviser.', only:'k', need:'materiel'},
+      {re:/chemin critique|workflow|bloquant|ordonnancement|ms project/, t:'Le Gantt de Klear est une frise visuelle, pas un ordonnancement à chemin critique.', only:'k'},
+      {re:/\bbi\b|power ?bi|analytique|reporting (pousse\w*|avance\w*)|statistiques? (pousse\w*|avance\w*)/, t:'Reporting opérationnel simple : pour de l\'analytique fin, on branche la BI du client via les API ouvertes.'},
+      {re:/sharepoint|\bdsi\b|securite|hebergement|rgpd|\bsso\b|double facteur|\b2fa\b|grands? comptes?|grands? groupes?/, t:'Grand compte : qualifie la sécurité et la cohabitation documentaire avant le fonctionnel, et prépare un document écrit pour son relais. SSO et double authentification : demandés, pas disponibles à ce jour (voir la Roadmap).'}
+    ];
+
+    const norm = s => (s||'').toLowerCase().replace(/[’`]/g,"'").normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+    const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    const checked = () => [...document.querySelectorAll('#asst-needs input:checked')].map(i=>i.value);
+
+    function analyse(){
+      const raw = txt.value;
+      const text = norm(raw);
+      const sameLen = text.length === raw.length;
+      const boxes = checked();
+      const hits = [];
+      SIG.forEach(s=>{
+        const m = text.match(s.re);
+        if(m) hits.push({s, word: sameLen ? raw.slice(m.index, m.index + m[0].length) : m[0]});
+        else if(boxes.includes(s.id)) hits.push({s, word:s.label, fromBox:true});
+      });
+      let K = 0, R = 0;
+      hits.forEach(h=>{ K += h.s.w.k; R += h.s.w.r; });
+      return {text, hits, K, R, any: text.trim().length>0 || boxes.length>0};
+    }
+
+    function planFor(p, hits){
+      const biz = hits.filter(h=>h.s.plan && h.s.plan[p]==='biz');
+      const smart = hits.filter(h=>h.s.smart || (h.s.feat && h.s.feat[p] && !(h.s.plan && h.s.plan[p]==='biz')));
+      const feats = new Set(hits.map(h=>h.s.feat && h.s.feat[p]).filter(Boolean));
+      return {biz, smart, feats, plan: biz.length ? 'BUSINESS' : 'SMART'};
+    }
+
+    function plansBox(p, feats){
+      const P = PLANS[p];
+      const li = (arr)=>arr.map(f=>'<li' + (feats.has(f) ? ' class="hit"' : '') + '>' + esc(f) + '</li>').join('');
+      return '<details class="asst-plans"><summary>Contenu des plans ' + P.name + '</summary><div class="asst-plans-grid"><div><b>Smart</b><ul>' + li(P.smart) + '</ul></div><div><b>Business</b> <span class="asst-mute">(tout Smart, plus)</span><ul>' + li(P.biz) + '</ul></div></div></details>';
+    }
+
+    function planBlock(p, hits){
+      const pl = planFor(p, hits);
+      const cls = pl.plan === 'BUSINESS' ? 'biz' : 'smart';
+      let h = '<div class="asst-plan"><div class="asst-plan-head"><span class="asst-plan-lbl">Plan conseillé</span><span class="asst-badge ' + cls + '">' + pl.plan + '</span></div>';
+      if(pl.plan === 'BUSINESS'){
+        const seen = new Set();
+        const items = pl.biz.filter(x=>{ const k = x.s.why[p]; if(seen.has(k)) return false; seen.add(k); return true; });
+        h += '<p class="asst-sub">Business, parce que le besoin cite :</p><ul>' + items.map(x=>'<li>' + esc(x.s.why[p]) + '</li>').join('') + '</ul>';
+      } else {
+        const inc = [...new Set(pl.smart.map(x=>x.s.smart || ((x.s.feat && x.s.feat[p]) || x.s.label)))];
+        h += '<p class="asst-sub">Smart suffit' + (inc.length ? ' : le besoin tient dans ' + esc(inc.join(', ').toLowerCase()) + '.' : ' tant que le besoin reste sur le planning, la messagerie et les documents.') + '</p>';
+        h += '<p class="asst-sub">Il faudrait passer en Business pour : ' + esc(PLANS[p].biz.slice(0,5).join(', ').toLowerCase()) + '…</p>';
+      }
+      return h + plansBox(p, pl.feats) + '</div>';
+    }
+
+    function whyBlock(p, hits, other){
+      const mine = hits.filter(h=>h.s.why && h.s.why[p] && (h.s.w[p]||0) > 0 || (h.s.why && h.s.why[p] && h.s.plan && h.s.plan[p]));
+      const seen = new Set();
+      const uniq = mine.filter(h=>{ const k = h.s.why[p]; if(seen.has(k)) return false; seen.add(k); return true; });
+      let h = '<h5>Pourquoi ' + PLANS[p].name + '</h5><ul>' + (uniq.length ? uniq.map(x=>'<li>' + esc(x.s.why[p]) + ' <span class="asst-word">« ' + esc(x.word) + ' »</span></li>').join('') : '<li>Aucun signal fort pour l\'instant.</li>') + '</ul>';
+      const gaps = hits.map(x=>x.s.gap && x.s.gap[other]).filter(Boolean);
+      const g = [...new Set(gaps)];
+      if(g.length) h += '<h5>Pourquoi pas ' + PLANS[other].name + '</h5><ul>' + g.map(x=>'<li>' + esc(x) + '</li>').join('') + '</ul>';
+      return h;
+    }
+
+    function watchBlock(a, prod){
+      const out = [];
+      WATCH.forEach(w=>{
+        if(w.only && prod && w.only !== prod) return;
+        if(w.need && !a.hits.some(h=>h.s.id===w.need)) return;
+        if(w.re.test(a.text)) out.push(w.t);
+      });
+      if(!out.length) return '';
+      return '<div class="asst-watch"><h5>À annoncer honnêtement</h5><ul>' + out.map(t=>'<li>' + esc(t) + '</li>').join('') + '</ul></div>';
+    }
+
+    const QUESTION = '« Vos équipes restent-elles plusieurs jours sur un même lieu, ou enchaînent-elles des interventions dans la journée ? » Plusieurs jours : Klear. Elles enchaînent : Karré.';
+    const ACTIONS = '<div class="asst-actions"><a class="link-btn purple" href="#" onclick="openTab(\'vente\',\'c-demo\'); return false;">Ouvrir le plan de démo</a><a class="link-btn" href="#" onclick="openTab(\'vente\',\'c-tarifs\'); return false;">Générer un devis</a></div>';
+
+    function render(){
+      const a = analyse();
+      if(!a.any){ root.innerHTML = '<div class="asst-empty">Écris le besoin du prospect, ou coche ce qu\'il dit : la recommandation s\'affiche ici.</div>'; return; }
+      const words = '<div class="asst-words">Repéré : ' + (a.hits.length ? a.hits.map(h=>'<span class="asst-chip">' + esc(h.word) + '</span>').join('') : '<span class="asst-mute">rien d\'exploitable pour l\'instant</span>') + '</div>';
+      const diff = a.K - a.R;
+      let html = words;
+
+      if(a.K === 0 && a.R === 0){
+        html += '<div class="asst-verdict none"><div class="asst-prod">À préciser</div><div class="asst-note">Pas assez d\'éléments pour trancher entre Klear et Karré.</div></div>'
+              + '<div class="asst-watch"><h5>Pose cette question</h5><p>' + QUESTION + '</p></div>' + watchBlock(a, null);
+        root.innerHTML = html; return;
+      }
+      if(Math.abs(diff) >= 1){
+        const p = diff > 0 ? 'k' : 'r', o = diff > 0 ? 'r' : 'k';
+        const clear = Math.abs(diff) >= 3;
+        const strength = Math.abs(diff) >= 6 ? 'Très clair' : (clear ? 'Plutôt clair' : 'À confirmer');
+        html += '<div class="asst-verdict ' + (p==='k'?'klear':'karre') + '"><div class="asst-prod">' + PLANS[p].name.toUpperCase() + '</div><div class="asst-note">' + strength + '</div></div>';
+        html += '<div class="asst-grid"><div class="asst-why">' + whyBlock(p, a.hits, o) + '</div>' + planBlock(p, a.hits) + '</div>';
+        if(!clear) html += '<div class="asst-watch"><h5>Pour confirmer, pose cette question</h5><p>' + QUESTION + '</p></div>';
+        html += watchBlock(a, p) + ACTIONS;
+        root.innerHTML = html; return;
+      }
+      // égalité : les deux produits sont possibles
+      html += '<div class="asst-verdict both"><div class="asst-prod">KLEAR <span>ou</span> KARRÉ</div><div class="asst-note">Les signaux se partagent : à trancher avec une question</div></div>';
+      html += '<div class="asst-watch"><h5>Pose cette question</h5><p>' + QUESTION + '</p></div>';
+      const pk = planFor('k', a.hits).plan, pr = planFor('r', a.hits).plan;
+      const badge = p => '<span class="asst-badge ' + (p==='BUSINESS'?'biz':'smart') + '">' + p + '</span>';
+      html += '<div class="asst-grid"><div class="asst-why">' + whyBlock('k', a.hits, 'r') + '<p class="asst-sub">Plan conseillé si Klear : ' + badge(pk) + '</p></div><div class="asst-why">' + whyBlock('r', a.hits, 'k') + '<p class="asst-sub">Plan conseillé si Karré : ' + badge(pr) + '</p></div></div>';
+      html += watchBlock(a, null) + ACTIONS;
+      root.innerHTML = html;
+    }
+
+    let timer = null;
+    txt.addEventListener('input', ()=>{ clearTimeout(timer); timer = setTimeout(render, 300); });
+    document.getElementById('asst-go').addEventListener('click', render);
+    document.getElementById('asst-reset').addEventListener('click', ()=>{
+      txt.value = '';
+      render();
+    });
+    render();
+  })();
+
   // ---------- tarifs : générateur de devis rapide ----------
   (function(){
-    const genBtn = document.getElementById('q-generate');
-    if(!genBtn) return;
+    const qWrap = document.getElementById('quote-preview-wrap');
+    if(!qWrap) return;
     const QPRICES = { smart:{annuel:15, mensuel:22}, business:{annuel:25, mensuel:37} };
     let qPlan='smart', qEng='annuel', qLang='fr';
     const QD_LOGO = "data:image/png;base64,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";
@@ -3309,9 +3660,9 @@
         b.classList.add('active'); cb(b.dataset.v);
       }));
     }
-    qSeg('q-plan', v=>qPlan=v);
-    qSeg('q-eng', v=>qEng=v);
-    qSeg('q-lang', v=>qLang=v);
+    qSeg('q-plan', v=>{ qPlan=v; renderQuote(); });
+    qSeg('q-eng', v=>{ qEng=v; renderQuote(); });
+    qSeg('q-lang', v=>{ qLang=v; renderQuote(); });
 
     const QT = {
       fr:{ doc:"BON DE COMMANDE", sub:"Abonnement Klear — Produit Kizeo", quoteNo:"N° Devis", date:"Date", validity:"Validité", days:"30 jours",
@@ -3351,7 +3702,8 @@
     const fmt2 = n => n.toLocaleString('fr-FR', {minimumFractionDigits:2, maximumFractionDigits:2}) + ' €';
     const dateFmt = (lang) => new Date().toLocaleDateString(lang==='fr'?'fr-FR':lang==='en'?'en-GB':lang==='es'?'es-ES':'de-DE');
 
-    genBtn.addEventListener('click', ()=>{
+    let quoteNo = null;
+    function renderQuote(){
       const t = QT[qLang];
       const company = document.getElementById('q-company').value || '—';
       const contact = document.getElementById('q-contact').value || '—';
@@ -3368,7 +3720,7 @@
       const tvaAmount = lineTotal * 0.2;
       const ttcTotal = lineTotal + tvaAmount;
       const today = dateFmt(qLang);
-      const quoteNo = 'KL-' + new Date().getFullYear() + '-' + String(Math.floor(Math.random()*9000)+1000);
+      if(!quoteNo) quoteNo = 'KL-' + new Date().getFullYear() + '-' + String(Math.floor(Math.random()*9000)+1000);
 
       let rows = `<tr><td>${t.item(qPlan)}</td><td>${today}</td><td>${t.durationLabel(qEng)}</td><td class="qd-num">${n}</td><td class="qd-num">${fmt2(pu)}</td><td class="qd-num">${fmt2(lineTotal)}</td></tr>`;
       if(crossSellOn){
@@ -3432,14 +3784,20 @@
         <div class="qd-doc-foot">${t.foot1}<br>${t.foot2}</div>
       `;
       document.getElementById('quote-preview-wrap').hidden = false;
-      document.getElementById('quote-preview-wrap').scrollIntoView({behavior:'smooth', block:'start'});
 
       window.__lastQuoteData = {
         company, contact, email, phone, address, vat, code, n, crossSellOn,
         pu, lineTotal, tvaAmount, ttcTotal, today, quoteNo, qPlan, qEng, qLang,
         itemLabel: t.item(qPlan), durationLabel: t.durationLabel(qEng)
       };
+    }
+    ['q-company','q-contact','q-email','q-phone','q-address','q-vat','q-code','q-users','q-crosscell'].forEach(id=>{
+      const el = document.getElementById(id);
+      if(!el) return;
+      el.addEventListener('input', renderQuote);
+      el.addEventListener('change', renderQuote);
     });
+    renderQuote();
 
     document.getElementById('q-print').addEventListener('click', ()=> window.print());
 
@@ -3552,7 +3910,8 @@
       'v-brochure':'plaquette brochure pdf telecharger langue langues francais anglais allemand espagnol envoyer client',
       'p-news':'nouveautes nouveaute video videos loom livre livres release derniere derniers',
       'p-roadmap':'roadmap evolution evolutions demande demandes en cours attente test deploiement termine livre client notion backlog kanban',
-      'c-karre':'karre karré klear fsm intervention interventions maintenance depannage tournees tournee chantier comparatif difference',
+      'c-cas':'cas usage scenario pourquoi viennent chercher besoin motivation excel papier whatsapp heures paie non conformites qhse sous-traitants interventions erp kizeo forms preuve tracabilite groupe filiales',
+      'c-karre':'karre karré klear fsm intervention interventions maintenance depannage tournees tournee chantier comparatif difference assistant cas usage recommandation plan smart business quel outil choisir',
       'c-concu':'concurrence concurrent concurrents concurrentiel comparatif comparaison versus vs riposte battle fieldwire alobees praxedo kraaft synchroteam hero interfast',
       'c-obj':'objection objections repondre reponse crainte budget',
       'c-demo':'demo demonstration checklist etapes plan rdv rendez-vous',
