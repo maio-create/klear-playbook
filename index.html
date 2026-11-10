@@ -664,6 +664,23 @@
   .rm-more{font-size:11.5px; color:var(--ink-soft); text-align:center; padding:6px 0 2px;}
 
 
+  /* ---- Arbre d'orientation Klear / Karré ---- */
+  .kw-wrap{display:flex; gap:26px; align-items:flex-start;}
+  .kw-root{flex-shrink:0; background:var(--dark); color:#fff; border-radius:16px; padding:16px 18px; width:190px; font-family:Verdana,sans-serif; font-weight:700; font-size:15px; line-height:1.35; position:sticky; top:12px;}
+  .kw-root small{display:block; font-family:'Lexend Deca',sans-serif; font-weight:400; font-size:11.5px; color:#cbd2dc; margin-top:6px;}
+  .kw-branches{flex:1; min-width:0; border-left:2px solid var(--line); padding-left:22px;}
+  .kw-branch{position:relative; padding:0 0 20px;}
+  .kw-branch::before{content:""; position:absolute; left:-22px; top:15px; width:18px; border-top:2px solid var(--line);}
+  .kw-branch h5{margin:0 0 8px; font-family:Verdana,sans-serif; font-size:13.5px; color:var(--dark);}
+  .kw-branch h5 span{display:inline-block; border-radius:8px; padding:3px 10px; margin-right:6px; font-size:12px;}
+  .kw-branch.is-klear h5 span{background:var(--yellow-tint); color:var(--yellow-ink);}
+  .kw-branch.is-karre h5 span{background:rgba(255,87,34,0.12); color:#FF5722;}
+  .kw-chips{display:flex; flex-wrap:wrap; gap:6px;}
+  .kw-chip{background:var(--white); border:1px solid var(--line); border-radius:99px; padding:4px 11px; font-size:12.5px; color:var(--dark);}
+  .kw-branch.is-klear .kw-chip{border-color:#F3D98B; background:#FFFBEF;}
+  .kw-branch.is-karre .kw-chip{border-color:#FFC9B8; background:#FFF6F2;}
+  @media(max-width:760px){ .kw-wrap{flex-direction:column;} .kw-root{width:auto; position:static;} .kw-branches{padding-left:14px;} .kw-branch::before{left:-14px; width:12px;} }
+
   /* ---- Assistant Klear / Karré ---- */
   .asst-row{display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:6px;}
   .asst-reset{font-family:'Lexend Deca',sans-serif; font-size:12.5px; background:none; border:none; color:var(--ink-soft); text-decoration:underline; cursor:pointer;}
@@ -1244,7 +1261,19 @@
       </ul>
       <p class="icon-line" style="margin-top:14px; align-items:flex-start;"><svg class="pico" style="margin-top:3px; flex-shrink:0;"><use href="#i-bulb"/></svg><span>Le repère à retenir : <b>Klear coordonne un chantier</b>, <b>Karré organise des interventions</b>. Si le prospect parle de tournées et de dépannage, c'est Karré ; s'il parle d'équipes posées sur un chantier, c'est Klear.</span></p>
     </div>
-<footer class="src">Sources : plans Klear (onglet Tarifs), page publique Karré by Kizeo (karre-by-kizeo.com, consultée le 26/10/2026) + contenu Klear du playbook (plaquette, onglets Produit et Tarifs) ; mots-clés de l'assistant relevés dans les démos Claap (Ille-et-Vilaine, Kleva, Cs2e / Suez, Getraline, Alva Energies, Elitel). Base Karré encore mince : une seule démo enregistrée. À recouper si un prospect insiste sur un point précis</footer>
+
+    <div class="card">
+      <h4>Au téléphone : Klear ou Karré ?</h4>
+      <p>Écoute les mots du prospect : ils t'indiquent la branche, donc le produit.</p>
+      <div class="kw-wrap">
+        <div class="kw-root">Le prospect parle de…<small>Repère-le à ses mots, pas à son métier.</small></div>
+        <div class="kw-branches">
+          <div class="kw-branch is-klear"><h5><span>KLEAR</span>Il parle de chantier</h5><div class="kw-chips"><span class="kw-chip">Chantier</span><span class="kw-chip">Conducteur de travaux</span><span class="kw-chip">Chef de chantier</span><span class="kw-chip">Plusieurs corps de métier</span><span class="kw-chip">Lots</span><span class="kw-chip">Sous-traitants</span><span class="kw-chip">Pointage</span><span class="kw-chip">Feuilles d'heures</span><span class="kw-chip">Paie / export compta</span><span class="kw-chip">Heures de nuit, panier repas</span><span class="kw-chip">WhatsApp de chantier</span><span class="kw-chip">Photos et documents de chantier</span><span class="kw-chip">Plans, PPSPS</span><span class="kw-chip">Gantt / rétro-planning</span><span class="kw-chip">Matériel et engins sur le chantier</span><span class="kw-chip">Plusieurs semaines ou mois</span><span class="kw-chip">Non-conformités, anomalies</span><span class="kw-chip">Second œuvre, BTP</span></div></div>
+          <div class="kw-branch is-karre"><h5><span>KARRÉ</span>Il parle d'interventions et de tournées</h5><div class="kw-chips"><span class="kw-chip">Tournée</span><span class="kw-chip">Intervention</span><span class="kw-chip">Dépannage</span><span class="kw-chip">Maintenance</span><span class="kw-chip">Visite trimestrielle / récurrente</span><span class="kw-chip">Enchaîner les clients dans la journée</span><span class="kw-chip">Carnet de liaison</span><span class="kw-chip">Historique par site ou par client</span><span class="kw-chip">Demande d'intervention d'un client</span><span class="kw-chip">Techniciens de SAV</span><span class="kw-chip">Sites à visiter</span><span class="kw-chip">Optimiser les trajets</span><span class="kw-chip">Statuts : à planifier, en cours, terminée</span><span class="kw-chip">Ticket / ITSM à relier</span><span class="kw-chip">FSM, « sans usine à gaz »</span></div></div>
+        </div>
+      </div>
+    </div>
+    <footer class="src">Sources : plans Klear (onglet Tarifs), page publique Karré by Kizeo (karre-by-kizeo.com, consultée le 26/10/2026) + contenu Klear du playbook (plaquette, onglets Produit et Tarifs) ; mots-clés de l'assistant relevés dans les démos Claap (Ille-et-Vilaine, Kleva, Cs2e / Suez, Getraline, Alva Energies, Elitel). Base Karré encore mince : une seule démo enregistrée. À recouper si un prospect insiste sur un point précis</footer>
   </div>
 
   <!-- CONCURRENCE -->
