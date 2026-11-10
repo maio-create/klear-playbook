@@ -654,6 +654,8 @@
   .uc-box p:last-child{margin-bottom:0;}
   .uc-box.klear{background:var(--yellow-tint); border-radius:12px; padding:13px 16px;}
   .uc-box.klear h5{color:var(--yellow-ink);}
+  .uc-meta{display:grid; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)); gap:16px; margin-top:14px; padding-top:12px; border-top:1px dashed var(--line);}
+  .uc-words{display:flex; flex-wrap:wrap; gap:2px;}
   .uc-quote{margin-top:14px; font-size:12.5px; font-style:italic; color:var(--ink-soft); border-left:3px solid var(--yellow); padding-left:10px;}
   .tag-smart{background:var(--teal-tint); color:var(--teal);}
   .tag-biz{background:var(--purple-tint); color:var(--purple);}
@@ -1483,7 +1485,7 @@
   <div class="subview" id="c-cas">
     <div class="card">
       <h4>Pourquoi ils viennent chez nous, et ce qu'ils cherchent</h4>
-      <p>Les grands scénarios entendus en démo, en visio et par mail auprès de clients et de prospects. Pour chacun : la situation de départ, ce que le client veut obtenir, et ce que Klear répond. Quand un prospect décrit sa situation, retrouve le scénario le plus proche.</p>
+      <p>Les grands scénarios entendus en démo, en visio et par mail auprès de clients et de prospects. Pour chacun : la situation de départ, ce que le client veut obtenir, ce que Klear répond, les profils concernés et les mots que les prospects emploient. Quand un prospect décrit sa situation, retrouve le scénario le plus proche.</p>
       <div class="uc-trigs">
         <h5 class="uc-sec">Ce qui les fait venir</h5>
         <div class="uc-trig"><b>Excel, papier et WhatsApp ne suffisent plus</b><span>L'entreprise a grandi : l'organisation de départ ne tient plus.</span><i>« On était trois, maintenant on est neuf. »</i></div>
@@ -1500,6 +1502,7 @@
         <div class="uc-box"><h5>Pourquoi ils viennent</h5><p>Le planning vit dans un fichier Excel ou sur papier. Chacun a sa version et les changements de dernière minute se perdent.</p><h5>Ce qu'ils cherchent</h5><p>Un planning visuel que tout le monde voit. Prévenir les équipes sans les appeler. Savoir qui est où et qui est disponible.</p></div>
         <div class="uc-box klear"><h5>Ce que Klear répond</h5><p>Planning en clic-glisser, par chantier ou global. Notification automatique sur le téléphone à chaque changement. Absences visibles et équipes colorées.</p></div>
       </div>
+            <div class="uc-meta"><div class="uc-box"><h5>Profils concernés</h5><p>BTP (second œuvre, gros œuvre, travaux publics), électricité et énergie, industrie avec équipes de montage et de SAV.</p></div><div class="uc-box"><h5>Mots du prospect</h5><div class="uc-words"><span class="asst-chip">planning Excel</span><span class="asst-chip">papier</span><span class="asst-chip">qui est où</span><span class="asst-chip">qui est disponible</span><span class="asst-chip">affecter une équipe</span><span class="asst-chip">plusieurs chantiers en même temps</span><span class="asst-chip">changement de dernière minute</span></div></div></div>
       <div class="uc-quote">« Aujourd'hui, on gère sur un planning Excel. »</div>
     </div>
 
@@ -1509,6 +1512,7 @@
         <div class="uc-box"><h5>Pourquoi ils viennent</h5><p>L'information circule dans les mails, les SMS et les groupes WhatsApp. Elle se perd, les clients rappellent, les outils ne se parlent pas.</p><h5>Ce qu'ils cherchent</h5><p>Un endroit unique pour discuter, planifier et retrouver les documents. Que tout le monde ait le même niveau d'information.</p></div>
         <div class="uc-box klear"><h5>Ce que Klear répond</h5><p>Chat par chantier et groupes de discussion, planning, base documentaire et notifications dans la même application, sur mobile et ordinateur.</p><h5>À savoir</h5><p>Les appels audio et vidéo sont en Business.</p></div>
       </div>
+            <div class="uc-meta"><div class="uc-box"><h5>Profils concernés</h5><p>Installateurs et sociétés de maintenance (énergie, électricité, équipement), petites structures en forte croissance.</p></div><div class="uc-box"><h5>Mots du prospect</h5><div class="uc-words"><span class="asst-chip">WhatsApp</span><span class="asst-chip">mails</span><span class="asst-chip">appels</span><span class="asst-chip">un outil qui rassemble tout</span><span class="asst-chip">les outils ne se parlent pas</span><span class="asst-chip">tout au même endroit</span></div></div></div>
       <div class="uc-quote">« On se noie dans les mails. »</div>
     </div>
 
@@ -1518,6 +1522,7 @@
         <div class="uc-box"><h5>Pourquoi ils viennent</h5><p>Les heures sont déclarées sur papier, sur Excel ou par formulaires, retraitées à la main, puis ressaisies dans le logiciel de paie. Erreurs, pauses oubliées, écarts entre heures facturées et heures de présence.</p><h5>Ce qu'ils cherchent</h5><p>Une saisie simple sur mobile. Une validation par le manager. Un export prêt pour la paie, avec jour, nuit, week-end, férié et paniers.</p></div>
         <div class="uc-box klear"><h5>Ce que Klear répond</h5><p>Feuilles d'heures sur mobile avec pause pré-remplie, validation jour par jour avec signature possible, reporting ventilé et export Excel mensuel.</p><h5>À savoir</h5><p>Seuil d'heures sup hebdomadaire et identique pour tous. Forfait jour et astreintes en prime : à cadrer, sans rien promettre en séance. Pas de connecteur natif vers la paie.</p></div>
       </div>
+            <div class="uc-meta"><div class="uc-box"><h5>Profils concernés</h5><p>Travaux publics et ferroviaire (chantiers de nuit), énergie et électricité, bureaux d'études (forfait jour), services techniques avec astreintes.</p></div><div class="uc-box"><h5>Mots du prospect</h5><div class="uc-words"><span class="asst-chip">feuilles d'heures</span><span class="asst-chip">pointage</span><span class="asst-chip">heures de nuit</span><span class="asst-chip">heures sup</span><span class="asst-chip">panier</span><span class="asst-chip">forfait jour</span><span class="asst-chip">pause</span><span class="asst-chip">astreinte</span><span class="asst-chip">export paie</span></div></div></div>
       <div class="uc-quote">« Ils oublient de décompter le temps de pause. »</div>
     </div>
 
@@ -1527,6 +1532,7 @@
         <div class="uc-box"><h5>Pourquoi ils viennent</h5><p>Les chefs d'équipe remplissent leurs fiches en fin de journée au dépôt, souvent à la va-vite. Sans photos ni remontée d'incidents, le conducteur de travaux travaille à l'aveugle.</p><h5>Ce qu'ils cherchent</h5><p>Faire remonter l'information depuis le chantier, en temps réel. Descendre des documents à jour aux équipes. Garder des preuves : photos, signatures.</p></div>
         <div class="uc-box klear"><h5>Ce que Klear répond</h5><p>Application mobile avec le dossier du chantier, photos, documents, formulaires Kizeo Forms et signature. Plus simple à utiliser qu'un SharePoint ou un Drive.</p><h5>À savoir</h5><p>Les modèles de dossiers réutilisables et les feuilles d'heures sont en Business.</p></div>
       </div>
+            <div class="uc-meta"><div class="uc-box"><h5>Profils concernés</h5><p>BTP et travaux (chefs d'équipe, conducteurs de travaux), énergie, installation chez des clients.</p></div><div class="uc-box"><h5>Mots du prospect</h5><div class="uc-words"><span class="asst-chip">papier</span><span class="asst-chip">rapport journalier</span><span class="asst-chip">bon journalier</span><span class="asst-chip">fiche de saisie</span><span class="asst-chip">photos</span><span class="asst-chip">signature client</span><span class="asst-chip">dossier chantier</span></div></div></div>
       <div class="uc-quote">« On est encore tous sur papier. »</div>
     </div>
 
@@ -1536,6 +1542,7 @@
         <div class="uc-box"><h5>Pourquoi ils viennent</h5><p>On repère des anomalies, des réserves, des écarts de sécurité, mais on ne suit pas les actions menées ni qui les a résolues.</p><h5>Ce qu'ils cherchent</h5><p>Répertorier, assigner, relancer. Justifier auprès du client, preuves à l'appui.</p></div>
         <div class="uc-box klear"><h5>Ce que Klear répond</h5><p>Module Suivi : ticket avec priorité, gravité, responsable et échéance, actions assignées, photos et documents, vue Kanban ou liste. Une action peut être un formulaire Kizeo Forms, cochée automatiquement une fois rempli.</p><h5>À savoir</h5><p>Le suivi existe aussi hors chantier (campagnes, maintenance). Les relances automatiques sur tickets en retard sont demandées.</p></div>
       </div>
+            <div class="uc-meta"><div class="uc-box"><h5>Profils concernés</h5><p>Télécoms et réseaux, énergie et électricité, BTP (levée de réserves), sociétés de maintenance, services qualité-sécurité.</p></div><div class="uc-box"><h5>Mots du prospect</h5><div class="uc-words"><span class="asst-chip">non-conformités</span><span class="asst-chip">réserves</span><span class="asst-chip">anomalies</span><span class="asst-chip">actions</span><span class="asst-chip">ticket</span><span class="asst-chip">suivi</span><span class="asst-chip">sécurité</span><span class="asst-chip">relancer</span></div></div></div>
       <div class="uc-quote">« On n'arrive pas à suivre les actions qui sont menées. »</div>
     </div>
 
@@ -1545,42 +1552,27 @@
         <div class="uc-box"><h5>Pourquoi ils viennent</h5><p>Plusieurs corps de métier et des entreprises extérieures interviennent sur le même chantier. L'information et les droits sont difficiles à partager sans tout ouvrir.</p><h5>Ce qu'ils cherchent</h5><p>Associer internes et externes au même chantier, chacun ne voyant que son périmètre. Planifier les lots. Identifier des intérimaires sans leur donner de licence.</p></div>
         <div class="uc-box klear"><h5>Ce que Klear répond</h5><p>Lots et corps de métier avec frise Gantt, sous-traitants avec licence light gratuite (planning, chat, documents du chantier), utilisateurs sans compte gratuits, droits par rôle et par dossier.</p><h5>À savoir</h5><p>Le Gantt est une frise visuelle, pas un ordonnancement à chemin critique. Demander un créneau à un sous-traitant qui accepte ou refuse : demandé, pas encore disponible.</p></div>
       </div>
+            <div class="uc-meta"><div class="uc-box"><h5>Profils concernés</h5><p>Rénovation et second œuvre multi-lots, génie civil et rail avec intérimaires, énergie et installation avec sous-traitants.</p></div><div class="uc-box"><h5>Mots du prospect</h5><div class="uc-words"><span class="asst-chip">sous-traitants</span><span class="asst-chip">entreprises intervenantes</span><span class="asst-chip">corps d'état</span><span class="asst-chip">intérimaires</span><span class="asst-chip">lots</span><span class="asst-chip">habilitations</span><span class="asst-chip">droits d'accès</span></div></div></div>
       <div class="uc-quote">« En externe, ce sont les entreprises intervenantes sur nos chantiers. »</div>
     </div>
 
     <div class="card uc-case">
-      <div class="uc-case-head"><span class="n">7</span><h4>Gérer au même endroit de longs chantiers et de petites interventions</h4><span class="uc-tags"></span></div>
-      <div class="uc-grid">
-        <div class="uc-box"><h5>Pourquoi ils viennent</h5><p>Une même entreprise enchaîne des chantiers de plusieurs mois et des interventions de quelques heures, et veut développer la maintenance.</p><h5>Ce qu'ils cherchent</h5><p>Un seul outil pour les deux. Planifier équipes et véhicules. Suivre des campagnes ou des tournées de maintenance.</p></div>
-        <div class="uc-box klear"><h5>Ce que Klear répond</h5><p>Très à l'aise sur le chantier dans la durée : équipes, matériel, documents, suivi. Pour les petites interventions en volume, un volet intervention est à l'étude.</p><h5>À savoir</h5><p>Pour des tournées de maintenance ou du dépannage en volume, voir l'onglet « Klear vs Karré ».</p></div>
-      </div>
-      <div class="uc-quote">« Des chantiers de six mois et des chantiers de deux heures. »</div>
-    </div>
-
-    <div class="card uc-case">
-      <div class="uc-case-head"><span class="n">8</span><h4>Relier Klear à Kizeo Forms et au reste du système d'information</h4><span class="uc-tags"><span class="tag tag-smart">Smart</span><span class="tag tag-biz">Business</span></span></div>
+      <div class="uc-case-head"><span class="n">7</span><h4>Relier Klear à Kizeo Forms et au reste du système d'information</h4><span class="uc-tags"><span class="tag tag-smart">Smart</span><span class="tag tag-biz">Business</span></span></div>
       <div class="uc-grid">
         <div class="uc-box"><h5>Pourquoi ils viennent</h5><p>Ils ont déjà Kizeo Forms, un CRM, un ERP, un logiciel de paie ou un outil RH. Les logiciels ne se parlent pas et tout est mis à jour à la main.</p><h5>Ce qu'ils cherchent</h5><p>Ne plus ressaisir. Ouvrir leurs formulaires depuis le chantier. Créer un chantier à partir d'un devis gagné. Remonter l'état : terminé, facturé.</p></div>
         <div class="uc-box klear"><h5>Ce que Klear répond</h5><p>Formulaires Kizeo Forms depuis le chantier et dans le suivi, API ouvertes, import et export Excel, automatisations avec Make.</p><h5>À savoir</h5><p>Pas de connecteur natif vers un ERP, la paie ou un outil RH : export, API ou Make, à cadrer au cas par cas. Une option masque la demande d'absence si les congés restent dans un autre outil.</p></div>
       </div>
+            <div class="uc-meta"><div class="uc-box"><h5>Profils concernés</h5><p>Entreprises déjà clientes de Kizeo Forms (toutes branches), structures avec un CRM, un ERP, un logiciel de paie ou un outil RH en place.</p></div><div class="uc-box"><h5>Mots du prospect</h5><div class="uc-words"><span class="asst-chip">Kizeo Forms</span><span class="asst-chip">bon d'intervention</span><span class="asst-chip">logiciels qui ne communiquent pas</span><span class="asst-chip">CRM</span><span class="asst-chip">ERP</span><span class="asst-chip">logiciel de paie</span><span class="asst-chip">outil RH</span><span class="asst-chip">API</span><span class="asst-chip">ressaisie</span></div></div></div>
       <div class="uc-quote">« Nos logiciels ne communiquent pas. »</div>
     </div>
 
     <div class="card uc-case">
-      <div class="uc-case-head"><span class="n">9</span><h4>Piloter plusieurs équipes, sites ou sociétés aux règles différentes</h4><span class="uc-tags"><span class="tag tag-biz">Business</span></span></div>
-      <div class="uc-grid">
-        <div class="uc-box"><h5>Pourquoi ils viennent</h5><p>Un groupe ou une entreprise multi-sites a des managers, des régimes horaires et des périmètres différents. Il faut une hiérarchie de validation sans tout donner à un administrateur.</p><h5>Ce qu'ils cherchent</h5><p>Des rôles et des droits adaptés. Une validation par le bon manager. Une vue par entité. Des règles d'heures propres à chaque filiale.</p></div>
-        <div class="uc-box klear"><h5>Ce que Klear répond</h5><p>Rôles personnalisables, agences multiples (Business) ou un compte par entité, validation par le responsable, droits de vue par dossier.</p><h5>À savoir</h5><p>Un seul manager par agent aujourd'hui, et un seuil d'heures sup identique pour tous. Pour un grand compte, qualifier la sécurité et l'hébergement avant le fonctionnel.</p></div>
-      </div>
-      <div class="uc-quote">« On a des régimes horaires différents selon nos filiales. »</div>
-    </div>
-
-    <div class="card uc-case">
-      <div class="uc-case-head"><span class="n">10</span><h4>Garder des preuves et de la traçabilité face au client ou au juridique</h4><span class="uc-tags"><span class="tag tag-biz">Business</span></span></div>
+      <div class="uc-case-head"><span class="n">8</span><h4>Garder des preuves et de la traçabilité face au client ou au juridique</h4><span class="uc-tags"><span class="tag tag-biz">Business</span></span></div>
       <div class="uc-grid">
         <div class="uc-box"><h5>Pourquoi ils viennent</h5><p>Il faut pouvoir justifier ce qui a été planifié, fait et validé, face à un client, à un contrôle ou à un avocat.</p><h5>Ce qu'ils cherchent</h5><p>Un historique des plannings et des validations. Des signatures. Des preuves en photo. Un accès du client à ses rapports.</p></div>
         <div class="uc-box klear"><h5>Ce que Klear répond</h5><p>Heures avec signature et validation tracée au journal d'audit, tickets de suivi avec preuves, documents et photos rattachés au chantier.</p><h5>À savoir</h5><p>Pas d'historique daté de l'envoi des plannings ni d'espace client aujourd'hui : les deux sont à l'étude.</p></div>
       </div>
+            <div class="uc-meta"><div class="uc-box"><h5>Profils concernés</h5><p>Rail et travaux d'infrastructure (justification juridique), maintenance d'installations (rapports au client), bureaux d'études, télécoms.</p></div><div class="uc-box"><h5>Mots du prospect</h5><div class="uc-words"><span class="asst-chip">preuve</span><span class="asst-chip">justifier</span><span class="asst-chip">historique</span><span class="asst-chip">signature</span><span class="asst-chip">traçable</span><span class="asst-chip">rapport de maintenance</span><span class="asst-chip">accès client</span></div></div></div>
       <div class="uc-quote">« Sinon, l'avocat adverse va se jeter dessus. »</div>
     </div>
 
@@ -3910,7 +3902,7 @@
       'v-brochure':'plaquette brochure pdf telecharger langue langues francais anglais allemand espagnol envoyer client',
       'p-news':'nouveautes nouveaute video videos loom livre livres release derniere derniers',
       'p-roadmap':'roadmap evolution evolutions demande demandes en cours attente test deploiement termine livre client notion backlog kanban',
-      'c-cas':'cas usage scenario pourquoi viennent chercher besoin motivation excel papier whatsapp heures paie non conformites qhse sous-traitants interventions erp kizeo forms preuve tracabilite groupe filiales',
+      'c-cas':'cas usage scenario pourquoi viennent chercher besoin motivation excel papier whatsapp heures paie non conformites qhse sous-traitants interventions erp kizeo forms preuve tracabilite groupe filiales profils concernes secteurs metiers mots du prospect vocabulaire',
       'c-karre':'karre karré klear fsm intervention interventions maintenance depannage tournees tournee chantier comparatif difference assistant cas usage recommandation plan smart business quel outil choisir',
       'c-concu':'concurrence concurrent concurrents concurrentiel comparatif comparaison versus vs riposte battle fieldwire alobees praxedo kraaft synchroteam hero interfast',
       'c-obj':'objection objections repondre reponse crainte budget',
