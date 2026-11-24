@@ -2520,14 +2520,6 @@
             </select>
           </div>
           <div class="sim-field">
-            <span class="f-lbl">Priorité</span>
-            <select id="tk-priorite" class="q-input">
-              <option value="">—</option>
-              <option value="Urgent 🔴">Urgent 🔴</option>
-              <option value="Stand by ✋">Stand by ✋</option>
-            </select>
-          </div>
-          <div class="sim-field">
             <span class="f-lbl">Device</span>
             <label class="sim-checkbox"><input type="checkbox" id="tk-device-web"> <span>WEB</span></label>
             <label class="sim-checkbox"><input type="checkbox" id="tk-device-mobile"> <span>MOBILE</span></label>
@@ -3655,7 +3647,6 @@
         description: document.getElementById('tk-desc').value.trim(),
         loom: document.getElementById('tk-loom').value.trim(),
         type: typeVal,
-        priorite: document.getElementById('tk-priorite').value,
         device,
         client: clientInput.value.trim(),
         source: 'relais-klear',
@@ -3673,7 +3664,6 @@
         say('✓ Ticket envoyé à Notion', 'var(--success)');
         ['tk-titre','tk-desc','tk-loom','tk-client'].forEach(id=>document.getElementById(id).value = '');
         document.getElementById('tk-type').value = '';
-        document.getElementById('tk-priorite').value = '';
         document.getElementById('tk-device-web').checked = false;
         document.getElementById('tk-device-mobile').checked = false;
       } catch(err){
