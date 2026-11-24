@@ -734,6 +734,8 @@
   .qh-filters .rm-chips{margin-top:0;} .qh-filters .rm-chips button{padding:5px 12px; font-size:12px;} .qh-filters > span:nth-of-type(2){margin-left:10px;}
   .qh-sortable th[data-sort]{cursor:pointer; user-select:none;} .qh-sortable th[data-sort]:hover{color:#fff;}
   .qh-sortable th.sorted::after{content:" ▾"; font-size:10px;} .qh-sortable th.sorted.asc::after{content:" ▴";}
+  #qh-more[hidden], .qh-view[hidden], #quote-history-card[hidden], #qh-toggle[hidden]{display:none !important;}
+  #qh-table{min-width:1120px;} #qh-table th, #qh-table td{white-space:nowrap;} #qh-table td{font-size:12.5px;}
   .q-note{display:block; margin-top:4px; font-size:12px; color:#C0392B;}
   .qh-tools{display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:8px;}
   .qh-tools .q-input{flex:1; min-width:220px;}
@@ -2196,7 +2198,7 @@
       <div class="qh-tools"><input type="text" id="qh-search" class="q-input" placeholder="Chercher : société, plan, cycle, date…" autocomplete="off"><button type="button" class="link-btn" id="qh-csv"><svg class="pico"><use href="#i-download"/></svg> Exporter en CSV</button><button type="button" class="qh-clear" id="qh-clear">Tout effacer</button></div>
       <div class="qh-filters"><span>Plan</span><div class="rm-chips" id="qh-fplan"><button type="button" class="active" data-v="all">Tous</button><button type="button" data-v="smart">Smart</button><button type="button" data-v="business">Business</button></div><span>Cycle</span><div class="rm-chips" id="qh-fcycle"><button type="button" class="active" data-v="all">Tous</button><button type="button" data-v="annuel">Annuel</button><button type="button" data-v="mensuel">Mensuel</button></div></div>
       <p class="asst-mute" id="qh-count" style="font-size:12.5px; margin:0 0 8px;"></p>
-      <div class="ct-wrap"><table class="cmp qh-sortable" id="qh-table"><thead><tr><th data-sort="at">Date</th><th data-sort="company">Société</th><th data-sort="plan">Plan</th><th data-sort="cycle">Cycle</th><th class="ct-num" data-sort="users">Licences</th><th class="ct-num" data-sort="total">Total HT</th><th></th></tr></thead><tbody></tbody></table></div>
+      <div class="ct-wrap"><table class="cmp qh-sortable" id="qh-table"><thead><tr><th data-sort="at">Date</th><th data-sort="quoteNo">N° devis</th><th data-sort="company">Société</th><th data-sort="plan">Plan</th><th data-sort="cycle">Cycle</th><th class="ct-num" data-sort="users">Licences</th><th class="ct-num" data-sort="discount">Remise</th><th class="ct-num" data-sort="unitPrice">Prix unit. HT</th><th class="ct-num" data-sort="total">Total HT</th><th class="ct-num" data-sort="tvaRate">TVA</th><th class="ct-num" data-sort="totalTTC">Total TTC</th><th data-sort="lang">Langue</th><th></th></tr></thead><tbody></tbody></table></div>
       <div style="text-align:center; margin-top:12px;"><button class="link-btn" id="qh-more" type="button" hidden>Afficher plus</button></div>
     </div>
     <footer class="src">Source Notion : « Tarifs »</footer>
@@ -4443,6 +4445,7 @@
     const archiveUrl = () => window.QUOTE_ARCHIVE_URL || QUOTE_ARCHIVE_URL;
     const archiveForm = () => window.QUOTE_ARCHIVE_FORM || QUOTE_ARCHIVE_FORM;
     const cycleLabel = e => e === 'annuel' ? 'Annuel' : 'Mensuel';
+    const fv = id => (document.getElementById(id).value || '').trim();   // valeur réelle d'un champ du formulaire
     // enregistre le devis courant ; renvoie true si c'est un nouvel enregistrement, false s'il y était déjà
     function archiveQuote(d){
       const company = (document.getElementById('q-company').value || '').trim();
@@ -4463,7 +4466,9 @@
       const su = scriptUrl();
       if(su){
         fetch(su, {method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=utf-8'}, keepalive:true,
-          body: JSON.stringify({company: entry.company, plan: entry.plan === 'smart' ? 'Smart' : 'Business', cycle: cycleLabel(entry.engagement), users: entry.users, total: entry.totalHT})})
+          body: JSON.stringify({company: entry.company, plan: entry.plan === 'smart' ? 'Smart' : 'Business', cycle: cycleLabel(entry.engagement), users: entry.users, total: entry.totalHT,
+            quoteNo: d.quoteNo, discount: d.discPct, unitPrice: d.pu, tvaRate: d.tvaRate, totalTTC: d.ttcTotal, lang: d.qLang,
+            contact: fv('q-contact'), email: fv('q-email'), phone: fv('q-phone'), address: fv('q-address'), vat: fv('q-vat'), code: fv('q-code')})})
           .then(() => { done(); setTimeout(() => { if(qhView === 'all') sharedLoad().then(qhRender); }, 1500); }).catch(() => {});
       }
       const f = archiveForm();
@@ -4499,7 +4504,8 @@
       const url = csvUrl(); if(!url) return Promise.resolve();
       if(scriptUrl()){
         return fetch(scriptUrl() + (scriptUrl().includes('?') ? '&' : '?') + 't=' + Date.now()).then(r => { if(!r.ok) throw new Error(r.status); return r.json(); }).then(list => {
-          sharedRows = list.map(e => ({at: String(e.at || ''), company: String(e.company || ''), plan: String(e.plan || ''), cycle: String(e.cycle || ''), users: String(e.users || ''), total: String(e.total || '')})).reverse();
+          sharedRows = list.map(e => ({at: String(e.at || ''), company: String(e.company || ''), plan: String(e.plan || ''), cycle: String(e.cycle || ''), users: String(e.users || ''), total: String(e.total || ''),
+            quoteNo: String(e.quoteNo || ''), discount: numOpt(e.discount), tvaRate: numOpt(e.tvaRate), totalTTC: numOpt(e.totalTTC), unitPrice: numOpt(e.unitPrice), lang: e.lang ? String(e.lang) : undefined})).reverse();
           sharedError = false;
         }).catch(() => { sharedError = true; });
       }
@@ -4513,14 +4519,31 @@
     }
     const numFr = v => { const n = parseFloat(String(v).replace(/\s/g, '').replace(',', '.')); return isNaN(n) ? String(v) : fmtE(n) + ' €'; };
     let qhPlan = 'all', qhCycle = 'all', qhSort = {key: 'at', dir: -1}, qhLimit = 50;
+    const numOpt = v => { if(v === '' || v == null) return undefined; const n = Number(String(v).replace(',', '.')); return isNaN(n) ? undefined : n; };
     function parseFr(s){ const m = /(\d{2})\/(\d{2})\/(\d{4})(?:\s+(\d{2}):(\d{2}))?/.exec(s || ''); return m ? new Date(+m[3], +m[2] - 1, +m[1], +(m[4] || 0), +(m[5] || 0)) : new Date(0); }
+    function deriveDiscount(plan, cycle, users, total){
+      if(!QPRICES[plan] || !QPRICES[plan][cycle] || !users) return null;
+      const base = QPRICES[plan][cycle];
+      for(const step of [0.5, 0.1]){
+        for(let p = 0; p <= 25.0001; p += step){
+          const pu = Math.round(base * (1 - p / 100) * 100) / 100;
+          if(Math.abs(Math.round(pu * users * 100) - Math.round(total * 100)) <= 1) return Math.round(p * 10) / 10;
+        }
+      }
+      return null;
+    }
+    function qhEnrich(r){
+      if(r.unitPrice == null && r.users) r.unitPrice = Math.round(r.total / r.users * 100) / 100;
+      if(r.discount == null) r.discount = deriveDiscount(r.planKey, r.cycleKey, r.users, r.total);
+      return r;
+    }
     function localRows(){
-      return qhLoad().map(e => ({id: e.id, local: true, synced: e.synced, at: new Date(e.at), company: e.company, plan: e.plan === 'smart' ? 'Smart' : 'Business', cycle: cycleLabel(e.engagement), planKey: e.plan, cycleKey: e.engagement, discount: e.discount, tvaRate: e.tvaRate, lang: e.lang, users: e.users, total: e.totalHT}));
+      return qhLoad().map(e => qhEnrich({id: e.id, local: true, synced: e.synced, at: new Date(e.at), quoteNo: e.quoteNo, company: e.company, plan: e.plan === 'smart' ? 'Smart' : 'Business', cycle: cycleLabel(e.engagement), planKey: e.plan, cycleKey: e.engagement, discount: e.discount, tvaRate: e.tvaRate, totalTTC: e.totalTTC, lang: e.lang, users: e.users, total: e.totalHT}));
     }
     let qhShown = [];
     function qhRows(){
       const useShared = !!csvUrl() && qhView === 'all';
-      if(useShared && sharedRows) return {state: 'shared', rows: sharedRows.map(e => ({atText: e.at, at: parseFr(e.at), company: e.company, plan: e.plan, cycle: e.cycle, planKey: String(e.plan).toLowerCase(), cycleKey: String(e.cycle).toLowerCase(), users: Number(e.users) || 0, total: parseFloat(String(e.total).replace(/\s/g, '').replace(',', '.')) || 0}))};
+      if(useShared && sharedRows) return {state: 'shared', rows: sharedRows.map(e => qhEnrich({atText: e.at, at: parseFr(e.at), quoteNo: e.quoteNo, company: e.company, plan: e.plan, cycle: e.cycle, planKey: String(e.plan).toLowerCase(), cycleKey: String(e.cycle).toLowerCase(), discount: e.discount, tvaRate: e.tvaRate, totalTTC: e.totalTTC, unitPrice: e.unitPrice, lang: e.lang, users: Number(e.users) || 0, total: parseFloat(String(e.total).replace(/\s/g, '').replace(',', '.')) || 0}))};
       if(useShared) return {state: sharedError ? 'error' : 'loading', rows: []};
       return {state: 'local', rows: localRows()};
     }
@@ -4537,9 +4560,10 @@
       let src = rows;
       if(state === 'error') src = localRows();
       const list = src.filter(e => (qhPlan === 'all' || e.plan.toLowerCase() === qhPlan) && (qhCycle === 'all' || e.cycle.toLowerCase() === qhCycle)
-        && (!q || (e.company + ' ' + e.plan + ' ' + e.cycle + ' ' + (e.atText || e.at.toLocaleDateString('fr-FR'))).toLowerCase().includes(q)));
+        && (!q || (e.company + ' ' + e.plan + ' ' + e.cycle + ' ' + (e.quoteNo || '') + ' ' + (e.lang || '') + ' ' + (e.atText || e.at.toLocaleDateString('fr-FR'))).toLowerCase().includes(q)));
       const k = qhSort.key, dir = qhSort.dir;
-      list.sort((x, y) => { const a = x[k], b = y[k]; const r = (k === 'at') ? a - b : (typeof a === 'number' ? a - b : String(a).localeCompare(String(b), 'fr', {sensitivity: 'base'})); return r * dir; });
+      const NUM = ['users', 'discount', 'unitPrice', 'total', 'tvaRate', 'totalTTC'];
+      list.sort((x, y) => { const a = x[k], b = y[k]; if(NUM.includes(k) || k === 'quoteNo' || k === 'lang'){ const ea = (a == null || a === ''), eb = (b == null || b === ''); if(ea && eb) return 0; if(ea) return 1; if(eb) return -1; } let r; if(k === 'at') r = a - b; else if(NUM.includes(k)) r = a === b ? 0 : (a < b ? -1 : 1); else r = String(a || '').localeCompare(String(b || ''), 'fr', {sensitivity: 'base'}); return r * dir; });
       document.querySelectorAll('#qh-table th[data-sort]').forEach(th => { th.classList.toggle('sorted', th.dataset.sort === k); th.classList.toggle('asc', th.dataset.sort === k && dir === 1); });
       count.textContent = src.length ? (list.length + ' devis' + (list.length !== src.length ? ' sur ' + src.length : '')) : '';
       const shown = list.slice(0, qhLimit); qhShown = shown;
@@ -4547,8 +4571,10 @@
       tb.innerHTML = shown.map((e, i) => {
         const dt = e.at && e.at.getTime() ? e.at.toLocaleDateString('fr-FR') + ' ' + e.at.toLocaleTimeString('fr-FR', {hour: '2-digit', minute: '2-digit'}) : esc2(e.atText || '');
         const act = '<td class="qh-act"><button type="button" data-qh="resume" data-idx="' + i + '" title="Repartir de ce devis">Reprendre</button>' + (e.local ? '<button type="button" data-qh="del" data-id="' + e.id + '">Supprimer</button>' : '') + '</td>';
-        return '<tr><td>' + dt + '</td><td><b>' + esc2(e.company) + '</b>' + (e.synced ? '<span class="qh-sync">archivé</span>' : '') + '</td><td>' + esc2(e.plan) + '</td><td>' + esc2(e.cycle) + '</td><td class="ct-num">' + e.users + '</td><td class="ct-num">' + fmtE(e.total) + ' €</td>' + act + '</tr>';
-      }).join('') || '<tr><td colspan="7" style="text-align:center; color:var(--ink-soft); padding:18px;">' + (src.length ? 'Aucun devis ne correspond.' : 'Aucun devis enregistré pour l\'instant.') + '</td></tr>';
+        const pct = v => (v == null || v === 0) ? '—' : String(v).replace('.', ',') + ' %';
+        const eur = v => v == null ? '—' : fmtE(v) + ' €';
+        return '<tr><td>' + dt + '</td><td>' + esc2(e.quoteNo || '—') + '</td><td><b>' + esc2(e.company) + '</b>' + (e.synced ? '<span class="qh-sync">archivé</span>' : '') + '</td><td>' + esc2(e.plan) + '</td><td>' + esc2(e.cycle) + '</td><td class="ct-num">' + e.users + '</td><td class="ct-num">' + pct(e.discount) + '</td><td class="ct-num">' + eur(e.unitPrice) + '</td><td class="ct-num">' + eur(e.total) + '</td><td class="ct-num">' + (e.tvaRate == null ? '—' : String(e.tvaRate).replace('.', ',') + ' %') + '</td><td class="ct-num">' + eur(e.totalTTC) + '</td><td>' + (e.lang ? esc2(e.lang.toUpperCase()) : '—') + '</td>' + act + '</tr>';
+      }).join('') || '<tr><td colspan="13" style="text-align:center; color:var(--ink-soft); padding:18px;">' + (src.length ? 'Aucun devis ne correspond.' : 'Aucun devis enregistré pour l\'instant.') + '</td></tr>';
     }
     // repartir d'un devis de l'historique : mêmes paramètres, nouveau numéro, coordonnées du client à ressaisir
     function qhResume(row){
@@ -4556,21 +4582,11 @@
       const set = (id, v) => { document.getElementById(id).value = v; };
       ['q-contact', 'q-email', 'q-phone', 'q-address', 'q-vat', 'q-code'].forEach(id => set(id, ''));
       set('q-company', row.company); set('q-users', row.users);
-      let disc = row.discount;
-      if(disc == null){   // l'archive partagée ne garde pas la remise : on la retrouve à partir du total enregistré
-        disc = 0; const base = QPRICES[row.plan][row.engagement]; let found = false;
-        for(const step of [0.5, 0.1]){
-          for(let p = 0; p <= 25.0001 && !found; p += step){
-            const pu = Math.round(base * (1 - p / 100) * 100) / 100;
-            if(Math.abs(Math.round(pu * row.users * 100) - Math.round(row.total * 100)) <= 1){ disc = Math.round(p * 10) / 10; found = true; }
-          }
-          if(found) break;
-        }
-      }
+      const disc = row.discount != null ? row.discount : deriveDiscount(row.plan, row.engagement, row.users, row.total);
       set('q-discount', disc || '');
-      if(row.tvaRate != null) set('q-tva', String(row.tvaRate));
+      set('q-tva', row.tvaRate != null ? String(row.tvaRate) : '20');
       quoteNo = null; usedNo = null; usedCompany = '';
-      [['q-plan', row.plan], ['q-eng', row.engagement]].concat(row.lang ? [['q-lang', row.lang]] : []).forEach(([id, v]) => { const b = document.querySelector('#' + id + ' button[data-v="' + v + '"]'); if(b) b.click(); });
+      [['q-plan', row.plan], ['q-eng', row.engagement], ['q-lang', row.lang || 'fr']].forEach(([id, v]) => { const b = document.querySelector('#' + id + ' button[data-v="' + v + '"]'); if(b) b.click(); });
       renderQuote();
       document.getElementById('quote-generator-card').scrollIntoView({behavior: 'smooth', block: 'start'});
       const st = document.getElementById('q-status'); st.style.color = '#16A37F';
@@ -4578,15 +4594,11 @@
       setTimeout(() => { if(st.textContent.startsWith('✓')){ st.textContent = ''; st.style.color = '#C0392B'; } }, 8000);
     }
     function qhCsv(){
-      const cols = [['Date','at'],['N° devis','quoteNo'],['Société','company'],['Plan','plan'],['Cycle','engagement'],['Licences','users'],['Remise (%)','discount'],['TVA (%)','tvaRate'],['Total HT','totalHT'],['Total TTC','totalTTC']];
+      const {rows} = qhRows(); const src = rows.length ? rows : localRows();
       const cell = v => '"' + String(v == null ? '' : v).replace(/"/g, '""') + '"';
-      const val = (e, k) => k === 'at' ? new Date(e.at).toLocaleString('fr-FR') : k === 'plan' ? (e.plan === 'smart' ? 'Smart' : 'Business') : k === 'engagement' ? cycleLabel(e.engagement) : (typeof e[k] === 'number' ? String(e[k]).replace('.', ',') : e[k]);
-      let lines;
-      if(csvUrl() && qhView === 'all' && sharedRows){
-        lines = [['Date','Société','Plan','Cycle','Licences','Total'].map(cell).join(';')].concat(sharedRows.map(e => [e.at, e.company, e.plan, e.cycle, e.users, e.total].map(cell).join(';')));
-      } else {
-        lines = [cols.map(c => cell(c[0])).join(';')].concat(qhLoad().map(e => cols.map(c => cell(val(e, c[1]))).join(';')));
-      }
+      const nb = v => v == null ? '' : String(v).replace('.', ',');
+      const head = ['Date','N° devis','Société','Plan','Cycle','Licences','Remise (%)','Prix unitaire HT','Total HT','TVA (%)','Total TTC','Langue'];
+      const lines = [head.map(cell).join(';')].concat(src.map(e => [e.atText || (e.at && e.at.getTime() ? e.at.toLocaleString('fr-FR') : ''), e.quoteNo, e.company, e.plan, e.cycle, e.users, nb(e.discount), nb(e.unitPrice), nb(e.total), nb(e.tvaRate), nb(e.totalTTC), e.lang ? e.lang.toUpperCase() : ''].map(cell).join(';')));
       const blob = new Blob(['\ufeff' + lines.join('\r\n')], {type:'text/csv;charset=utf-8'});
       const url = URL.createObjectURL(blob); const a = document.createElement('a');
       a.href = url; a.download = 'Historique-devis-KLEAR-' + new Date().toISOString().slice(0, 10) + '.csv';
@@ -4614,7 +4626,7 @@
     window.__syncHist = qhSync;
     document.getElementById('qh-fplan').addEventListener('click', ev => { const b = ev.target.closest('button[data-v]'); if(!b) return; qhPlan = b.dataset.v; document.querySelectorAll('#qh-fplan button').forEach(x => x.classList.toggle('active', x === b)); qhLimit = 50; qhRender(); });
     document.getElementById('qh-fcycle').addEventListener('click', ev => { const b = ev.target.closest('button[data-v]'); if(!b) return; qhCycle = b.dataset.v; document.querySelectorAll('#qh-fcycle button').forEach(x => x.classList.toggle('active', x === b)); qhLimit = 50; qhRender(); });
-    document.querySelector('#qh-table thead').addEventListener('click', ev => { const th = ev.target.closest('th[data-sort]'); if(!th) return; const k = th.dataset.sort; qhSort = {key: k, dir: qhSort.key === k ? -qhSort.dir : (k === 'at' || k === 'users' || k === 'total' ? -1 : 1)}; qhRender(); });
+    document.querySelector('#qh-table thead').addEventListener('click', ev => { const th = ev.target.closest('th[data-sort]'); if(!th) return; const k = th.dataset.sort; qhSort = {key: k, dir: qhSort.key === k ? -qhSort.dir : (['at', 'users', 'total', 'discount', 'unitPrice', 'tvaRate', 'totalTTC'].includes(k) ? -1 : 1)}; qhRender(); });
     document.getElementById('qh-more').addEventListener('click', () => { qhLimit += 50; qhRender(); });
     document.getElementById('qh-view').addEventListener('click', ev => {
       const b = ev.target.closest('button[data-v]'); if(!b) return;
